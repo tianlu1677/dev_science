@@ -72,7 +72,7 @@ group :development do
   gem 'quiet_assets'
   gem 'annotate'
   # Use Capistrano for deployment
-  gem 'capistrano', '~> 3.2.1'
+  gem 'capistrano', '~> 3.4.0'
   gem 'capistrano-rails'
   gem 'capistrano-rvm'
   gem "capistrano-scm-copy"
