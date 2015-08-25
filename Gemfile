@@ -27,19 +27,71 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use Unicorn as the app server
-# gem 'unicorn'
+gem 'unicorn'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
+gem 'pg'
 
-  # Access an IRB console on exception pages or by using <%= console %> in views
+#uploads
+gem 'mini_magick'
+gem 'carrierwave'
+gem 'carrierwave-qiniu'
+
+#permission
+gem 'devise'
+gem 'cancancan'
+gem 'activerecord-session_store'
+
+#mvc
+gem 'inherited_resources'
+gem 'has_scope'
+gem 'simple_form', '>=3.1.0.rc2'
+gem 'nested_form'
+gem 'select2-rails'
+gem 'haml-rails'
+gem 'kaminari'
+gem 'kaminari-bootstrap', '~> 3.0.1'
+gem 'enumerize'
+gem "ransack"
+gem 'awesome_nested_set', '>= 3.0.0.rc.5'
+gem 'friendly_id', '~> 5.0.4'
+
+#settings
+gem 'settingslogic'
+
+#other
+gem 'exception_notification'
+gem 'acts-as-taggable-on'
+gem 'paper_trail'
+
+#API
+
+group :development do
+  gem 'quiet_assets'
+  gem 'annotate'
+  # Use Capistrano for deployment
+  gem 'capistrano', '~> 3.2.1'
+  gem 'capistrano-rails'
+  gem 'capistrano-rvm'
+  gem "capistrano-scm-copy"
+  gem 'net-ssh', '~> 2.8.0'
+  # for rails 3 and 4
+  gem 'railroady'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  # for  livereload
+  gem 'rack-livereload'
+  gem 'guard-livereload'
+  gem 'pry'
+  #gem 'pry-nav'
+  #gem 'pry_debug'
   gem 'web-console', '~> 2.0'
-
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
+  gem 'byebug'
+  # Brakeman is a static analysis tool which checks Ruby on Rails applications for security vulnerabilities.
+  gem 'brakeman'
 end
+
+
 
