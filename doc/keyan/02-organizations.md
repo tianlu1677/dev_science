@@ -21,7 +21,7 @@ children_count:     #
 position:           #位置
 status:             #状态，新建|上线|下线
 
-#originations_users
+#organizations_users
 id:
 user_id:
 organization_id:
