@@ -2,13 +2,14 @@
 lock '3.4.0'
 
 set :application, 'scrinium'
-set :repo_url, 'git@example.com:me/my_repo.git'
+# set :repo_url, 'git@example.com:me/my_repo.git'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
 set :deploy_to,  "/home/kkb/projects/#{fetch(:application)}"
+set :rails_env, 'production'
 
 # Default value for :scm is :git
 # set :scm, :git
@@ -35,11 +36,13 @@ set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp', 'public/system')
 # Default value for keep_releases is 5
 set :keep_releases, 5
 
+set :default_shell, '/bin/bash -l'
+set :bundle_flags, '--quiet'
 namespace :deploy do
 
   task :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
-      execute " kill -USR2 `cat /home/kkb/projects/#{fetch(:application)}/current/tmp/pids/unicorn.pid` "
+      # execute " kill -USR2 `cat /home/kkb/projects/#{fetch(:application)}/current/tmp/pids/unicorn.pid` "
       # execute " ln -nfs /home/kkb/projects/#{fetch(:application)}/shared/public/uploads /home/kkb/projects/#{fetch(:application)}/current/public/uploads "
       #
       # Here we can do anything such as:
