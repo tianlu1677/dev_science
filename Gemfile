@@ -91,6 +91,7 @@ group :development do
   gem 'byebug'
   # Brakeman is a static analysis tool which checks Ruby on Rails applications for security vulnerabilities.
   gem 'brakeman'
+  gem 'rspec-rails', '~> 3.0'
 end
 
 
