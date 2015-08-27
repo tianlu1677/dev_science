@@ -6,6 +6,5 @@ class CreateRolesUsers < ActiveRecord::Migration
       t.timestamps null: false
     end
     add_index :roles_users, [:user_id, :role_id]
-
   end
 end

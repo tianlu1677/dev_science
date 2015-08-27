@@ -5,8 +5,6 @@ class CreatePermissionsRoles < ActiveRecord::Migration
       t.belongs_to :role
       t.timestamps null: false
     end
-
     add_index :permissions_roles, [:role_id, :permission_id]
-
   end
 end

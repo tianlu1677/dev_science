@@ -2,14 +2,15 @@ class CreateProfiles < ActiveRecord::Migration
   def change
     create_table :profiles do |t|
       t.integer :user_id
+      t.string  :title              #职位，或者教授之类的
       t.string  :name,              null: false  # 真实姓名
-      t.string  :mobile
-      t.string  :avatar
-      t.string  :city
-      t.string  :country
-      t.string  :qq
-      t.string  :weibo
-      t.string  :wechat
+      t.string  :mobile             #手机
+      t.string  :avatar             #头像
+      t.string  :city               #城市
+      t.string  :country            #国家
+      t.string  :qq                 #qq
+      t.string  :weibo              #微博
+      t.string  :wechat             #微信
       t.timestamps null: false
     end
   end

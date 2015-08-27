@@ -3,8 +3,8 @@ class CreateGroups < ActiveRecord::Migration
     create_table :groups do |t|
       t.string  :name               #群组名称
       t.string  :short_name         #简称
-      t.text    :intro             #简介
-      t.text    :desc              #介绍
+      t.text    :intro              #简介
+      t.text    :desc               #介绍
       t.string  :website            #网站
       t.string  :privacy            #组织权限， 隐藏， 私密，公开, hidden, protected | public
       t.integer :position           #位置
