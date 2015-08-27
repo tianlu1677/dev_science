@@ -42,8 +42,8 @@ namespace :deploy do
 
   task :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
-      # execute " kill -USR2 `cat /home/kkb/projects/#{fetch(:application)}/current/tmp/pids/unicorn.pid` "
-      # execute " ln -nfs /home/kkb/projects/#{fetch(:application)}/shared/public/uploads /home/kkb/projects/#{fetch(:application)}/current/public/uploads "
+      execute " kill -USR2 `cat /home/kkb/projects/#{fetch(:application)}/current/tmp/pids/unicorn.pid` "
+      execute " ln -nfs /home/kkb/projects/#{fetch(:application)}/shared/public/uploads /home/kkb/projects/#{fetch(:application)}/current/public/uploads "
       #
       # Here we can do anything such as:
       # within release_path do
