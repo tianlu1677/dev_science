@@ -1,0 +1,8 @@
+- if flash[:notice]
+  .note.note-success
+    %p
+      = flash[:notice]
+- if flash[:error]
+  .note.note-error
+    %p
+      = flash[:error]

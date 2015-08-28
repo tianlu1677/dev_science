@@ -1,0 +1,28 @@
+- note_color = ['note-success', 'note-info', 'note-danger', 'note-warning']
+= render 'breadcrumb'
+
+.portlet.light
+  = render "portlet_title"
+
+  .portlet-body
+    - attributes.each do |attr|
+      .note{class: "#{note_color[rand(3)]}"}
+        %h4.block=resource_class.human_attribute_name(attr)
+        - if respond_to?("#{attr}_text".to_sym)
+          %p= self.send("#{attr}_text".to_sym)
+        - elsif resource.respond_to?("#{attr}_text".to_sym)
+          %p= resource.send("#{attr}_text".to_sym)
+        - elsif resource.respond_to?("#{attr}_title".to_sym)
+          %p= resource.send("#{attr}_title".to_sym)
+        - elsif resource.respond_to?("#{attr}_name".to_sym)
+          %p= resource.send("#{attr}_name".to_sym)
+        - elsif resource.send(attr).is_a?(Time)
+          %p= resource.send(attr).try(:strftime, '%Y年%m月%d %H时%M分%S秒')
+        - elsif resource.send(attr).is_a?(CarrierWave::Uploader::Base)
+          %p= image_tag(resource.send(attr + "_identify"))
+        - elsif resource.send(attr).is_a?(TrueClass)
+          %p 是
+        - elsif resource.send(attr).is_a?(FalseClass)
+          %p 否
+        - else
+          %p= resource.send(attr).to_s

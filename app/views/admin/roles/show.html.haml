@@ -1,0 +1,14 @@
+- note_color = ['note-success', 'note-info', 'note-danger', 'note-warning']
+= render 'breadcrumb'
+
+.portlet.light
+  = render "portlet_title"
+
+  .portlet-body
+    - attributes.each do |attr|
+      .note{class: "#{note_color[rand(3)]}"}
+        %h4.block=resource_class.human_attribute_name(attr)
+        - if resource.respond_to?("#{attr}_name".to_sym)
+          %p= resource.send("#{attr}_name".to_sym)
+
+    %p= resource.permissions.collect{ |permission| "该角色的权限有#{permission.item_name + permission.item_class + permission.name}" }

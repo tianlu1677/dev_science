@@ -1,0 +1,11 @@
+
+.portlet-title
+  .caption
+    %i.fa.fa-cogs.font-green-sharp
+    %span.caption-subject.font-green-sharp.bold.uppercase
+      = t("action_labels.#{action_name}") + resource_class.model_name.human
+  .tools
+    %a.collapse{href: "", "data-original-title" => "", title: ""}
+    %a.config{href: "", "data-toggle" => "", "data-original-title" => "", title: ""}
+    %a.reload{href: "", "data-toggle" => "", "data-original-title" => "", title: ""}
+    %a.remove{href: "", "data-toggle" => "", "data-original-title" => "", title: ""}
