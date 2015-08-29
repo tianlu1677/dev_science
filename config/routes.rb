@@ -12,6 +12,15 @@ Rails.application.routes.draw do
 
 
 
+
+
+  namespace :users do
+    resources :center do
+      get :current, on: :collection
+    end
+  end
+
+  ## for admin routes
   namespace :admin do
     root to: "panel#index"
     resources :panels

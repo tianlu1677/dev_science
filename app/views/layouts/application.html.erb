@@ -10,11 +10,32 @@
 <body class="page-header-fixed page-sidebar-closed-hide-logo page-sidebar-closed-hide-logo">
 
 <div class="clearfix"></div>
+<% if current_user %>
 <!-- BEGIN HEADER -->
-<%= render 'application/header' %>
+<%= render 'application/logined_header' %>
 <!-- END HEADER -->
+<% else %>
+  <%= render 'application/unlogin_header' %>
 
-<%= yield %>
+<% end %>
+
+
+<!-- BEGIN CONTAINER -->
+<div class="page-container">
+  <!-- BEGIN SIDEBAR -->
+  <% if current_user %>
+    <%= render 'application/page_sidebar' %>
+  <% else %>
+
+  <% end %>
+  <!-- END SIDEBAR -->
+  <!-- BEGIN CONTENT -->
+  <div class="page-content-wrapper">
+    <div class="page-content">
+      <%= yield %>
+    </div>
+  </div>
+</div>
 
 <script>
   jQuery(document).ready(function() {
