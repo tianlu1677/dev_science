@@ -9,6 +9,28 @@ Rails.application.routes.draw do
                          :passwords => "users/passwords",
                          :emails=>"users/emails"
                        }
+
+
+
+  namespace :admin do
+    root to: "panel#index"
+    resources :panels
+    resources :users do
+      resources :profiles
+    end
+    resources :topics
+    resources :tags
+    resources :roles
+    resources :permissions
+  end
+
+
+
+
+
+
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
