@@ -13,3 +13,31 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+
+//// global
+//= require global/plugins/respond.min.js
+//= require global/plugins/excanvas.min.js
+//= require global/plugins/jquery-ui/jquery-ui.min.js
+//= require global/plugins/bootstrap/js/bootstrap.min.js
+//= require global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js
+//= require global/plugins/jquery-slimscroll/jquery.slimscroll.min.js
+//= require global/plugins/jquery.blockui.min.js
+//= require global/plugins/jquery.cokie.min.js
+//= require global/plugins/uniform/jquery.uniform.min.js
+//= require global/plugins/bootstrap-switch/js/bootstrap-switch.min.js
+
+////fullcalendar depends
+
+
+//= require global/plugins/morris/morris.min.js
+//= require global/plugins/morris/raphael-min.js
+//= require global/plugins/jquery.sparkline.min.js
+////pages
+
+
+//=require  global/scripts/metronic.js
+//=require  admin/layout4/scripts/layout.js
+//=require  admin/layout4/scripts/demo.js
+//=require  admin/pages/scripts/index3.js
+//=require  admin/pages/scripts/tasks.js
+//=require  admin/layout4/scripts/quick-sidebar.js
