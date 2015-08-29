@@ -6,9 +6,29 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<!-- DOC: Apply "page-full-width" class to the body element to have full width page without the sidebar menu -->
+<body class="page-header-fixed page-sidebar-closed-hide-logo page-sidebar-closed-hide-logo">
+
+<div class="clearfix"></div>
+<!-- BEGIN HEADER -->
+<%= render 'application/header' %>
+<!-- END HEADER -->
 
 <%= yield %>
 
+<script>
+  jQuery(document).ready(function() {
+    Metronic.init(); // init metronic core componets
+    Layout.init(); // init layout
+    Demo.init(); // init demo features
+    QuickSidebar.init(); // init quick sidebar
+    Index.init(); // init index page
+    Tasks.initDashboardWidget(); // init tash dashboard widget
+  });
+</script>
+
+<!-- BEGIN FOOTER -->
+<%= render 'application/footer' %>
+<!-- END FOOTER -->
 </body>
 </html>

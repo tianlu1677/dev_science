@@ -4,7 +4,7 @@ class Admin::ApplicationController < ActionController::Base
 
   layout "admin"
 
-  before_action :authenticate_user!, except: [:logout]
+  # before_action :authenticate_user!, except: [:logout]
 
 
   helper_method :attributes

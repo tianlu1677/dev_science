@@ -15,8 +15,12 @@
 //= require turbolinks
 
 //// global
+
+//// for ie9
 //= require global/plugins/respond.min.js
 //= require global/plugins/excanvas.min.js
+////==========
+
 //= require global/plugins/jquery-ui/jquery-ui.min.js
 //= require global/plugins/bootstrap/js/bootstrap.min.js
 //= require global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js
@@ -32,9 +36,8 @@
 //= require global/plugins/morris/morris.min.js
 //= require global/plugins/morris/raphael-min.js
 //= require global/plugins/jquery.sparkline.min.js
+
 ////pages
-
-
 //=require  global/scripts/metronic.js
 //=require  admin/layout4/scripts/layout.js
 //=require  admin/layout4/scripts/demo.js
