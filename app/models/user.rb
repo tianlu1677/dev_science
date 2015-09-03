@@ -27,4 +27,9 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
+
+
+  has_and_belongs_to_many :roles
+  accepts_nested_attributes_for :roles
+
 end

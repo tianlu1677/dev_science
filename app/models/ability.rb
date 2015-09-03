@@ -2,6 +2,19 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
+    return unless user.present?
+    can :manage, :all if user.email == '1035232764@qq.com'
+
+    user.roles.each do |role|
+      role.permissions.each do |permission|
+        if permission.subject_id.nil?
+          can permission.action.to_sym, permission.subject_class.constantize
+        else
+          can permission.action.to_sym, permission.subject_class.constantize, :id => permission.subject_id
+        end
+      end
+    end
+
     # Define abilities for the passed in user here. For example:
     #
     #   user ||= User.new # guest user (not logged in)
