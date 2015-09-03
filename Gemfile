@@ -68,7 +68,7 @@ gem 'paper_trail'
 
 #API
 
-group :development do
+group :development, :test do
   gem 'quiet_assets'
   gem 'annotate'
   # Use Capistrano for deployment
