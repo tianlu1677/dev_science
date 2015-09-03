@@ -16,7 +16,7 @@ class Admin::UsersController < Admin::ApplicationController
   end
 
   def attributes
-    %w( email admin )
+    %w( email )
   end
 
 end

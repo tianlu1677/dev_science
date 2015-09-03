@@ -1,12 +1,9 @@
-= javascript_include_tag "kindeditor/kindeditor.js"
+
 = simple_form_for [:admin, resource], validate: true, class: "form-horizontal" do |f|
   .form-body
-    = f.association :user, collection: User.all
-    = f.association :forum
-    = f.association :category
-    = f.input :author_name
+    = f.input :user_id, collection: User.all
     = f.input :title
-    = f.input :content, as: :kindeditor, :simple_mode => true
+    = f.input :body
     -#= f.input :published_at, as: :date
     = f.input :status
 

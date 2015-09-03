@@ -23,9 +23,9 @@
             - else
               %td= resource.send(attr).to_s.truncate(20)
           %td
-            = link_to t("#{resource_class.name.underscore}.show"), resource_path(resource), class: 'btn btn-xs blue' if can? :read, resource_class
-            = link_to t("#{resource_class.name.underscore}.edit"), edit_resource_path(resource), class: 'btn btn-xs yellow' if can? :update, resource_class
-            = link_to t("#{resource_class.name.underscore}.destroy"), resource_path(resource), :method => :delete, data: {confirm: t("#{resource_class.name.underscore}.are_you_sure")}, class: 'btn btn-xs red' if can? :destroy, resource_class
+            = link_to t("#{resource_class.name.underscore}.show"), resource_path(resource), class: 'btn btn-xs blue'
+            = link_to t("#{resource_class.name.underscore}.edit"), edit_resource_path(resource), class: 'btn btn-xs yellow'
+            = link_to t("#{resource_class.name.underscore}.destroy"), resource_path(resource), :method => :delete, data: {confirm: t("#{resource_class.name.underscore}.are_you_sure")}, class: 'btn btn-xs red'
     %tfoot
       %tr
         - attributes.each do |attr|
