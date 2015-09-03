@@ -4,13 +4,12 @@
       = f.input attr
 
     - permissions = Permission.all
-    - Permission.pluck(:item_class).uniq.each do |item_class|
-      = item_class.constantize.model_name.human
-      = f.association :permissions, collection: permissions.select{ |p| p.item_class == item_class }, as: :check_boxes, :label => false, :item_wrapper_class => 'inline'
+    - Permission.pluck(:subject_class).uniq.each do |subject_class|
+      = subject_class.constantize.model_name.human
+      = f.association :permissions, collection: permissions.select{ |p| p.subject_class == subject_class }, as: :check_boxes, :label => false, :item_wrapper_class => 'inline'
 
   .form-actions
     .row
       .col-md-offset-3.col-md-9
         = f.button :submit, class: "btn green", data: { disabled_with: "提交中"}
         = link_to t("#{resource_class.name.underscore}.back_list") , collection_path, class: 'btn default'
-

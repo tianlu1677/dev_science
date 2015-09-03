@@ -34,8 +34,7 @@
 = paginate collection
 %br
 .table-toolbar
-  - if can? :create, resource_class
-    .btn-group
-      = link_to new_resource_path, class: 'btn green' do
-        = t("#{resource_class.name.underscore}.new")
-        %i.fa.fa-plus
+  .btn-group
+    = link_to new_resource_path, class: 'btn green' do
+      = t("#{resource_class.name.underscore}.new")
+      %i.fa.fa-plus

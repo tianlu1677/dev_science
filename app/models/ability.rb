@@ -3,7 +3,7 @@ class Ability
 
   def initialize(user)
     return unless user.present?
-    can :manage, :all if user.email == '1035232764@qq.com'
+    can :manage, :all and return #if user.email == '1035232764@qq.com'
 
     user.roles.each do |role|
       role.permissions.each do |permission|

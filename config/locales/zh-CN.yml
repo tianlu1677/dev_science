@@ -55,8 +55,6 @@ zh-CN:
     <<: *action_labels
   topic:
     <<: *action_labels
-  forum:
-    <<: *action_labels
   tag:
     <<: *action_labels
   category:
@@ -66,10 +64,9 @@ zh-CN:
       user: 用户
       role: 角色
       permission: 权限
-      topic: 文章
+      topic: 主题
       forum: 板块
       tag: 标签
-      category: 分类
     attributes:
       user:
         id: ID
@@ -93,21 +90,18 @@ zh-CN:
         item_action: 操作
         created_at: 创建时间
       topic:
-        user_email: 用户邮箱
-        forum_name: 板块
-        category_name: 分类
-        author_name: 作者
-        title: 标题
-        content: 内容
-        published_at: 发布时间
-        hotted: 热门帖子
-        close_comment: 关闭评论
-        posts_count: 评论数
-        votes_count: 投票数
-        views_count: 浏览数
-        words_count: 字数
-        position: 位置
+        id:
+        context_id:
+        text_type:
+        user_id:  用户名
+        title:  标题
+        body: 内容
+        views_count:  浏览数
+        posts_count:  回复数
+        position:   位置
         status: 状态
+        created_at: 创建时间
+        updated_at: 更新时间
 
       tag:
         name: 名称
