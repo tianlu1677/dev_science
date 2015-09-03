@@ -44,3 +44,6 @@
 //=require  admin/pages/scripts/index3.js
 //=require  admin/pages/scripts/tasks.js
 //=require  admin/layout4/scripts/quick-sidebar.js
+
+
+//=require admin/pages/scripts/login.js

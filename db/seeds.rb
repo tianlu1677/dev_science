@@ -7,3 +7,4 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 User.create_with(username: 'tianlu', password: 'kkb654321', password_confirmation: 'kkb654321', confirmed_at: DateTime.now).find_or_create_by!(:email => '1035232764@qq.com')
+User.create_with(username: 'dongli', password: '12345678', password_confirmation: '12345678', confirmed_at: DateTime.now).find_or_create_by!(:email => 'dongli@lasg.iap.ac.cn')

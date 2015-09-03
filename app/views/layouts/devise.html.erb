@@ -7,7 +7,7 @@
     <%= csrf_meta_tags %>
   </head>
   <!-- DOC: Apply "page-full-width" class to the body element to have full width page without the sidebar menu -->
-  <body class="page-header-fixed page-sidebar-closed-hide-logo page-sidebar-closed-hide-logo">
+  <body class="page-header-fixed page-sidebar-closed-hide-logo page-sidebar-closed-hide-logo login">
 
     <div class="clearfix"></div>
     <% if current_user %>
@@ -16,17 +16,8 @@
       <%= render 'application/unlogin_header' %>
     <% end %>
 
-    <div class="page-container">
-      <% if current_user %>
-        <%= render 'application/page_sidebar' %>
-      <% else %>
-
-      <% end %>
-      <div class="page-content-wrapper">
-        <div class="page-content">
-          <%= yield %>
-        </div>
-      </div>
+    <div class="content">
+      <%= yield %>
     </div>
 
     <script>
@@ -39,7 +30,5 @@
         Tasks.initDashboardWidget(); // init tash dashboard widget
       });
     </script>
-
-    <%= render 'application/footer' %>
   </body>
 </html>
