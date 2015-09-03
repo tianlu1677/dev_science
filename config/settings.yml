@@ -1,7 +1,16 @@
 # config/settings.yml
 defaults: &defaults
   domain: 'localhost:3000'
-
+  website_name: 'scrinium'
+  smtp_settings:
+    address: 'smtpcloud.sohu.com'
+    port: 25
+    domain: 'service.kaikeba.com'
+    user_name: 'postmaster@kkb.sendcloud.org'
+    display_name: 'postmaster@service.kaikeba.com'
+    password: 'agZftD8KBjOjlyrZ'
+    authentication: 'login'
+    enable_starttls_auto: true
 
 ######################################################################################
 development:
@@ -16,4 +25,6 @@ test:
 ######################################################################################
 production:
   <<: *defaults
+  domain: 'www.scrinp.com'
+
 
