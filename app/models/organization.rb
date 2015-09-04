@@ -24,4 +24,13 @@
 #
 
 class Organization < ActiveRecord::Base
+  extend Enumerize
+  enumerize :status, in: [:new, :online, :offline], default: :online
+
+  acts_as_nested_set
+
+  validates :name, :city, :intro, :desc, :address, :contact_name, :contact_mobile, presence: true
+
+  has_many :groups_organizations, dependent: :destroy
+  has_many :groups, through: :groups_organizations
 end

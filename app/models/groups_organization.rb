@@ -15,4 +15,6 @@
 #
 
 class GroupsOrganization < ActiveRecord::Base
+  belongs_to :organization
+  belongs_to :group
 end
