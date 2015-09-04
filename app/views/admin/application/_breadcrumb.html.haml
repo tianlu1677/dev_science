@@ -1,3 +1,13 @@
+
 %ul.page-breadcrumb.breadcrumb
+
   %li
-    = link_to "控制面板", root_path
+    = link_to "控制面板", admin_root_path
+    %i.fa.fa-circle
+  - if defined?(parent) and parent?
+    %li
+      = link_to parent.class.model_name.human, parent_path
+      %i.fa.fa-circle
+  %li
+    = link_to resource_class.model_name.human, collection_path
+    %strong=t("action_labels.#{action_name}")

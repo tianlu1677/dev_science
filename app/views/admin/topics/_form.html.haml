@@ -10,6 +10,6 @@
   .form-actions
     .row
       .col-md-offset-3.col-md-9
-        = f.button :submit, class: "btn green", data: { disabled_with: "提交中"}
+        = f.submit '保存修改', class: "btn green", data: { disabled_with: "提交中"}
         = link_to t("#{resource_class.name.underscore}.back_list") , collection_path, class: 'btn default'
 

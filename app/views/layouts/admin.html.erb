@@ -1,6 +1,6 @@
 <html>
 <head>
-  <title>Leaf</title>
+  <title>Scrinium</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -8,28 +8,20 @@
 </head>
 
 
-
 <body class="page-header-fixed page-sidebar-closed-hide-logo page-sidebar-closed-hide-logo">
 
 <div class="clearfix"></div>
-<!-- BEGIN HEADER -->
+
 <%= render 'application/logined_header' %>
-<!-- END HEADER -->
 
-
-<!-- BEGIN CONTAINER -->
 <div class="page-container">
-  <!-- BEGIN SIDEBAR -->
+
   <%= render 'admin/application/sidebar_menu' %>
-  <!-- END SIDEBAR -->
-  <!-- BEGIN CONTENT -->
   <div class="page-content-wrapper">
     <div class="page-content">
-
       <%= yield %>
     </div>
   </div>
-
 </div>
 
 

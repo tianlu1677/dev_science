@@ -1,4 +1,14 @@
-
+- if @q.present?
+  .row.search-form-default
+    .col-md-12
+      = search_form_for [:admin, @q], html: { class: 'form-inline form-horizontal' } do |f|
+        .input-group
+          .input-cont
+            = f.text_field :"#{attributes.first}_cont", placeholder: "搜索#{resource_class.human_attribute_name(attributes.first)}...", class: 'form-control'
+          %span.input-group-btn
+            %button.btn.green
+              查询
+              %i.m-icon-swapright.m-icon-white
 .table-scrollable
   %table#collection_table.table.table-bordered.table-striped.table-hover
     %thead
@@ -34,8 +44,7 @@
 = paginate collection
 %br
 .table-toolbar
-  - if can? :create, resource_class
-    .btn-group
-      = link_to new_resource_path, class: 'btn green' do
-        = t("#{resource_class.name.underscore}.new")
-        %i.fa.fa-plus
+  .btn-group
+    = link_to new_resource_path, class: 'btn green' do
+      = t("#{resource_class.name.underscore}.new")
+      %i.fa.fa-plus
