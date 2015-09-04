@@ -17,4 +17,11 @@
 #
 
 class Topic < ActiveRecord::Base
+  extend Enumerize
+  enumerize :status, in: [:new, :online, :offline], default: :online
+  belongs_to :user
+  belongs_to :context, polymorphic: true
+  validates :title, :body, presence: true
+  # enum status: [:new, :online, :offline].map { |x| I18n.t("user.role_types.#{x}") }
+  delegate :username, to: :user, prefix: true, allow_nil: true
 end

@@ -2,7 +2,7 @@ class Admin::UsersController < Admin::ApplicationController
 
   def index
     @q = resource_class.search(params[:q])
-    @users = @q.result.page(params[:page] || 1).per(2)
+    @users = @q.result.page(params[:page] || 1).per(20)
   end
 
   def create
@@ -11,12 +11,17 @@ class Admin::UsersController < Admin::ApplicationController
                       password_confirmation: params[:user][:password_confirmation],
                       confirmed_at: DateTime.now
                     })
-    user.save
-    redirect_to admin_users_path
+    if user.save
+      flash[:notice] = "创建成功"
+      redirect_to admin_users_path
+    else
+      flash[:error] = "创建失败"
+      redirect_to admin_users_path
+    end
   end
 
   def attributes
-    %w( email )
+    %w( username email )
   end
 
 end

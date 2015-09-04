@@ -1,11 +1,9 @@
-
-= simple_form_for [:admin, resource], validate: true, class: "form-horizontal" do |f|
+= simple_form_for [:admin, resource], wrapper: :horizontal_form, validate: true, html: {class: "form-horizontal form-row-seperated"}  do |f|
   .form-body
-    = f.input :user_id, collection: User.all
+    = f.input :user_id, disabled: true
     = f.input :title
     = f.input :body
-    -#= f.input :published_at, as: :date
-    = f.input :status
+    = f.input :status, as: :select#, as: :radio_buttons, wrapper: :horizontal_radio_and_checkboxes, :item_wrapper_class => 'inline'
 
   .form-actions
     .row

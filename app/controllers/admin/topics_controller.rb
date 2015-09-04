@@ -6,9 +6,9 @@ class Admin::TopicsController < Admin::ApplicationController
   #   params.permit(topic: [:user_id, :title, :body, :context_id, :context_type, :position, :status])
   # end
   #
-  # def attributes
-  #   %w(id  context_id context_type user_id title body views_count posts_count position status)
-  # end
+  def attributes
+    %w(context_id context_type user_username title body views_count posts_count position status)
+  end
 end
 
 
