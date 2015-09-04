@@ -49,7 +49,7 @@ gem 'inherited_resources'
 gem 'has_scope'
 gem 'simple_form', '>=3.1.0.rc2'
 gem 'nested_form'
-gem 'select2-rails'
+# gem 'select2-rails'
 gem 'haml-rails'
 gem 'kaminari'
 gem 'kaminari-bootstrap', '~> 3.0.1'
@@ -68,6 +68,11 @@ gem 'paper_trail'
 
 #API
 
+
+#rails-assets
+source 'https://rails-assets.org' do
+  gem 'rails-assets-select2'
+end
 group :development, :test do
   gem 'quiet_assets'
   gem 'annotate'
