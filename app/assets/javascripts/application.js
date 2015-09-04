@@ -41,7 +41,7 @@
 //=require  global/scripts/metronic.js
 //=require  admin/layout4/scripts/layout.js
 //=require  admin/layout4/scripts/demo.js
-//=require  admin/pages/scripts/index3.js
+//////=require  admin/pages/scripts/index3.js ## useless
 //=require  admin/pages/scripts/tasks.js
 //=require  admin/layout4/scripts/quick-sidebar.js
 
