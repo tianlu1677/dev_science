@@ -6,18 +6,24 @@ zh-CN:
       previous: "上一页"
       next: "下一页"
       truncate: "..."
+  enumerize_meaning: &enumerize_meaning
+    status:
+      new: 新建
+      online: 上线
+      offline: 下线
   enumerize:
     user:
-      status:
-        new: 新建
-        passed: 通过
-        failed: 禁止
+      <<: *enumerize_meaning
     topic:
-      status:
-        online: 上线
-        offline: 下线
-
-
+      <<: *enumerize_meaning
+    group:
+      <<: *enumerize_meaning
+      privacy:
+        hidden: 隐藏
+        protected: 群组可见
+        public: 公开
+    organization:
+      <<: *enumerize_meaning
   action_labels: &action_labels
     index: 列表
     manage: 管理
@@ -68,29 +74,31 @@ zh-CN:
       comment: 评论
     attributes:
       user:
-        id: ID
-        email: 邮箱
-        password: 密码
-        password_confirmation: 确认密码
-        reset_password_token: 重置密码链接
-        confirmation_token: 邮箱确认码
-        user_type: 用户类型
-        confirmation_token: 邮箱确认码
-        confirmed_at: 邮箱确认时间
-        created_at: 创建时间
+        id:                     ID
+        email:                  邮箱
+        password:               密码
+        password_confirmation:  确认密码
+        reset_password_token:   重置密码链接
+        confirmation_token:     邮箱确认码
+        user_type:              用户类型
+        confirmation_token:     邮箱确认码
+        confirmed_at:           邮箱确认时间
+        created_at:             创建时间
       role:
-        name: 角色名称
-        permissions: 权限
+        name:                   角色名称
+        permissions:            权限
       permission:
-        name: 权限名
-        item_name: 名称
-        item_class: 类
-        item_action: 操作
-        created_at: 创建时间
-
+        name:                   名称
+        subject_name:           类名称
+        subject_class:          类
+        subject_id:             所属ID
+        action:                 动作名称
+        desc:                   权限描述
+        created_at:             创建时间
+        updated_at:             更新时间
       tag:
-        name: 名称
-        taggings_count: 数量
+        name:               名称
+        taggings_count:     数量
       organization:
         id:               ID
         name:             名称
@@ -124,24 +132,25 @@ zh-CN:
         created_at:       创建时间
         updated_at:       更新时间
       topic:
-        id:
-        context_id:
-        text_type:
-        user_id:  用户名
-        title:  标题
-        body: 内容
-        views_count:  浏览数
-        posts_count:  回复数
-        position:   位置
-        status: 状态
-        created_at: 创建时间
-        updated_at: 更新时间
+        id:               ID
+        context_id:       所属类别ID
+        context_type:        所属类别
+        user_id:          用户名
+        title:            标题
+        body:             内容
+        views_count:      浏览数
+        posts_count:      回复数
+        position:         位置
+        status:           状态
+        created_at:       创建时间
+        updated_at:       更新时间
+        user_username:    用户名
       post:
         id:              ID
         user_id:         用户
         body:            内容
-        context_id:
-        context_type:
+        context_id:      所属类别ID
+        context_type:    所属类别
         status:          状态
         created_at:      创建时间
         updated_at:      更新时间
