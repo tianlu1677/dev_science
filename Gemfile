@@ -55,7 +55,7 @@ gem 'kaminari'
 gem 'kaminari-bootstrap', '~> 3.0.1'
 gem 'enumerize'
 gem "ransack"
-gem 'awesome_nested_set', '>= 3.0.0.rc.5'
+gem 'awesome_nested_set'
 gem 'friendly_id', '~> 5.0.4'
 
 #settings
