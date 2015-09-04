@@ -22,3 +22,15 @@ Permission.destroy_all
     )
   end
 end
+100.times do |key|
+  User.create_with(username: 'tianlu', password: '111111', password_confirmation: '111111', confirmed_at: DateTime.now).find_or_create_by!(:email => "#{key}@qq.com")
+end
+
+%w(小学组 中学组 高中组 大学组 研究组 男子组 女子组).each do |group_name|
+  Group.create(name: group_name, short_name: group_name, intro: "#{group_name}很好啊", desc: "#{group_name}这个很长很长的描述")
+end
+
+%w(数学研究机构 语文研究机构).each do |organization_name|
+  Organization.create(name: organization_name, short_name: organization_name, intro: "#{organization_name}很好啊", desc: "#{organization_name}这个很长很长的描述",
+                      city: "北京", address: '北京海淀区', contact_name:'张三', contact_mobile: '188888888', parent_id: 0,lft: 0, rgt: 0)
+end
