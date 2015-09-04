@@ -12,6 +12,7 @@
  *
 
  *= require_self
+ *= require select2
  *= require global/plugins/font-awesome/css/font-awesome.min.css
  *= require global/plugins/simple-line-icons/simple-line-icons.min.css
  *= require global/plugins/bootstrap/css/bootstrap.min.css
