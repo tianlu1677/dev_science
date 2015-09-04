@@ -12,13 +12,6 @@ zh-CN:
         new: 新建
         passed: 通过
         failed: 禁止
-      admin:
-        active: 是
-        forbidden: 否
-    forum:
-      status:
-        online: 上线
-        offline: 下线
     topic:
       status:
         online: 上线
@@ -36,16 +29,10 @@ zh-CN:
     export: 导出数据
     search: 搜索
     list: 全部列表
-    comment: 全部回复
     back_list: 返回
     cancel: 取消
-    preview: 预览
     are_you_sure: 您确定删除这条数据吗？
-    generate: 生成
-    regenerate: 重新生成
-    publish:  发布
     add:  追加
-    delivery:  快递
     are_you_sure_operation: 您确定要进行此操作吗？
   user:
     <<: *action_labels
@@ -53,20 +40,31 @@ zh-CN:
     <<: *action_labels
   permission:
     <<: *action_labels
-  topic:
-    <<: *action_labels
   tag:
     <<: *action_labels
   category:
+    <<: *action_labels
+  organization:
+    <<: *action_labels
+  group:
+    <<: *action_labels
+  topic:
+    <<: *action_labels
+  post:
+    <<: *action_labels
+  comment:
     <<: *action_labels
   activerecord:
     models:
       user: 用户
       role: 角色
       permission: 权限
-      topic: 主题
-      forum: 板块
       tag: 标签
+      organization: 机构
+      group: 群组
+      topic: 主题
+      post: 回复
+      comment: 评论
     attributes:
       user:
         id: ID
@@ -79,7 +77,6 @@ zh-CN:
         confirmation_token: 邮箱确认码
         confirmed_at: 邮箱确认时间
         created_at: 创建时间
-        admin: 管理员
       role:
         name: 角色名称
         permissions: 权限
@@ -89,6 +86,42 @@ zh-CN:
         item_class: 类
         item_action: 操作
         created_at: 创建时间
+
+      tag:
+        name: 名称
+        taggings_count: 数量
+      organization:
+        id:               ID
+        name:             名称
+        city:             城市
+        short_name:       简称
+        intro:            简介
+        desc:             介绍
+        website:          网站
+        address:          地址
+        contact_name:     联系人姓名
+        contact_mobile:   联系人电话
+        parent_id:        所属机构
+        lft:
+        rgt:
+        depth:
+        children_count:   子机构数目
+        position:         位置
+        status:           状态
+        created_at:       创建时间
+        updated_at:       更新时间
+      group:
+        id:               ID
+        name:             名称
+        short_name:       简称
+        intro:            简介
+        desc:             介绍
+        website:          网址
+        privacy:          权限
+        position:         位置
+        status:           状态
+        created_at:       创建时间
+        updated_at:       更新时间
       topic:
         id:
         context_id:
@@ -102,7 +135,26 @@ zh-CN:
         status: 状态
         created_at: 创建时间
         updated_at: 更新时间
-
-      tag:
-        name: 名称
-        taggings_count: 数量
+      post:
+        id:              ID
+        user_id:         用户
+        body:            内容
+        context_id:
+        context_type:
+        status:          状态
+        created_at:      创建时间
+        updated_at:      更新时间
+      comment:
+        id:              ID
+        user_id:         用户
+        post_id:         回复
+        body:            内容
+        post_body:       回复的内容
+        parent_id:       父评论
+        lft:
+        rgt:
+        depth:
+        children_count:  子评论的数目
+        status:          状态
+        created_at:      创建时间
+        updated_at:      更新时间

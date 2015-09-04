@@ -1,7 +1,7 @@
-class Admin::TopicsController < Admin::ApplicationController
-  belongs_to :forum, optional: true
+class Admin::PostsController < Admin::ApplicationController
 
-  protected
+
+  # protected
   # def permitted_params
   #   params.permit(topic: [:user_id, :title, :body, :context_id, :context_type, :position, :status])
   # end

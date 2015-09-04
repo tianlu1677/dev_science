@@ -29,8 +29,9 @@ Rails.application.routes.draw do
     end
     resources :organizations
     resources :groups
-    resources :posts
     resources :topics
+    resources :posts
+    resources :comments
     resources :tags
     resources :roles
     resources :permissions
