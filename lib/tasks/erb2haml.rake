@@ -22,7 +22,7 @@ namespace :haml do
     puts "Looking for #{color "ERB", GREEN_FG} files to convert to " +
              "#{color("Haml", RED_FG)}..."
 
-    Find.find("app/views/") do |path|
+    Find.find("app/views/admin") do |path|
       if FileTest.file?(path) and path.downcase.match(/\.erb$/i)
         haml_path = path.slice(0...-3)+"haml"
 
