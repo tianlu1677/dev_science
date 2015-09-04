@@ -21,6 +21,7 @@ zh-CN:
   action_labels: &action_labels
     index: 列表
     manage: 管理
+    update: 更新
     new: 新建
     edit: 编辑
     create: 创建
