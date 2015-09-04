@@ -1,8 +1,9 @@
 - if flash[:notice]
-  .note.note-success
+  .note.note-success.note-shadow
     %p
       = flash[:notice]
 - if flash[:error]
-  .note.note-error
-    %p
+  .Metronic-alerts.alert.alert-danger.fade.in
+    %button.close{"data-dismiss" => "alert", "aria-hidden" => "true"}
+    %i.fa-lg.fa.fa-warning
       = flash[:error]

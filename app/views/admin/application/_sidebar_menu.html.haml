@@ -11,16 +11,16 @@
       %ul.sub-menu
         %li
           = link_to  admin_topics_path do
-            %i.icon-basket
-            %span 文章
+            %i.icon-paper-plane
+            %span 文章管理
         %li
           = link_to  admin_posts_path do
-            %i.icon-basket
-            %span 评论
+            %i.icon-paper-plane
+            %span 回复管理
         %li
           = link_to  admin_comments_path do
-            %i.icon-basket
-            %span 评论
+            %i.icon-paper-plane
+            %span 评论管理
     %li
       %a{:href => "javascript:;"}
         %i.icon-rocket
@@ -30,27 +30,34 @@
         %li
           = link_to admin_users_path do
             %i.icon-pencil
-            用户
+            用户管理
         %li
           = link_to admin_roles_path do
             %i.icon-pencil
-            角色
+            角色管理
         %li
           = link_to admin_permissions_path do
             %i.icon-pencil
-            权限
+            权限管理
     %li
       %a{:href => "javascript:;"}
         %i.icon-diamond
         %span.title 机构管理
         %span.arrow
       %ul.sub-menu
-        %li= link_to "机构", admin_organizations_path
+        %li
+          = link_to admin_organizations_path do
+            %i.icon-briefcase
+            机构管理
     %li
       %a{:href => "javascript:;"}
         %i.icon-folder
         %span.title 群组管理
         %span.arrow
       %ul.sub-menu
-        %li= link_to "群组", admin_groups_path
+        %li
+          = link_to admin_groups_path do
+            %i.icon-settings
+            群组管理
+
   / END SIDEBAR MENU
