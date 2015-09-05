@@ -46,3 +46,8 @@
 
 
 //=require admin/pages/scripts/login.js
+
+////plugin
+//=require global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js
+//=require global/plugins/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min.js
+

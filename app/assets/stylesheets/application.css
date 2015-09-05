@@ -38,6 +38,7 @@
 
  *= require admin/pages/css/profile.css
  *= require admin/pages/css/tasks.css
+ *= require global/plugins/bootstrap-datepicker/css/bootstrap-datepicker.css
 
 
 

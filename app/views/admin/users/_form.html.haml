@@ -1,7 +1,9 @@
 = simple_form_for [:admin, resource], wrapper: :horizontal_form, validate: true, html: {class: "form-horizontal form-row-seperated"}  do |f|
   .form-body
-    - attributes.each do |attr|
-      = f.input attr
+    = f.input :username
+    = f.input :email
+    = f.input :confirmed_at, as: :string
+
     -#= f.input :password
     -#= f.input :password_confirmation
 
@@ -16,3 +18,14 @@
       .col-md-offset-3.col-md-9
         = f.submit '保存修改', class: "btn green", data: { disabled_with: "提交中"}
         = link_to t("#{resource_class.name.underscore}.back_list") , collection_path, class: 'btn default'
+
+
+:javascript
+  $(function(){
+    $('#user_confirmed_at').datepicker({
+     language: "zh-CN",
+     calendarWeeks: true,
+     autoclose: true
+    });
+  })
+
