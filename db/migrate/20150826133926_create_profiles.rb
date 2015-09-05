@@ -2,6 +2,7 @@ class CreateProfiles < ActiveRecord::Migration
   def change
     create_table :profiles do |t|
       t.integer :user_id
+      t.string  :gender             # 性别
       t.string  :title              #职位，或者教授之类的
       t.string  :name,              null: false  # 真实姓名
       t.string  :mobile             #手机

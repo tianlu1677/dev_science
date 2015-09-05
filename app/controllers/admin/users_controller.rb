@@ -24,8 +24,9 @@ class Admin::UsersController < Admin::ApplicationController
   helper_method :profile_attributes
   protected
   def permitted_params
+    profile_params_keys = (Profile.attribute_names - %w(id user_id created_at updated_at)).map(&:to_sym)
     params.permit(user: [:username, :email, :confirmed_at,
-                         profile_attributes: [:title, :name, :mobile, :avatar, :city, :country, :qq, :weibo, :wechat]])
+                         profile_attributes: profile_params_keys])
   end
 
   def attributes

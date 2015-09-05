@@ -172,6 +172,7 @@ zh-CN:
         updated_at:      更新时间
       profile:
         id:              ID
+        gender:          性别
         user_id:         用户ID
         title:           职位
         name:            真实姓名

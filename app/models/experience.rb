@@ -3,6 +3,7 @@
 # Table name: experiences
 #
 #  id              :integer          not null, primary key
+#  user_id         :integer
 #  time_duration   :string
 #  experience_type :string
 #  experience_role :string
