@@ -31,6 +31,8 @@ zh-CN:
         new:     审核中
         online:  通过审核
         offline: 未通过审核
+    comment:
+      <<: *enumerize_meaning
   action_labels: &action_labels
     index: 列表
     manage: 管理
@@ -72,6 +74,8 @@ zh-CN:
     <<: *action_labels
   groups_user:
     <<: *action_labels
+  experience:
+    <<: *action_labels
   activerecord:
     models:
       user: 用户
@@ -86,6 +90,7 @@ zh-CN:
       profile: 个人信息
       organizations_user: 机构与人
       groups_user: 群组与人
+      experience: 工作经历
     attributes:
       user:
         id:                     ID
@@ -171,11 +176,11 @@ zh-CN:
         updated_at:      更新时间
       comment:
         id:              ID
-        user_id:         用户
-        post_id:         回复
+        user_id:         用户ID
+        post_id:         回复ID
         body:            内容
         post_body:       回复的内容
-        parent_id:       父评论
+        parent_id:       父评论ID
         lft:
         rgt:
         depth:
@@ -220,5 +225,16 @@ zh-CN:
         apply_at:             申请时间
         reject_reason:        拒绝理由
         reject_at:            拒绝时间
+        created_at:           创建时间
+        updated_at:           更新时间
+      experience:
+        id:                   ID
+        user_id:              用户ID
+        time_duration:        时间长度
+        experience_type:      经历类型
+        experience_role:      经历时职位
+        diploma:              学历
+        desc:                 经历描述
+        place:                经历时地点
         created_at:           创建时间
         updated_at:           更新时间
