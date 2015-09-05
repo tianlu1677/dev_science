@@ -1,4 +1,17 @@
-
+- if @q.present?
+  .row.search-form-default
+    .col-md-12
+      = search_form_for [:admin, @q], html: { class: 'form-inline form-horizontal' } do |f|
+        .input-group
+          .input-cont
+            = f.text_field :title_cont, placeholder: "#{resource_class.human_attribute_name("title")}...", class: 'form-control'
+        .input-group
+          .input-cont
+            = f.text_field :body_cont, placeholder: "#{resource_class.human_attribute_name("body")}...", class: 'form-control'
+          %span.input-group-btn
+            %button.btn.green
+              查询
+              %i.m-icon-swapright.m-icon-white
 .table-scrollable
   %table#collection_table.table.table-bordered.table-striped.table-hover
     %thead
@@ -26,6 +39,7 @@
             = link_to t("#{resource_class.name.underscore}.show"), resource_path(resource), class: 'btn btn-xs blue'
             = link_to t("#{resource_class.name.underscore}.edit"), edit_resource_path(resource), class: 'btn btn-xs yellow'
             = link_to t("#{resource_class.name.underscore}.destroy"), resource_path(resource), :method => :delete, data: {confirm: t("#{resource_class.name.underscore}.are_you_sure")}, class: 'btn btn-xs red'
+            = link_to "包含回复#{resource.posts_count}", admin_topic_posts_path(resource), class: 'btn btn-xs green'
     %tfoot
       %tr
         - (attributes - ['content']).each do |attr|
