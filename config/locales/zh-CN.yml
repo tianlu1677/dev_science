@@ -1,4 +1,16 @@
 zh-CN:
+  settings:
+    domain: 域名
+    website_name:  网站名称
+    smtp_settings: 邮件设置
+#      address: 'smtpcloud.sohu.com'
+#      port: 25
+#      domain: 'service.kaikeba.com'
+#      user_name: 'postmaster@kkb.sendcloud.org'
+#      display_name: 'postmaster@service.kaikeba.com'
+#      password: 'agZftD8KBjOjlyrZ'
+#      authentication: 'login'
+#      enable_starttls_auto: true
   views:
     pagination:
       first: "第一页"

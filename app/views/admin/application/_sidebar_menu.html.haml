@@ -67,4 +67,15 @@
           = link_to admin_groups_users_path do
             %i.icon-settings
             加入群组申请
-  / END SIDEBAR MENU
+    %li
+      %a{:href => "javascript:;"}
+        %i.icon-folder
+        %span.title 全局设置
+        %span.arrow
+      %ul.sub-menu
+        %li
+          = link_to settings_admin_panel_index_path do
+            %i.fa.fa-hand-peace-o
+            全局配置
+
+

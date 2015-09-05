@@ -4,5 +4,8 @@ class Admin::PanelController < Admin::ApplicationController
 
   end
 
+  def settings
+
+  end
 
 end

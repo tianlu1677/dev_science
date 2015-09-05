@@ -23,7 +23,9 @@ Rails.application.routes.draw do
   ## for admin routes
   namespace :admin do
     root to: "panel#index"
-    resources :panels
+    resources :panel do
+      get :settings, on: :collection
+    end
     resources :users do
       resources :profile
       resources :experiences
