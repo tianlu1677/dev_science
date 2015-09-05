@@ -72,9 +72,11 @@ zh-CN:
       topic: 主题
       post: 回复
       comment: 评论
+      profile: 个人信息
     attributes:
       user:
         id:                     ID
+        username:               用户名
         email:                  邮箱
         password:               密码
         password_confirmation:  确认密码
@@ -166,5 +168,19 @@ zh-CN:
         depth:
         children_count:  子评论的数目
         status:          状态
+        created_at:      创建时间
+        updated_at:      更新时间
+      profile:
+        id:              ID
+        user_id:         用户ID
+        title:           职位
+        name:            真实姓名
+        mobile:          手机
+        avatar:          头像
+        city:            城市
+        country:         国家
+        qq:              QQ
+        weibo:           微博
+        wechat:          微信
         created_at:      创建时间
         updated_at:      更新时间
