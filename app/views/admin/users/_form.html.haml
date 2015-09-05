@@ -10,7 +10,9 @@
     = f.simple_fields_for :profile, (f.object.profile || f.object.build_profile) do |profile_form|
       - profile_attributes.each do |profile_attr|
         = profile_form.input profile_attr.to_sym
-
+    -#= f.simple_fields_for :experiences, (f.object.experiences || f.object.experiences.new) do |experience_form|
+      - experience_attributes.each do |ex_attr|
+        = experience_form.input ex_attr.to_sym
     -#= f.association :roles, as: :check_boxes#, :item_wrapper_class => 'inline'
 
   .form-actions
