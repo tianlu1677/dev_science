@@ -57,12 +57,12 @@ gem 'enumerize'
 gem "ransack"
 gem 'awesome_nested_set'
 gem 'friendly_id', '~> 5.0.4'
-
+# gem 'country_select'
 #settings
 gem 'settingslogic'
 
 #other
-gem 'exception_notification'
+# gem 'exception_notification'
 gem 'acts-as-taggable-on', '~> 3.4'
 gem 'paper_trail'
 
