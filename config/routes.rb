@@ -25,8 +25,10 @@ Rails.application.routes.draw do
     root to: "panel#index"
     resources :panels
     resources :users do
-      resources :profiles
+      resources :profile
+      resources :experiences
     end
+    resources :experiences
     resources :organizations do
       resources :organizations_users
     end
