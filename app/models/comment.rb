@@ -18,5 +18,8 @@
 #
 
 class Comment < ActiveRecord::Base
+  extend Enumerize
+  enumerize :status, in: [:new, :online, :offline], default: :online
+
   belongs_to :post
 end

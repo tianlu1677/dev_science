@@ -31,8 +31,10 @@ class User < ActiveRecord::Base
 
   has_and_belongs_to_many :roles
   accepts_nested_attributes_for :roles
+
   has_one :profile, dependent: :destroy
-  accepts_nested_attributes_for :profile, allow_destroy: true
+  has_many :experiences, dependent: :destroy
+  accepts_nested_attributes_for :profile, :experiences, allow_destroy: true
 
   has_many :topics, as: :context, dependent: :destroy
   has_many :posts, as: :context,  dependent: :destroy
