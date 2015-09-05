@@ -32,6 +32,7 @@
                     %td= resource.send(attr).to_s
               - profile_attributes.each do |attr|
                 %tr
+                  - break if resource.profile.blank?
                   %td{:style=>"width:20%;font-weight: bold;"}=Profile.human_attribute_name(attr) + ":"
                   - if resource.profile.respond_to?("#{attr}_text".to_sym)
                     %td= resource.profile.send("#{attr}_text".to_sym)
@@ -44,4 +45,4 @@
                   - else
                     %td= resource.profile.send(attr).to_s
 
-= render 'operation_buttons'
+= render "admin/application/operation_buttons"
