@@ -5,24 +5,6 @@
       %h3 管理列表
     %li
       %a{:href => "javascript:;"}
-        %i.icon-basket
-        %span.title 内容管理
-        %span.arrow
-      %ul.sub-menu
-        %li
-          = link_to  admin_topics_path do
-            %i.icon-paper-plane
-            %span 文章管理
-        %li
-          = link_to  admin_posts_path do
-            %i.icon-paper-plane
-            %span 回复管理
-        %li
-          = link_to  admin_comments_path do
-            %i.icon-paper-plane
-            %span 评论管理
-    %li
-      %a{:href => "javascript:;"}
         %i.icon-rocket
         %span.title 用户管理
         %span.arrow
@@ -39,6 +21,24 @@
           = link_to admin_permissions_path do
             %i.icon-pencil
             权限管理
+    %li
+      %a{:href => "javascript:;"}
+        %i.icon-basket
+        %span.title 内容管理
+        %span.arrow
+      %ul.sub-menu
+        %li
+          = link_to  admin_topics_path do
+            %i.icon-paper-plane
+            %span 文章管理
+        %li
+          = link_to  admin_posts_path do
+            %i.icon-paper-plane
+            %span 回复管理
+        %li
+          = link_to  admin_comments_path do
+            %i.icon-paper-plane
+            %span 评论管理
     %li
       %a{:href => "javascript:;"}
         %i.icon-diamond
