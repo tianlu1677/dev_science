@@ -12,4 +12,5 @@
 #
 
 class Collect < ActiveRecord::Base
+  belongs_to :context, polymorphic: true
 end
