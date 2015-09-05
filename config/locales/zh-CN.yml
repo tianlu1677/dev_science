@@ -24,6 +24,13 @@ zh-CN:
         public: 公开
     organization:
       <<: *enumerize_meaning
+    post:
+      <<: *enumerize_meaning
+    organizations_user:
+      status:
+        new:     审核中
+        online:  通过审核
+        offline: 未通过审核
   action_labels: &action_labels
     index: 列表
     manage: 管理
@@ -61,6 +68,10 @@ zh-CN:
     <<: *action_labels
   comment:
     <<: *action_labels
+  organizations_user:
+    <<: *action_labels
+  groups_user:
+    <<: *action_labels
   activerecord:
     models:
       user: 用户
@@ -73,6 +84,8 @@ zh-CN:
       post: 回复
       comment: 评论
       profile: 个人信息
+      organizations_user: 机构与人
+      groups_user: 群组与人
     attributes:
       user:
         id:                     ID
@@ -136,8 +149,8 @@ zh-CN:
       topic:
         id:               ID
         context_id:       所属类别ID
-        context_type:        所属类别
-        user_id:          用户名
+        context_type:     所属类别
+        user_id:          用户ID
         title:            标题
         body:             内容
         views_count:      浏览数
@@ -149,7 +162,7 @@ zh-CN:
         user_username:    用户名
       post:
         id:              ID
-        user_id:         用户
+        user_id:         用户ID
         body:            内容
         context_id:      所属类别ID
         context_type:    所属类别
@@ -185,3 +198,27 @@ zh-CN:
         wechat:          微信
         created_at:      创建时间
         updated_at:      更新时间
+      organizations_user:
+        id:                   ID
+        user_id:              用户ID
+        organization_id:      机构ID
+        desc:                 申请加入描述
+        apply_at:             申请时间
+        reject_reason:        拒绝原因
+        reject_at:            拒绝时间
+        status:               申请状态
+        created_at:           创建时间
+        updated_at:           更新时间
+      groups_user:
+        id:                   ID
+        group_id:             群组ID
+        user_id:              用户ID
+        role_id:              角色ID
+        type:                 角色类别
+        status:               状态
+        desc:                 申请加入描述
+        apply_at:             申请时间
+        reject_reason:        拒绝理由
+        reject_at:            拒绝时间
+        created_at:           创建时间
+        updated_at:           更新时间

@@ -4,22 +4,25 @@
       = search_form_for [:admin, @q], html: { class: 'form-inline form-horizontal' } do |f|
         .input-group
           .input-cont
-            = f.text_field :"#{attributes.first}_cont", placeholder: "搜索#{resource_class.human_attribute_name(attributes.first)}...", class: 'form-control'
+            = f.text_field :name_cont, placeholder: "#{resource_class.human_attribute_name("name")}...", class: 'form-control'
+
           %span.input-group-btn
             %button.btn.green
               查询
               %i.m-icon-swapright.m-icon-white
+
+- attributes -= %w(rgt depth children_count position)
 .table-scrollable
   %table#collection_table.table.table-bordered.table-striped.table-hover
     %thead
       %tr.active
-        - attributes.each do |attr|
+        - (attributes).each do |attr|
           %th{scope: 'col'}= resource_class.human_attribute_name(attr)
         %th{scope: 'col', style: "min-width:150px !important"}= "操作"
     %tbody
       - collection.each do |resource|
         %tr[resource]
-          - attributes.each do |attr|
+          - (attributes).each do |attr|
             - if respond_to?("#{attr}_text".to_sym)
               %td= self.send("#{attr}_text".to_sym)
             - elsif resource.respond_to?("#{attr}_text".to_sym)
@@ -36,9 +39,10 @@
             = link_to t("#{resource_class.name.underscore}.show"), resource_path(resource), class: 'btn btn-xs blue'
             = link_to t("#{resource_class.name.underscore}.edit"), edit_resource_path(resource), class: 'btn btn-xs yellow'
             = link_to t("#{resource_class.name.underscore}.destroy"), resource_path(resource), :method => :delete, data: {confirm: t("#{resource_class.name.underscore}.are_you_sure")}, class: 'btn btn-xs red'
+            = link_to "机构成员#{}", admin_organization_organizations_users_path(resource), class: 'btn btn-xs green'
     %tfoot
-      %tr.active
-        - attributes.each do |attr|
+      %tr
+        - (attributes).each do |attr|
           %th= resource_class.human_attribute_name(attr)
         %th= "操作"
 = paginate collection

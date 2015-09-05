@@ -13,4 +13,10 @@
 #
 
 class Post < ActiveRecord::Base
+  extend Enumerize
+  enumerize :status, in: [:new, :online, :offline], default: :online
+
+  belongs_to :context, polymorphic: true
+  has_many :comments, dependent: :destroy
+
 end

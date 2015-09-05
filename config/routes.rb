@@ -27,9 +27,18 @@ Rails.application.routes.draw do
     resources :users do
       resources :profiles
     end
-    resources :organizations
-    resources :groups
-    resources :topics
+    resources :organizations do
+      resources :organizations_users
+    end
+    resources :organizations_users
+    resources :groups do
+      resources :groups_users
+    end
+    resources :groups_users
+
+    resources :topics do
+      resources :posts
+    end
     resources :posts
     resources :comments
     resources :tags

@@ -49,6 +49,10 @@
           = link_to admin_organizations_path do
             %i.icon-briefcase
             机构管理
+        %li
+          = link_to admin_organizations_users_path do
+            %i.icon-briefcase
+            加入机构申请
     %li
       %a{:href => "javascript:;"}
         %i.icon-folder
@@ -59,5 +63,8 @@
           = link_to admin_groups_path do
             %i.icon-settings
             群组管理
-
+        %li
+          = link_to admin_groups_users_path do
+            %i.icon-settings
+            加入群组申请
   / END SIDEBAR MENU

@@ -23,6 +23,11 @@ class Group < ActiveRecord::Base
   has_many :groups_organizations, dependent: :destroy
   has_many :organizations, through: :groups_organizations
 
+  has_many :groups_users, dependent: :destroy
+  has_many :users, through: :groups_users
+
+  has_many :posts, as: :context, dependent: :destroy
+
   validates :name, :intro, :desc, presence: true
 
 

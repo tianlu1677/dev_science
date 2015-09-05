@@ -31,9 +31,19 @@ class User < ActiveRecord::Base
 
   has_and_belongs_to_many :roles
   accepts_nested_attributes_for :roles
-  has_many :topics, dependent: :destroy
   has_one :profile, dependent: :destroy
   accepts_nested_attributes_for :profile, allow_destroy: true
+
+  has_many :topics, as: :context, dependent: :destroy
+  has_many :posts, as: :context,  dependent: :destroy
+  has_many :comments, dependent: :destroy
+
+  has_many :organizations_users, dependent: :destroy
+  has_many :organizations, through: :organizations_users
+
+  has_many :groups_users, dependent: :destroy
+  has_many :groups, through: :groups_users
+
 
   validates :email, presence: true, uniqueness: true
 
