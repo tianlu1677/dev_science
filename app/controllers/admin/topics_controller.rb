@@ -1,5 +1,5 @@
 class Admin::TopicsController < Admin::ApplicationController
-  belongs_to :forum, optional: true
+
 
   protected
   # def permitted_params

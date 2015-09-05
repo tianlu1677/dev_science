@@ -1,9 +1,5 @@
 class Admin::UsersController < Admin::ApplicationController
 
-  def index
-    @q = resource_class.search(params[:q])
-    @users = @q.result.page(params[:page] || 1).per(20)
-  end
 
   def create
     user = User.new({ email: params[:user][:email],

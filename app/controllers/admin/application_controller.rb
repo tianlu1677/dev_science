@@ -7,6 +7,11 @@ class Admin::ApplicationController < ActionController::Base
   before_action :authenticate_user!, except: [:logout]
 
 
+  def index
+    @q = resource_class.search(params[:q])
+    collection = @q.result.page(params[:page] || 1).per(20)
+  end
+
   helper_method :attributes
   respond_to :js, :json, :html
 

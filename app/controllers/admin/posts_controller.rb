@@ -1,5 +1,5 @@
 class Admin::PostsController < Admin::ApplicationController
-
+  belongs_to :topic, optional: true
 
   # protected
   # def permitted_params
