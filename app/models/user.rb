@@ -32,6 +32,8 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :roles
   accepts_nested_attributes_for :roles
   has_many :topics, dependent: :destroy
+  has_one :profile, dependent: :destroy
+  accepts_nested_attributes_for :profile, allow_destroy: true
 
   validates :email, presence: true, uniqueness: true
 

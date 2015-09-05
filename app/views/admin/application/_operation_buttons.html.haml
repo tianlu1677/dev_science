@@ -1,0 +1,19 @@
+.table-toolbar
+  .btn-group
+    = link_to new_resource_path, class: 'btn green' do
+      = t("#{resource_class.name.underscore}.new")
+      %i.fa.fa-plus
+  .btn-group
+    = link_to edit_resource_path(resource), class: 'btn yellow' do
+      = t("#{resource_class.name.underscore}.edit")
+      %i.fa.fa-edit
+
+  .btn-group
+    = link_to resource_path(resource), :method => :delete, data: {confirm: t("#{resource_class.name.underscore}.are_you_sure")}, class: 'btn red' do
+      = t("#{resource_class.name.underscore}.destroy")
+      %i.fa.fa-times
+
+  .btn-group
+    = link_to collection_path, class: 'btn blue' do
+      = t("#{resource_class.name.underscore}.back_list")
+      %i.fa.fa-backward

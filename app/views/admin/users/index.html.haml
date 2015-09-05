@@ -1,0 +1,18 @@
+= render 'breadcrumb'
+.row
+  .col-md-12
+    / BEGIN SAMPLE TABLE PORTLET
+    .portlet.light
+      .portlet-title
+        .caption
+          %i.fa.fa-cogs.font-green-sharp
+          %span.caption-subject.font-green-sharp.bold.uppercase
+            = resource_class.model_name.human + "列表"
+        .tools
+          %a.collapse{"data-original-title" => "", :href => "javascript:;", :title => ""}
+          %a.config{"data-original-title" => "", "data-toggle" => "modal", :href => "#portlet-config", :title => ""}
+          %a.reload{"data-original-title" => "", :href => "javascript:;", :title => ""}
+          %a.remove{"data-original-title" => "", :href => "javascript:;", :title => ""}
+      .portlet-body.flip-scroll
+        = render "index", attributes: attributes, profile_attributes: profile_attributes
+    / END SAMPLE TABLE PORTLET
