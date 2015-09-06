@@ -8,7 +8,6 @@
 #  title      :string
 #  name       :string           not null
 #  mobile     :string
-#  avatar     :string
 #  city       :string
 #  country    :string
 #  qq         :string

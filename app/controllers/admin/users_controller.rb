@@ -17,24 +17,21 @@ class Admin::UsersController < Admin::ApplicationController
     end
   end
 
-  helper_method :profile_attributes, :experience_attributes
+  helper_method :profile_attributes
   protected
   def permitted_params
     profile_params_keys = (Profile.attribute_names - %w(id user_id created_at updated_at)).map(&:to_sym)
-    params.permit(user: [:username, :email, :confirmed_at,
+    params.permit(user: [:username, :email, :confirmed_at,:avatar,
                          profile_attributes: profile_params_keys])
   end
 
   def attributes
-    %w(username email confirmed_at)
+    %w(username email avatar confirmed_at)
   end
 
   def profile_attributes
     Profile.attribute_names - %w(id user_id created_at updated_at)
   end
 
-  def experience_attributes
-    Experience.attribute_names - %w(id user_id created_at updated_at)
-  end
 
 end
