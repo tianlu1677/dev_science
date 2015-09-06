@@ -27,7 +27,7 @@
                   - elsif resource.respond_to?("#{attr}_name".to_sym)
                     %td= resource.send("#{attr}_name".to_sym)
                   - elsif resource.send(attr).is_a? CarrierWave::Uploader::Base
-                    %td= image_tag(resource.send( attr + "_url", :thumb))
+                    %td= image_tag(resource.send( attr + "_url"))
                   - elsif resource.send(attr).is_a?(Time)
                     %td= resource.send(attr).try(:strftime, '%Y年%m月%d %H时%M分%S秒')
                   - else

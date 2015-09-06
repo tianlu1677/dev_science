@@ -11,6 +11,13 @@ defaults: &defaults
     password: 'agZftD8KBjOjlyrZ'
     authentication: 'login'
     enable_starttls_auto: true
+  qiniu:
+    access_key: 'vg0UPNZ_jAQZ5ZBowG0prHStsF5AtdBOklnYVN0B'
+    secret_key: 'OSNFPVby7dq7NC0zw1pZZ5hDPj5laH0jxM1PS_O6'
+    default_bucket: 'scrinium'
+    default_bucket_domain: '7xllma.com1.z0.glb.clouddn.com'
+    image_bucket: 'scrinium'
+    image_bucket_domain: '7xllma.com1.z0.glb.clouddn.com'
 
 ######################################################################################
 development:
