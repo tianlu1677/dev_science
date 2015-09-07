@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   namespace :users do
     resources :center do
-      get :current, on: :collection
+      get :edit, on: :collection
     end
   end
 
