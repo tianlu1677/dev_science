@@ -3,6 +3,7 @@ zh-CN:
     domain: 域名
     website_name:  网站名称
     smtp_settings: 邮件设置
+    qiniu:         七牛配置
 #      address: 'smtpcloud.sohu.com'
 #      port: 25
 #      domain: 'service.kaikeba.com'
@@ -88,6 +89,8 @@ zh-CN:
     <<: *action_labels
   experience:
     <<: *action_labels
+  asset:
+    <<: *action_labels
   activerecord:
     models:
       user: 用户
@@ -103,10 +106,12 @@ zh-CN:
       organizations_user: 机构与人
       groups_user: 群组与人
       experience: 工作经历
+      asset: 文件
     attributes:
       user:
         id:                     ID
         avatar:                 用户头像
+        roles:                  角色
         username:               用户名
         email:                  邮箱
         password:               密码
@@ -248,5 +253,23 @@ zh-CN:
         diploma:              学历
         desc:                 经历描述
         place:                经历时地点
+        created_at:           创建时间
+        updated_at:           更新时间
+      asset:
+        id:                   ID
+        context_id:           所属ID
+        context_type:         所属类别
+        title:                文件标题
+        desc:                 文件描述
+        width:                宽
+        height:               高
+        file_size:            文件大小
+        file_type:            文件类别
+        file_name:            文件名称
+        link:                 链接
+        pdf_link:             pdf链接
+        position:             位置
+        status:               状态
+        uuid:                 uuid
         created_at:           创建时间
         updated_at:           更新时间
