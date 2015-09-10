@@ -4,8 +4,13 @@ class OrganizationsController < ApplicationController
     @organizations = Organization.all
   end
 
+  def new
+
+  end
+
   def show
     @organization = Organization.find(params[:id])
+    @groups = @organization.groups
   end
 
 
