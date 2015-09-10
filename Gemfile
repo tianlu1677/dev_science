@@ -70,7 +70,7 @@ gem 'paper_trail'
 
 
 #rails-assets
-source 'https://rails-assets.org' do
+source 'http://rails-assets.org' do
   gem 'rails-assets-select2'
 end
 group :development, :test do
