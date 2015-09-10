@@ -20,6 +20,9 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :organizations
+  resources :groups
+
   ## for admin routes
   namespace :admin do
     root to: "panel#index"
