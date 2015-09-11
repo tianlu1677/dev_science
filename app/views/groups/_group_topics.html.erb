@@ -19,12 +19,14 @@
         </div>
       </div>
     </div>
-    <div class="portlet-body">
-      <h4>Heading text goes here...</h4>
+    <% group.topics.each do |topic| %>
+      <div class="portlet-body">
+      <h4><%= topic.title %></h4>
       <p>
-        Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum.
+        <%= topic.body %>
       </p>
     </div>
+    <% end %>
   </div>
   <!-- END Portlet PORTLET-->
 </div>

@@ -18,3 +18,8 @@ class GroupsOrganization < ActiveRecord::Base
   belongs_to :organization
   belongs_to :group
 end
+
+Group.limit(5).each do |g|
+  GroupsOrganization.create(group_id: g.id, organization_id: 1, status: "online" )
+
+end

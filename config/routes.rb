@@ -20,8 +20,15 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :organizations
-  resources :groups
+  resources :organizations do
+    resources :organizations_users
+    resources :groups_organizations
+  end
+  resources :groups do
+    resources :groups_users
+  end
+
+
 
   ## for admin routes
   namespace :admin do
