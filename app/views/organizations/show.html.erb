@@ -13,12 +13,64 @@
   <div class="portlet-body">
     <div class="note note-info">
       <p>
-        Extend Bootstrap's grid system with the thumbnail component to easily display grids of images, videos, text, and more.
+        组织的信息
+
       </p>
     </div>
 
     <h4 class="block">机构相关信息</h4>
 
+
+    <div class="col-md-12">
+      <!-- BEGIN Portlet PORTLET-->
+      <div class="portlet light">
+        <div class="portlet-title">
+          <div class="caption">
+            <i class="fa fa-gift"></i><%= @organization.name %> | <%= @organization.short_name %> | <%= @organization.city %> | <%= @organization.website %>
+          </div>
+          <div class="actions">
+            <a href="javascript:;" class="btn blue btn-sm">
+              <i class="fa fa-share"></i> Share </a>
+            <div class="btn-group">
+              <a class="btn btn-sm purple" href="javascript:;" data-toggle="dropdown">
+                <i class="fa fa-user"></i> User <i class="fa fa-angle-down "></i>
+              </a>
+              <ul class="dropdown-menu pull-right">
+                <li>
+                  <a href="javascript:;">
+                    <i class="fa fa-pencil"></i> Edit </a>
+                </li>
+                <li>
+                  <a href="javascript:;">
+                    <i class="fa fa-trash-o"></i> Delete </a>
+                </li>
+                <li>
+                  <a href="javascript:;">
+                    <i class="fa fa-ban"></i> Ban </a>
+                </li>
+                <li class="divider">
+                </li>
+                <li>
+                  <a href="javascript:;">
+                    <i class="i"></i> Make admin </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="portlet-body">
+          <p>
+            组织的简介<%= @organization.intro  %>
+          </p>
+          <p>
+            组织的介绍<%= @organization.desc  %>
+          </p>
+        </div>
+      </div>
+      <!-- END Portlet PORTLET-->
+    </div>
+
+    该组织的下属机构
     <div class="row">
       <% @groups.each do |group| %>
       <div class="col-sm-12 col-md-3">

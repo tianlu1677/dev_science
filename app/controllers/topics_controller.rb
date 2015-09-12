@@ -1,8 +1,10 @@
-class GroupsController < ApplicationController
+class TopicsController < ApplicationController
   layout 'application'
 
-  def index
-    @groups = Group.all
+
+  def show
+    @topic = Topic.find(params[:id])
+    @group = Group.find(params[:group_id])
   end
 
 end

@@ -5,8 +5,10 @@
       <div class="caption">
         <i class="icon-paper-plane font-yellow-casablanca"></i>
 								<span class="caption-subject bold font-yellow-casablanca uppercase">
-								Form Input </span>
-        <span class="caption-helper">more samples...</span>
+								群组主题列表 </span>
+        <span class="caption-helper">
+          <%= link_to "加入该群组", new_group_groups_user_path(@group) %>
+        </span>
       </div>
       <div class="inputs">
         <div class="portlet-input input-inline input-medium">
@@ -21,7 +23,9 @@
     </div>
     <% group.topics.each do |topic| %>
       <div class="portlet-body">
-      <h4><%= topic.title %></h4>
+        <%= link_to group_topic_path(group, topic)  do %>
+          <h4><%= topic.title %></h4>
+        <% end %>
       <p>
         <%= topic.body %>
       </p>
