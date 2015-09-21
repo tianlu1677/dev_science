@@ -24,9 +24,10 @@
   <div class="profile-usermenu">
     <ul class="nav">
       <li>
-        <a href="extra_profile.html">
+        <%= link_to users_center_index_path do %>
           <i class="icon-home"></i>
-          Overview </a>
+          概况
+        <% end %>
       </li>
       <li class="active">
         <%= link_to edit_users_center_index_path do %>
@@ -34,11 +35,6 @@
           个人信息设置
         <% end %>
 
-      </li>
-      <li>
-        <a href="page_todo.html" target="_blank">
-          <i class="icon-check"></i>
-          Tasks </a>
       </li>
       <li>
         <a href="extra_profile_help.html">
