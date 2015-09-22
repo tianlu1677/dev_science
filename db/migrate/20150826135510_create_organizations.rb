@@ -1,7 +1,7 @@
 class CreateOrganizations < ActiveRecord::Migration
   def change
     create_table :organizations do |t|
-      t.text     :name               #机构名称
+      t.string     :name               #机构名称
       t.string   :city               #城市
       t.string   :short_name         #简称
       t.text     :intro              #简介
