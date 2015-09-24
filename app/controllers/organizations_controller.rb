@@ -1,7 +1,8 @@
 class OrganizationsController < ApplicationController
   layout 'application'
   def index
-    @organizations = Organization.all
+    @q = Organization.all.search(params[:q])
+    @organizations = @q.result.page(params[:page] || 1)
   end
 
   def new
@@ -9,9 +10,9 @@ class OrganizationsController < ApplicationController
   end
 
   def create
-    @organization = Organization.new(organization_params)
+    @organization = Organization.new(permit_params)
     if @organization.save
-      redirect_to organization_path(@organization) and return
+      redirect_to organization_path(@organization)
     else
       render 'new'
     end
