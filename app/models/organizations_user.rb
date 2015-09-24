@@ -18,6 +18,8 @@ class OrganizationsUser < ActiveRecord::Base
   extend Enumerize
   enumerize :status, in: [:new, :online, :offline], default: :new
 
+  validates :desc, presence: true
+
   belongs_to :user
   belongs_to :organization
 
