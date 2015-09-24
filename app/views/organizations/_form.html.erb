@@ -1,22 +1,19 @@
+<%= simple_form_for @organization, wrapper: :vertical_form, validate: true, html: { role: 'form' }  do |f| %>
+  <div class="form-body">
+    <%= f.input :name, placeholder: '中国大气研究所' %>
+    <%= f.input :city  %>
+    <%= f.input :short_name %>
+    <%= f.input :intro %>
+    <%= f.input :desc %>
+    <%= f.input :website %>
+    <%= f.input :address %>
+    <%= f.input :contact_name %>
+    <%= f.input :contact_mobile %>
+    <div class="form-actions noborder">
+      <%= f.submit class: 'btn green', data: { disable_with: '提交中...' }  %>
+      <%= link_to '取消',  request.referer.present? ? request.referer : organizations_path, class: 'btn default' %>
+    </div>
 
-<div class="portlet-body form">
-        <%= simple_form_for @organization, wrapper: :vertical_form, validate: true, html: { role: 'form' }  do |f| %>
+  </div>
+<% end %>
 
-          <div class="form-body">
-            <%= f.input :name %>
-            <%= f.input :city %>
-            <%= f.input :short_name %>
-            <%= f.input :intro %>
-            <%= f.input :desc %>
-            <%= f.input :website %>
-            <%= f.input :address %>
-            <%= f.input :contact_name %>
-            <%= f.input :contact_mobile %>
-            <div class="form-actions noborder">
-              <%= f.submit class: 'btn green', data: { disable_with: '提交中...' }  %>
-              <%= link_to '返回' %>
-            </div>
-
-          </div>
-        <% end %>
-      </div>

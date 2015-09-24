@@ -25,7 +25,7 @@ class OrganizationsController < ApplicationController
 
 
   protected
-  def organization_params
+  def permit_params
     params.require(:organization).permit(:name, :city, :short_name, :intro, :desc, :website, :address, :contact_name,
                                          :contact_mobile, :parent_id, :lft, :rgt, :depth, :children_count, :position, :status)
   end

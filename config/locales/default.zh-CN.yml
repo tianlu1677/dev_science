@@ -107,7 +107,7 @@ zh-CN:
       mini_magick_processing_error: "Failed to manipulate with MiniMagick, maybe it is not an image? Original Error: %{e}"
 #      mini_magick_processing_error: 图片处理失败
       accepted: 必须是可被接受的
-      blank: 不能为空字符
+      blank: 不能为空
       confirmation: 与确认值不匹配
       empty: 不能留空
       equal_to: 必须等于 %{count}
