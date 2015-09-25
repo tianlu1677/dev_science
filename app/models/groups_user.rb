@@ -19,6 +19,8 @@
 class GroupsUser < ActiveRecord::Base
 
   belongs_to :user
-  belongs_to :groups
+  belongs_to :group
+
+  validates :desc, presence: true
 
 end

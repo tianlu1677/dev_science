@@ -40,10 +40,20 @@
           <!-- END Portlet PORTLET-->
         </div>
 
-        该组织的下属群组
+
         <div class="row">
+          <div class="col-md-8">
+            <div class="note note-info note-shadow">
+              <p>
+                该机构下的群组
+              </p>
+            </div>
+          </div>
+
           <% @groups.each do |group| %>
-            <%= render 'groups/group', group: group %>
+            <div class="col-md-6">
+              <%= render 'groups/group', group: group %>
+            </div>
           <% end %>
 
           <!--原始页面-->
@@ -53,7 +63,7 @@
               <div class="caption">
                 <h3>Thumbnail label</h3>
                 <p>
-                  Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+                  Cras justo odio, dapibus ac facilisis in, egestas eget quam.
                 </p>
                 <p>
                   <a href="javascript:;" class="btn red">
