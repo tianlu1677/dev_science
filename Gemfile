@@ -37,7 +37,7 @@ gem 'pg'
 #uploads
 gem 'mini_magick'
 gem 'carrierwave'
-gem 'carrierwave-qiniu'
+gem 'carrierwave-qiniu', '0.1.8'
 
 #permission
 gem 'devise'
@@ -47,7 +47,7 @@ gem 'activerecord-session_store'
 #mvc
 gem 'inherited_resources'
 gem 'has_scope'
-gem 'simple_form', '>=3.1.0.rc2'
+gem 'simple_form'
 gem 'nested_form'
 # gem 'select2-rails'
 gem 'haml-rails'
