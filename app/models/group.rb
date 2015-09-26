@@ -13,12 +13,15 @@
 #  status     :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  logo       :string
 #
 
 class Group < ActiveRecord::Base
   extend Enumerize
   enumerize :status, in: [:new, :online, :offline], default: :online
   enumerize :privacy, in: [:hidden, :protected, :public], default: :public
+
+  mount_uploader :logo, GroupLogoUploader
 
   has_many :groups_organizations, dependent: :destroy
   has_many :organizations, through: :groups_organizations
@@ -29,7 +32,7 @@ class Group < ActiveRecord::Base
   has_many :topics, as: :context, dependent: :destroy
   has_many :posts, as: :context, dependent: :destroy
 
-  validates :name, :intro, :desc, presence: true
+  validates :name, :intro, :desc, :logo, presence: true
 
 
 end

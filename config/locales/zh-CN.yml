@@ -142,6 +142,7 @@ zh-CN:
         name:             名称
         city:             城市
         short_name:       简称
+        logo:             机构头像
         intro:            简介
         desc:             介绍
         website:          网站
@@ -163,6 +164,7 @@ zh-CN:
         short_name:       简称
         intro:            简介
         desc:             介绍
+        logo:             群组头像
         website:          网址
         privacy:          权限
         position:         位置

@@ -4,6 +4,7 @@ class CreateOrganizations < ActiveRecord::Migration
       t.string     :name               #机构名称
       t.string   :city               #城市
       t.string   :short_name         #简称
+      t.string   :logo               #机构标志
       t.text     :intro              #简介
       t.text     :desc               #介绍
       t.string   :website            #网站

@@ -3,7 +3,7 @@
 # Table name: organizations
 #
 #  id             :integer          not null, primary key
-#  name           :text
+#  name           :string
 #  city           :string
 #  short_name     :string
 #  intro          :text
@@ -21,6 +21,7 @@
 #  status         :string
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
+#  logo           :string
 #
 
 require 'rails_helper'

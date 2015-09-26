@@ -3,7 +3,7 @@
 # Table name: organizations
 #
 #  id             :integer          not null, primary key
-#  name           :text
+#  name           :string
 #  city           :string
 #  short_name     :string
 #  intro          :text
@@ -21,6 +21,7 @@
 #  status         :string
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
+#  logo           :string
 #
 
 class Organization < ActiveRecord::Base
@@ -29,11 +30,14 @@ class Organization < ActiveRecord::Base
 
   acts_as_nested_set
 
-  validates :name, :city, :short_name, :intro, :desc, :address, :contact_name, :contact_mobile, presence: true
+  mount_uploader :logo, OrganizationLogoUploader
 
   has_many :groups_organizations, dependent: :destroy
   has_many :groups, through: :groups_organizations
 
   has_many :organizations_users, dependent: :destroy
   has_many :users, through: :organizations_users
+
+  validates :name, :city, :short_name, :intro, :desc, :address, :logo, :contact_name, :contact_mobile, presence: true
+
 end
