@@ -16,7 +16,7 @@
             <div class="portlet-title tabbable-line">
               <div class="caption caption-md">
                 <i class="icon-globe theme-font hide"></i>
-                <span class="caption-subject font-blue-madison bold uppercase">Profile Account</span>
+                <span class="caption-subject font-blue-madison bold uppercase">个人信息设置</span>
               </div>
               <ul class="nav nav-tabs">
                 <li class="active">
@@ -37,42 +37,26 @@
               <div class="tab-content">
                 <!-- PERSONAL INFO TAB -->
                 <div class="tab-pane active" id="tab_1_1">
-                  <form role="form" action="#">
-                    <div class="form-group">
-                      <label class="control-label">First Name</label>
-                      <input type="text" placeholder="John" class="form-control">
+                  <%= simple_form_for [@user], url: edit_users_center_index_path , wrapper: :vertical_form, validate: true, html: { role: 'form' }  do |f| %>
+                    <div class="form-body">
+                      <%= f.input :username %>
+                      <%= f.input :avatar %>
+                      <%= f.simple_fields_for :profile, f.object.profile ? f.object.profile : f.object.build_profile do |profile_form| %>
+                        <%= profile_form.input :title %>
+                        <%= profile_form.input :gender, as: :radio_buttons, :item_wrapper_class => 'inline' %>
+                        <%= profile_form.input :name %>
+                        <%= profile_form.input :mobile %>
+                        <%= profile_form.input :qq %>
+                        <%= profile_form.input :weibo %>
+                        <%= profile_form.input :wechat %>
+                      <% end %>
+                      <div class="form-actions noborder">
+                        <%= f.submit class: 'btn green', data: { disable_with: '提交中...' }  %>
+                        <%= link_to '取消',  request.referer.present? ? request.referer : organizations_path, class: 'btn default' %>
+                      </div>
+
                     </div>
-                    <div class="form-group">
-                      <label class="control-label">Last Name</label>
-                      <input type="text" placeholder="Doe" class="form-control">
-                    </div>
-                    <div class="form-group">
-                      <label class="control-label">Mobile Number</label>
-                      <input type="text" placeholder="+1 646 580 DEMO (6284)" class="form-control">
-                    </div>
-                    <div class="form-group">
-                      <label class="control-label">Interests</label>
-                      <input type="text" placeholder="Design, Web etc." class="form-control">
-                    </div>
-                    <div class="form-group">
-                      <label class="control-label">Occupation</label>
-                      <input type="text" placeholder="Web Developer" class="form-control">
-                    </div>
-                    <div class="form-group">
-                      <label class="control-label">About</label>
-                      <textarea class="form-control" rows="3" placeholder="We are KeenThemes!!!"></textarea>
-                    </div>
-                    <div class="form-group">
-                      <label class="control-label">Website Url</label>
-                      <input type="text" placeholder="http://www.mywebsite.com" class="form-control">
-                    </div>
-                    <div class="margiv-top-10">
-                      <a href="javascript:;" class="btn green-haze">
-                        Save Changes </a>
-                      <a href="javascript:;" class="btn default">
-                        Cancel </a>
-                    </div>
-                  </form>
+                  <% end %>
                 </div>
                 <!-- END PERSONAL INFO TAB -->
                 <!-- CHANGE AVATAR TAB -->
@@ -116,26 +100,25 @@
                 <!-- END CHANGE AVATAR TAB -->
                 <!-- CHANGE PASSWORD TAB -->
                 <div class="tab-pane" id="tab_1_3">
-                  <form action="#">
-                    <div class="form-group">
-                      <label class="control-label">Current Password</label>
-                      <input type="password" class="form-control">
+                  <%= simple_form_for(@user, url: registration_path(User), html: { method: :put }) do |f| %>
+                    <%= f.error_notification %>
+
+                    <div class="form-inputs">
+                      <%= f.input :email, required: true, autofocus: true %>
+
+                      <% if false && devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                        <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+                      <% end %>
+
+                      <%= f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false %>
+                      <%= f.input :password_confirmation, required: false %>
+                      <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
                     </div>
-                    <div class="form-group">
-                      <label class="control-label">New Password</label>
-                      <input type="password" class="form-control">
+
+                    <div class="form-actions">
+                      <%= f.button :submit, "Update" %>
                     </div>
-                    <div class="form-group">
-                      <label class="control-label">Re-type New Password</label>
-                      <input type="password" class="form-control">
-                    </div>
-                    <div class="margin-top-10">
-                      <a href="javascript:;" class="btn green-haze">
-                        Change Password </a>
-                      <a href="javascript:;" class="btn default">
-                        Cancel </a>
-                    </div>
-                  </form>
+                  <% end %>
                 </div>
                 <!-- END CHANGE PASSWORD TAB -->
                 <!-- PRIVACY SETTINGS TAB -->

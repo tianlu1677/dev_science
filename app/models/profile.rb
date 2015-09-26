@@ -18,5 +18,7 @@
 #
 
 class Profile < ActiveRecord::Base
+  extend Enumerize
+  enumerize :gender, in: [:male, :female], default: :male
   belongs_to :user
 end

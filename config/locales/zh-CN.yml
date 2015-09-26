@@ -46,6 +46,10 @@ zh-CN:
         offline: 未通过审核
     comment:
       <<: *enumerize_meaning
+    profile:
+      gender:
+        male:     男
+        female:   女
   action_labels: &action_labels
     index: 列表
     manage: 管理
