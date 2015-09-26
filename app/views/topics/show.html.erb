@@ -11,9 +11,8 @@
           <div class="col-md-12 blog-page">
             <div class="row">
               <div class="col-md-12 article-block">
-                <h3 style="margin-top:0;"><%= @topic.title %></h3>
+                <h3 style="margin-top:10px;"><%= @topic.title %></h3>
                 <div class="blog-tag-data">
-                  与之前的版本做对比
                   <div class="row">
                     <div class="col-md-6">
                       <ul class="list-inline blog-tags">
@@ -22,9 +21,9 @@
                           <a href="javascript:;">
                             Technology </a>
                           <a href="javascript:;">
-                            Education </a>
+                            Education11 </a>
                           <a href="javascript:;">
-                            Internet </a>
+                            Internetwww </a>
                         </li>
                       </ul>
                     </div>
@@ -32,8 +31,8 @@
                       <ul class="list-inline">
                         <li>
                           <i class="fa fa-calendar"></i>
-                          <a href="javascript:;">
-                            April 16, 2013 </a>
+                          <%= @topic.created_at %>
+
                         </li>
                         <li>
                           <i class="fa fa-comments"></i>
@@ -45,20 +44,11 @@
                   </div>
                 </div>
                 <!--end news-tag-data-->
+                <hr/>
                 <div>
-                  <p>
-                    At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero consectetur adipiscing elit magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat. Pellentesque viverra vehicula sem ut volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat.
-                  </p>
-                  <blockquote class="hero">
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit posuere erat a ante.
-                    </p>
-                    <small>Someone famous <cite title="Source Title">Source Title</cite></small>
-                  </blockquote>
-                  <p>
-                    Ut non libero magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat. Eserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio lorem ipsum dolor sit amet, consectetur adipiscing elit. At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero consectetur adipiscing elit magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat. Pellentesque viverra vehicula sem ut volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat. Ut non libero consectetur adipiscing elit magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat. Pellentesque viverra vehicula sem ut volutpa
-                  </p>
+                  <%= @topic.body %>
                 </div>
+                <div style="padding-bottom: 30px"></div>
                 <hr>
 
                 <%= render 'posts/index' %>
