@@ -12,6 +12,8 @@
 #  status          :string
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  reject_user_id  :integer
+#  authority       :string
 #
 
 class OrganizationsUser < ActiveRecord::Base

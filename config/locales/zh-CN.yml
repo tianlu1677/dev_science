@@ -238,7 +238,7 @@ zh-CN:
         group_id:             群组ID
         user_id:              用户ID
         role_id:              角色ID
-        type:                 角色类别
+        authority:            角色类别
         status:               状态
         desc:                 申请加入描述
         apply_at:             申请时间

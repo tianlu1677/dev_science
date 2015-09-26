@@ -10,6 +10,8 @@ class CreateGroupsUsers < ActiveRecord::Migration
       t.datetime    :apply_at           #申请时间，主要为了更清晰
       t.text        :reject_reason      #拒绝原因
       t.datetime    :reject_at          #拒绝时间
+      t.integer     :reject_user_id     #拒绝人的ID
+      t.string      :authority          #申请人的角色，分为 super_admin, admin, member
       t.timestamps null: false
     end
   end

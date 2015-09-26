@@ -10,6 +10,13 @@ class GroupsController < ApplicationController
   end
 
   def create
+    @group = Group.new(permitted_params)
+    @groups_user = @group.groups_users.new(user_id: current_user.id, role_id: 1, desc: 'super_admin', authority: :super_admin)
+    if @group.save and @groups_user.save
+      redirect_to group_path(@group)
+    else
+      render 'new'
+    end
 
   end
 
@@ -20,10 +27,12 @@ class GroupsController < ApplicationController
   end
 
 
-  def permitted_params
-    params.require(:group).permit(:name, :short_name, :intro, :website, :privacy, :position, :status, :logo)
+  protected
 
+  def permitted_params
+    params.require(:group).permit(:name, :short_name, :intro, :desc, :website, :privacy, :position, :status, :logo)
   end
+
 
 end
 # Table name: groups
