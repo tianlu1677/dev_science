@@ -2,13 +2,44 @@
   <!--群组的简介等信息-->
   <!--显示群组的文章-->
   <div class="col-md-8">
-    <%= render 'group_topics', group: @group %>
+    <!-- BEGIN Portlet PORTLET-->
+    <div class="portlet light">
+      <div class="portlet-title">
+        <div class="caption">
+          <i class="icon-paper-plane font-yellow-casablanca"></i>
+								<span class="caption-subject bold font-yellow-casablanca uppercase">
+								<%= @group.name %> </span>
+        <span class="caption-helper">
+
+        </span>
+        </div>
+        <div class="inputs">
+          <div class="portlet-input input-inline input-medium">
+            <%= search_form_for [@q], url: group_path , html: { class: 'form-inline form-horizontal' } do |f| %>
+              <div class="input-group">
+                <%= f.text_field :title_cont, placeholder: '主题名称...', class: 'form-control input-circle-left' %>
+                <%#= f.text_field :context_id_eq, as: :hidden, input_html: {value: @group.id } %>
+                <span class="input-group-btn">
+                <button class="btn btn-circle-right btn-default" type="submit">搜索</button>
+                </span>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <hr/>
+      <%= link_to new_group_topic_path(@group), class: 'btn btn-circle default green-stripe' do %>
+          发表主题
+        <% end  %>
+
+      <%= render 'group_topics', topics: @group_topics, group: @group %>
+    </div>
   </div>
 
   <div class="col-md-3">
     <!--群组信息-->
     <div class="">
-      <%= render 'group_info' %>
+      <%= render 'group_info', group: @group %>
     </div>
     <!--显示邀请的人-->
     <div class="">

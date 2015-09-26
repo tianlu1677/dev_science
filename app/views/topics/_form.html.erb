@@ -1,0 +1,12 @@
+<%= simple_form_for [@group, @topic], wrapper: :vertical_form, validate: true, html: { role: 'form' }  do |f| %>
+  <div class="form-body">
+    <%= f.input :title%>
+    <%= f.input :body  %>
+    <div class="form-actions noborder">
+      <%= f.submit class: 'btn green', data: { disable_with: '提交中...' }  %>
+      <%= link_to '取消',  request.referer.present? ? request.referer : organizations_path, class: 'btn default' %>
+    </div>
+
+  </div>
+<% end %>
+
