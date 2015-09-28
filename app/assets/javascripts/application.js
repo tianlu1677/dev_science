@@ -51,3 +51,5 @@
 //=require global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js
 //=require global/plugins/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min.js
 
+//// customs.js
+//=require customs/customs.js
