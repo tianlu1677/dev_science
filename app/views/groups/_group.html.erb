@@ -3,7 +3,7 @@
     <div class="caption">
       <i class="icon-speech"></i>
       <span class="caption-subject bold uppercase"><%= group.name %></span>
-      <span class="caption-helper">weekly stats...</span>
+      <span class="caption-helper"></span>
     </div>
     <div class="actions">
       <%= link_to new_group_groups_user_path(group), class: 'btn btn-circle btn-default' do %>
@@ -12,12 +12,12 @@
     </div>
   </div>
   <div class="portlet-body">
-    <div class="thumbnail">
-      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMzQiIGhlaWdodD0iMjAwIj48cmVjdCB3aWR0aD0iMjM0IiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2VlZSIvPjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjExNyIgeT0iMTAwIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjE1cHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MjM0eDIwMDwvdGV4dD48L3N2Zz4=" alt="100%x200" style="width: 100%; height: 200px; display: block;" data-src="holder.js/100%x200">
+    <div class="">
+      <%= image_tag group.logo, width: "200px", height: "200px" %>
       <div class="caption">
-        <h3>Thumbnail label</h3>
+        <h3><%= group.name %></h3>
         <p>
-          Cras justo odio, dapibus ac facilisis in, egestas eget quam.
+          <%= group.intro %>
         </p>
         <p>
           <%= link_to '查看', group_path(group), class: 'btn blue' %>
@@ -28,30 +28,3 @@
   </div>
 </div>
 
-
-<div class="portlet light">
-  <div class="portlet-title">
-    <div class="caption font-purple-plum">
-      <i class="icon-speech font-purple-plum"></i>
-      <span class="caption-subject bold uppercase">
-        <%= link_to group.name, group_path(group) %>
-      </span>
-      <span class="caption-helper">right click inside the box</span>
-    </div>
-    <div class="actions">
-      <%= link_to new_group_groups_user_path(group), class: "btn btn-circle btn-default" do %>
-        <i class="fa fa-plus"></i> 加入
-      <% end %>
-    </div>
-  </div>
-  <div class="portlet-body" style="height: auto;">
-    <div id="context" data-toggle="context" data-target="#context-menu">
-      <p>
-        Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.
-        Cras mattis consectetur purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat
-        porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit.
-      </p>
-    </div>
-
-  </div>
-</div>

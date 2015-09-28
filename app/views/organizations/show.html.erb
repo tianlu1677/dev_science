@@ -1,81 +1,66 @@
 <div class="row">
-  <div class="col-md-9">
+
+  <div class="col-md-12">
+    <!-- BEGIN Portlet PORTLET-->
     <div class="portlet light">
       <div class="portlet-title">
         <div class="caption">
-          <i class="icon-paper-plane font-yellow-casablanca"></i>
-								<span class="caption-subject bold font-yellow-casablanca uppercase">
-								  <%= @organization.name  %>
-                </span>
-          <span class="caption-helper">more samples...</span>
+          <h1><%= @organization.name %></h1>
+          <%= @organization.short_name %> | <%= @organization.city %> | <%= @organization.website %>
+        </div>
+        <div class="actions">
+          <a href="javascript:;" class="btn blue btn-sm">
+            <i class="fa fa-share"></i> Share </a>
+
+          <div class="btn-group">
+            <a class="btn btn-sm purple" href="javascript:;" data-toggle="dropdown">
+              <i class="fa fa-user"></i> User <i class="fa fa-angle-down "></i>
+            </a>
+          </div>
         </div>
       </div>
+      <div class="pull-right">
+        <%= image_tag @organization.logo, height: "268px", width: "268px" %>
+      </div>
       <div class="portlet-body">
-        <div class="col-md-12">
-          <!-- BEGIN Portlet PORTLET-->
-          <div class="portlet light">
-            <div class="portlet-title">
-              <div class="caption">
-                <i class="fa fa-gift"></i><%= @organization.name %> | <%= @organization.short_name %> | <%= @organization.city %> | <%= @organization.website %>
-              </div>
-              <div class="actions">
-                <a href="javascript:;" class="btn blue btn-sm">
-                  <i class="fa fa-share"></i> Share </a>
-                <div class="btn-group">
-                  <a class="btn btn-sm purple" href="javascript:;" data-toggle="dropdown">
-                    <i class="fa fa-user"></i> User <i class="fa fa-angle-down "></i>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="portlet-body">
-              <p>
-                组织的简介<%= @organization.intro  %>
-              </p>
-              <p>
-                组织的介绍<%= @organization.desc  %>
-              </p>
-            </div>
-          </div>
-          <!-- END Portlet PORTLET-->
-        </div>
+        <p>
+          机构简介 <%= @organization.intro %>
+        </p>
 
+        <p>
+          机构介绍 <%= @organization.desc %>
+        </p>
+
+        <hr/>
 
         <div class="row">
-          <div class="col-md-8">
-            <div class="note note-info note-shadow">
-              <p>
-                该机构下的群组
-              </p>
-            </div>
+          <div>
+            <h3>下属子机构</h3>
           </div>
+          <% @sub_organizations.each do |organization| %>
+            <div class="col-md-4">
+              <%= render 'organizations/organization', organization: organization %>
+            </div>
+          <% end %>
+        </div>
 
+        <div class="row">
+          <div>
+            <h3>下属群组</h3>
+          </div>
           <% @groups.each do |group| %>
-            <div class="col-md-6">
+            <div class="col-md-4">
               <%= render 'groups/group', group: group %>
             </div>
           <% end %>
-
-          <!--原始页面-->
-          <div class="col-sm-12 col-md-3">
-            <div class="thumbnail">
-              <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMzQiIGhlaWdodD0iMjAwIj48cmVjdCB3aWR0aD0iMjM0IiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2VlZSIvPjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjExNyIgeT0iMTAwIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjE1cHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MjM0eDIwMDwvdGV4dD48L3N2Zz4=" alt="100%x200" style="width: 100%; height: 200px; display: block;" data-src="holder.js/100%x200">
-              <div class="caption">
-                <h3>Thumbnail label</h3>
-                <p>
-                  Cras justo odio, dapibus ac facilisis in, egestas eget quam.
-                </p>
-                <p>
-                  <a href="javascript:;" class="btn red">
-                    Button </a>
-                  <a href="javascript:;" class="btn default">
-                    Button </a>
-                </p>
-              </div>
-            </div>
-          </div>
         </div>
+
       </div>
     </div>
+    <!-- END Portlet PORTLET-->
   </div>
-</div>
+
+
+  </div>
+
+
