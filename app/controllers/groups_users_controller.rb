@@ -13,6 +13,7 @@ class GroupsUsersController < ApplicationController
 
   def create
     @groups_user = current_user.groups_users.new(permitted_params)
+    @groups_user.group_id = params[:group_id]
     if @groups_user.save
       redirect_to group_path(@group)
     else

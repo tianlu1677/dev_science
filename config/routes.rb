@@ -30,6 +30,7 @@ Rails.application.routes.draw do
     resources :groups_users
   end
 
+  resources :tags
 
 
   ## for admin routes
@@ -51,6 +52,7 @@ Rails.application.routes.draw do
       resources :groups_users
     end
     resources :groups_users
+
 
     resources :topics do
       resources :posts

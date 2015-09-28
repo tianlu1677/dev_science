@@ -23,6 +23,8 @@ class Topic < ActiveRecord::Base
   belongs_to :context, polymorphic: true
   has_many :posts, as: :context, dependent: :destroy
 
+  acts_as_taggable
+
   validates :title, :body, presence: true
   # enum status: [:new, :online, :offline].map { |x| I18n.t("user.role_types.#{x}") }
   delegate :username, to: :user, prefix: true, allow_nil: true

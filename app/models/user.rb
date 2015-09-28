@@ -52,4 +52,9 @@ class User < ActiveRecord::Base
   validates :email, presence: true, uniqueness: true
 
 
+  alias avatar! avatar
+  def avatar
+    self.avatar! || self.create_avatar
+  end
+
 end

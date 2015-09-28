@@ -17,13 +17,11 @@
                     <div class="col-md-6">
                       <ul class="list-inline blog-tags">
                         <li>
-                          <i class="fa fa-tags"></i>
-                          <a href="javascript:;">
-                            Technology </a>
-                          <a href="javascript:;">
-                            Education11 </a>
-                          <a href="javascript:;">
-                            Internetwww </a>
+                          <% tag_cloud @topic.tag_counts, %w[s m l] do |tag, css_class| %>
+                            <%= link_to tag_path(tag.name), class: css_class do %>
+                              <i class="fa fa-tags"></i> <%= tag.name %>
+                        <% end %>
+                          <% end %>
                         </li>
                       </ul>
                     </div>
@@ -37,7 +35,7 @@
                         <li>
                           <i class="fa fa-comments"></i>
                           <a href="javascript:;">
-                            38 Comments </a>
+                            <%= @topic.posts_count %> 回复 </a>
                         </li>
                       </ul>
                     </div>

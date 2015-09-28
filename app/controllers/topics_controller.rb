@@ -22,8 +22,18 @@ class TopicsController < ApplicationController
     @group = Group.find(params[:group_id])
   end
 
-  def update
+  def edit
+    @topic = Topic.find(params[:id])
+  end
 
+  def update
+    @group = Group.find(params[:group_id])
+    @topic = Topic.find(params[:id])
+    if @topic.update(permit_params)
+      redirect_to group_topic_path(@group, @topic)
+    else
+      render 'edit'
+    end
   end
 
   def destroy
@@ -32,7 +42,7 @@ class TopicsController < ApplicationController
 
   protected
   def permit_params
-    params.require(:topic).permit(:context_id, :context_type, :title, :body, :status)
+    params.require(:topic).permit(:context_id, :context_type, :title, :body, :status, :tag_list)
   end
 
 

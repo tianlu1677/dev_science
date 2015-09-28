@@ -26,6 +26,19 @@ class GroupsController < ApplicationController
     @group_topics = @q.result
   end
 
+  def edit
+    @group = Group.find(params[:id])
+  end
+
+  def update
+    @group = Group.find(params[:id])
+    if @group.update(permitted_params)
+      redirect_to group_path(@group)
+    else
+      render 'edit'
+    end
+  end
+
 
   protected
 
