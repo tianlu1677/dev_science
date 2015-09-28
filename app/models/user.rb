@@ -38,8 +38,8 @@ class User < ActiveRecord::Base
   has_many :experiences, dependent: :destroy
   accepts_nested_attributes_for :profile, :experiences, allow_destroy: true
 
-  has_many :topics, as: :context, dependent: :destroy
-  has_many :posts, as: :context,  dependent: :destroy
+  has_many :topics, as: :topicable, dependent: :destroy
+  has_many :posts, as: :postable,  dependent: :destroy
   has_many :comments, dependent: :destroy
 
   has_many :organizations_users, dependent: :destroy

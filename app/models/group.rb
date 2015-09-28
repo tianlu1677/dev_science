@@ -29,8 +29,8 @@ class Group < ActiveRecord::Base
   has_many :groups_users, dependent: :destroy
   has_many :users, through: :groups_users
 
-  has_many :topics, as: :context, dependent: :destroy
-  has_many :posts, as: :context, dependent: :destroy
+  has_many :topics, as: :topicable, dependent: :destroy
+  has_many :posts, as: :postable, dependent: :destroy
 
   validates :name, :intro, :desc, :logo, presence: true
 

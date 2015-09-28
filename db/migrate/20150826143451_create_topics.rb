@@ -1,8 +1,8 @@
 class CreateTopics < ActiveRecord::Migration
   def change
     create_table :topics do |t|
-      t.integer     :context_id
-      t.string      :context_type
+      t.integer     :topicable_id
+      t.string      :topicable_type
       t.integer     :user_id        #发起人
       t.text        :title          #主题的标题
       t.text        :body           #主题的内容

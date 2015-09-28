@@ -9,7 +9,7 @@ class TopicsController < ApplicationController
   def create
     @group = Group.find(params[:group_id])
     @topic = current_user.topics.new(permit_params)
-    @topic.context = @group
+    @topic.topicable = @group
     if @topic.save
       redirect_to group_topic_path(@group, @topic)
     else
@@ -42,7 +42,7 @@ class TopicsController < ApplicationController
 
   protected
   def permit_params
-    params.require(:topic).permit(:context_id, :context_type, :title, :body, :status, :tag_list)
+    params.require(:topic).permit( :title, :body, :status, :tag_list)
   end
 
 

@@ -2,26 +2,27 @@
 #
 # Table name: topics
 #
-#  id           :integer          not null, primary key
-#  context_id   :integer
-#  context_type :string
-#  user_id      :integer
-#  title        :text
-#  body         :text
-#  views_count  :integer
-#  posts_count  :integer
-#  position     :integer
-#  status       :string
-#  created_at   :datetime         not null
-#  updated_at   :datetime         not null
+#  id             :integer          not null, primary key
+#  topicable_id   :integer
+#  topicable_type :string
+#  user_id        :integer
+#  title          :text
+#  body           :text
+#  views_count    :integer          default(0)
+#  posts_count    :integer          default(0)
+#  position       :integer
+#  status         :string
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
 #
 
 class Topic < ActiveRecord::Base
   extend Enumerize
   enumerize :status, in: [:new, :online, :offline], default: :online
+
   belongs_to :user
-  belongs_to :context, polymorphic: true
-  has_many :posts, as: :context, dependent: :destroy
+  belongs_to :topicable, polymorphic: true
+  has_many :posts, as: :postable, dependent: :destroy
 
   acts_as_taggable
 

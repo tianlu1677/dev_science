@@ -1,8 +1,9 @@
 class CreateAssets < ActiveRecord::Migration
   def change
     create_table :assets do |t|
-      t.integer       :context_id         #文件的所属
-      t.string        :context_type       #
+      t.integer       :user_id            #用户id
+      t.integer       :assetable_id       #文件的所属
+      t.string        :assetable_type     #
       t.string        :title              #文件的名称
       t.text          :desc               #文件的描述
       t.string        :width              #图片的宽

@@ -7,22 +7,6 @@ class Admin::TopicsController < Admin::ApplicationController
   # end
   #
   def attributes
-    %w(context_id context_type user_username title body views_count posts_count position status)
+    %w(topicable_id topicable_type user_username title body views_count posts_count position status)
   end
 end
-
-
-#
-#  id           :integer          not null, primary key
-#  context_id   :integer
-#  context_type :string
-#  user_id      :integer
-#  title        :text
-#  body         :text
-#  views_count  :integer
-#  posts_count  :integer
-#  position     :integer
-#  status       :string
-#  created_at   :datetime         not null
-#  updated_at   :datetime         not null
-#

@@ -24,9 +24,9 @@ class GroupsUser < ActiveRecord::Base
   enumerize :authority, in: [:super_admin, :admin, :member], default: :member
   enumerize :status, in: [:new, :online, :offline], default: :online
 
-  scope :new,       -> { where(status: :new) }
-  scope :online,    -> { where(status: :online) }
-  scope :offline,   -> { where(status: :offline) }
+  scope :checking,       -> { where(status: :new) }
+  scope :online,         -> { where(status: :online) }
+  scope :offline,        -> { where(status: :offline) }
 
   belongs_to :user
   belongs_to :group
