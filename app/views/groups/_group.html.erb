@@ -27,3 +27,31 @@
 
   </div>
 </div>
+
+
+<div class="portlet light">
+  <div class="portlet-title">
+    <div class="caption font-purple-plum">
+      <i class="icon-speech font-purple-plum"></i>
+      <span class="caption-subject bold uppercase">
+        <%= link_to group.name, group_path(group) %>
+      </span>
+      <span class="caption-helper">right click inside the box</span>
+    </div>
+    <div class="actions">
+      <%= link_to new_group_groups_user_path(group), class: "btn btn-circle btn-default" do %>
+        <i class="fa fa-plus"></i> 加入
+      <% end %>
+    </div>
+  </div>
+  <div class="portlet-body" style="height: auto;">
+    <div id="context" data-toggle="context" data-target="#context-menu">
+      <p>
+        Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.
+        Cras mattis consectetur purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat
+        porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit.
+      </p>
+    </div>
+
+  </div>
+</div>

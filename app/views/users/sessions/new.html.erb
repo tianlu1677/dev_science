@@ -19,9 +19,11 @@
     %>
   </div>
   <div class="form-actions">
-    <%= f.button :submit, '提交', class: 'btn btn-success' %>
+    <%= f.button :submit, '提交', class: 'btn btn-success pull-right' %>
     <%= f.input :remember_me, label: '记住我', as: :boolean if devise_mapping.rememberable? %>
-    <%= link_to '忘记密码', new_user_password_path %>
-    <%= link_to '注册', new_user_registration_path %>
+  </div>
+  <div class="form-actions">
+    <%= link_to '忘记密码', new_user_password_path, class: 'btn btn-default' %>
+    <%= link_to '注册', new_user_registration_path, class: 'btn btn-default' %>
   </div>
 <% end %>

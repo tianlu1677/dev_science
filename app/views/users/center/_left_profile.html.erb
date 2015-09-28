@@ -1,23 +1,23 @@
 <div class="portlet light profile-sidebar-portlet">
   <!-- SIDEBAR USERPIC -->
   <div class="profile-userpic">
-    <img src="../../assets/admin/pages/media/profile/profile_user.jpg" class="img-responsive" alt="">
+    <%= image_tag current_user.avatar, class: "img-responsive img-circle" %>
   </div>
   <!-- END SIDEBAR USERPIC -->
   <!-- SIDEBAR USER TITLE -->
   <div class="profile-usertitle">
     <div class="profile-usertitle-name">
-      Marcus Doe
+      <%= current_user.username %>
     </div>
     <div class="profile-usertitle-job">
-      Developer
+      <%= current_user.profile.try(:title) %>
     </div>
   </div>
   <!-- END SIDEBAR USER TITLE -->
   <!-- SIDEBAR BUTTONS -->
   <div class="profile-userbuttons">
-    <button type="button" class="btn btn-circle green-haze btn-sm">Follow</button>
-    <button type="button" class="btn btn-circle btn-danger btn-sm">Message</button>
+    <button type="button" class="btn btn-circle green-haze btn-sm">关注</button>
+    <button type="button" class="btn btn-circle btn-danger btn-sm">私信</button>
   </div>
   <!-- END SIDEBAR BUTTONS -->
   <!-- SIDEBAR MENU -->
@@ -26,7 +26,7 @@
       <li>
         <%= link_to users_center_index_path do %>
           <i class="icon-home"></i>
-          概况
+          个人主页
         <% end %>
       </li>
       <li class="active">

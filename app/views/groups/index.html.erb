@@ -23,7 +23,9 @@
     <h4 class="block">Custom Content</h4>
     <div class="row">
       <% @groups.each do |group| %>
-        <%= render 'groups/group', group: group %>
+        <div class="col-md-4">
+          <%= render 'groups/group', group: group %>
+        </div>
       <% end %>
 
       <!--原始网页-->

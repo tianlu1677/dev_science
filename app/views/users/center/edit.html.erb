@@ -12,7 +12,7 @@
     <div class="profile-content">
       <div class="row">
         <div class="col-md-12">
-          <div class="portlet light">
+          <div class="portlet light col-md-6">
             <div class="portlet-title tabbable-line">
               <div class="caption caption-md">
                 <i class="icon-globe theme-font hide"></i>
@@ -20,164 +20,65 @@
               </div>
               <ul class="nav nav-tabs">
                 <li class="active">
-                  <a href="#tab_1_1" data-toggle="tab">Personal Info</a>
+                  <a href="#tab_1_1" data-toggle="tab">个人信息</a>
                 </li>
                 <li>
-                  <a href="#tab_1_2" data-toggle="tab">Change Avatar</a>
-                </li>
-                <li>
-                  <a href="#tab_1_3" data-toggle="tab">Change Password</a>
-                </li>
-                <li>
-                  <a href="#tab_1_4" data-toggle="tab">Privacy Settings</a>
+                  <a href="#tab_1_2" data-toggle="tab">修改密码</a>
                 </li>
               </ul>
             </div>
-            <div class="portlet-body">
-              <div class="tab-content">
-                <!-- PERSONAL INFO TAB -->
-                <div class="tab-pane active" id="tab_1_1">
-                  <%= simple_form_for [@user], url: edit_users_center_index_path , wrapper: :vertical_form, validate: true, html: { role: 'form' }  do |f| %>
-                    <div class="form-body">
-                      <%= f.input :username %>
-                      <%= f.input :avatar %>
-                      <%= f.simple_fields_for :profile, f.object.profile ? f.object.profile : f.object.build_profile do |profile_form| %>
-                        <%= profile_form.input :title %>
-                        <%= profile_form.input :gender, as: :radio_buttons, :item_wrapper_class => 'inline' %>
-                        <%= profile_form.input :name %>
-                        <%= profile_form.input :mobile %>
-                        <%= profile_form.input :qq %>
-                        <%= profile_form.input :weibo %>
-                        <%= profile_form.input :wechat %>
-                      <% end %>
-                      <div class="form-actions noborder">
-                        <%= f.submit class: 'btn green', data: { disable_with: '提交中...' }  %>
-                        <%= link_to '取消',  request.referer.present? ? request.referer : organizations_path, class: 'btn default' %>
+
+              <div class="portlet-body">
+                <div class="tab-content">
+                  <!-- PERSONAL INFO TAB -->
+                  <div class="tab-pane active" id="tab_1_1">
+                    <%= simple_form_for [@user], url: edit_users_center_index_path , wrapper: :vertical_form, validate: true, html: { role: 'form' }  do |f| %>
+                      <div class="form-body">
+                        <%= f.input :username %>
+                        <%= f.input :avatar %>
+                        <%= f.simple_fields_for :profile, f.object.profile ? f.object.profile : f.object.build_profile do |profile_form| %>
+                          <%= profile_form.input :title %>
+                          <%= profile_form.input :gender, as: :radio_buttons, :item_wrapper_class => 'inline' %>
+                          <%= profile_form.input :name %>
+                          <%= profile_form.input :mobile %>
+                          <%= profile_form.input :qq %>
+                          <%= profile_form.input :weibo %>
+                          <%= profile_form.input :wechat %>
+                        <% end %>
+                        <div class="form-actions noborder">
+                          <%= f.submit class: 'btn green', data: { disable_with: '提交中...' }  %>
+                          <%= link_to '取消',  request.referer.present? ? request.referer : organizations_path, class: 'btn default' %>
+                        </div>
+
+                      </div>
+                    <% end %>
+                  </div>
+                  <!-- END PERSONAL INFO TAB -->
+
+                  <!-- CHANGE PASSWORD TAB -->
+                  <div class="tab-pane" id="tab_1_2">
+                    <%= simple_form_for(@user, url: update_password_users_center_index_path) do |f| %>
+                      <div class="form-inputs">
+                        <%= f.input :email, required: true, autofocus: true, disabled: true %>
+
+                        <% if false && devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                          <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+                        <% end %>
+                        <%= f.input :current_password, label: '请输入当前密码', hint: "请输入当前密码", required: true %>
+                        <%= f.input :password, autocomplete: "off", hint: "不想要修改请不要点保存", required: true %>
+                        <%= f.input :password_confirmation, required: true %>
                       </div>
 
-                    </div>
-                  <% end %>
-                </div>
-                <!-- END PERSONAL INFO TAB -->
-                <!-- CHANGE AVATAR TAB -->
-                <div class="tab-pane" id="tab_1_2">
-                  <p>
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-                  </p>
-                  <form action="#" role="form">
-                    <div class="form-group">
-                      <div class="fileinput fileinput-new" data-provides="fileinput">
-                        <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
-                          <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="">
-                        </div>
-                        <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;">
-                        </div>
-                        <div>
-																<span class="btn default btn-file">
-																<span class="fileinput-new">
-																Select image </span>
-																<span class="fileinput-exists">
-																Change </span>
-																<input type="file" name="...">
-																</span>
-                          <a href="javascript:;" class="btn default fileinput-exists" data-dismiss="fileinput">
-                            Remove </a>
-                        </div>
+                      <div class="form-actions">
+                        <%= f.button :submit, "更改密码", class: 'btn btn-success' %>
                       </div>
-                      <div class="clearfix margin-top-10">
-                        <span class="label label-danger">NOTE! </span>
-                        <span>Attached image thumbnail is supported in Latest Firefox, Chrome, Opera, Safari and Internet Explorer 10 only </span>
-                      </div>
-                    </div>
-                    <div class="margin-top-10">
-                      <a href="javascript:;" class="btn green-haze">
-                        Submit </a>
-                      <a href="javascript:;" class="btn default">
-                        Cancel </a>
-                    </div>
-                  </form>
+                    <% end %>
+                  </div>
+                  <!-- END CHANGE PASSWORD TAB -->
+
                 </div>
-                <!-- END CHANGE AVATAR TAB -->
-                <!-- CHANGE PASSWORD TAB -->
-                <div class="tab-pane" id="tab_1_3">
-                  <%= simple_form_for(@user, url: registration_path(User), html: { method: :put }) do |f| %>
-                    <%= f.error_notification %>
-
-                    <div class="form-inputs">
-                      <%= f.input :email, required: true, autofocus: true %>
-
-                      <% if false && devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-                        <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-                      <% end %>
-
-                      <%= f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false %>
-                      <%= f.input :password_confirmation, required: false %>
-                      <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
-                    </div>
-
-                    <div class="form-actions">
-                      <%= f.button :submit, "Update" %>
-                    </div>
-                  <% end %>
-                </div>
-                <!-- END CHANGE PASSWORD TAB -->
-                <!-- PRIVACY SETTINGS TAB -->
-                <div class="tab-pane" id="tab_1_4">
-                  <form action="#">
-                    <table class="table table-light table-hover">
-                      <tbody><tr>
-                        <td>
-                          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus..
-                        </td>
-                        <td>
-                          <label class="uniform-inline">
-                            <div class="radio"><span><input type="radio" name="optionsRadios1" value="option1"></span></div>
-                            Yes </label>
-                          <label class="uniform-inline">
-                            <div class="radio"><span class="checked"><input type="radio" name="optionsRadios1" value="option2" checked=""></span></div>
-                            No </label>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          Enim eiusmod high life accusamus terry richardson ad squid wolf moon
-                        </td>
-                        <td>
-                          <label class="uniform-inline">
-                            <div class="checker"><span><input type="checkbox" value=""></span></div> Yes </label>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          Enim eiusmod high life accusamus terry richardson ad squid wolf moon
-                        </td>
-                        <td>
-                          <label class="uniform-inline">
-                            <div class="checker"><span><input type="checkbox" value=""></span></div> Yes </label>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          Enim eiusmod high life accusamus terry richardson ad squid wolf moon
-                        </td>
-                        <td>
-                          <label class="uniform-inline">
-                            <div class="checker"><span><input type="checkbox" value=""></span></div> Yes </label>
-                        </td>
-                      </tr>
-                      </tbody></table>
-                    <!--end profile-settings-->
-                    <div class="margin-top-10">
-                      <a href="javascript:;" class="btn green-haze">
-                        Save Changes </a>
-                      <a href="javascript:;" class="btn default">
-                        Cancel </a>
-                    </div>
-                  </form>
-                </div>
-                <!-- END PRIVACY SETTINGS TAB -->
               </div>
-            </div>
+
           </div>
         </div>
       </div>

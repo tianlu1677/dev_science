@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   namespace :users do
     resources :center do
       get :edit, on: :collection
+      patch :update_password, on: :collection
     end
   end
 
