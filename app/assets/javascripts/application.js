@@ -50,6 +50,8 @@
 ////plugin
 //=require global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js
 //=require global/plugins/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min.js
-
+//=require global/plugins/jquery-validation/js/jquery.validate.js
+//=require global/plugins/jquery-validation/js/additional-methods.js
+//=require global/plugins/jquery-validation/js/localization/messages_zh.js
 //// customs.js
 //=require customs/customs.js
