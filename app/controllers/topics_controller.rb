@@ -10,6 +10,7 @@ class TopicsController < ApplicationController
     @group = Group.find(params[:group_id])
     @topic = current_user.topics.new(permit_params)
     @topic.topicable = @group
+    @topic.user_id = current_user.id
     if @topic.save
       redirect_to group_topic_path(@group, @topic)
     else

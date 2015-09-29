@@ -1,46 +1,42 @@
 <div class="portlet light">
-  <div class="portlet-title">
+  <div class="portlet-title col-md-8">
     <div class="caption">
       <i class="icon-speech"></i>
       <span class="caption-subject bold uppercase"> 群组列表</span>
-      <span class="caption-helper">weekly stats...</span>
+      <span class="caption-helper">共<%= @groups.count %>个</span>
     </div>
+
     <div class="actions">
       <%= link_to new_group_path, class: "btn btn-circle green-meadow" do %>
         <i class="fa fa-plus"></i> 新建群组
       <% end %>
     </div>
+
+    <div class="inputs">
+      <div class="portlet-input input-inline input-medium">
+        <%= search_form_for [@q], html: { class: 'form-inline form-horizontal' } do |f| %>
+          <div class="input-group">
+            <%= f.text_field :name_cont, placeholder: '群组名称...', class: 'form-control input-circle-left' %>
+            <span class="input-group-btn">
+                <button class="btn btn-circle-right btn-default" type="submit">搜索</button>
+                </span>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+
+
   </div>
   <div class="portlet-body">
 
-    <h4 class="block">Custom Content</h4>
+    <h4 class="block">加入到你喜欢的小组</h4>
     <div class="row">
       <% @groups.each do |group| %>
         <div class="col-md-4">
           <%= render 'groups/group', group: group %>
         </div>
       <% end %>
-
-      <!--原始网页-->
-      <div class="col-sm-12 col-md-3">
-        <div class="thumbnail">
-          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMzQiIGhlaWdodD0iMjAwIj48cmVjdCB3aWR0aD0iMjM0IiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2VlZSIvPjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjExNyIgeT0iMTAwIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjE1cHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MjM0eDIwMDwvdGV4dD48L3N2Zz4=" alt="100%x200" style="width: 100%; height: 200px; display: block;" data-src="holder.js/100%x200">
-          <div class="caption">
-            <h3>Thumbnail label</h3>
-            <p>
-              Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-            </p>
-            <p>
-              <a href="javascript:;" class="btn red">
-                Button </a>
-              <a href="javascript:;" class="btn default">
-                Button </a>
-            </p>
-          </div>
-        </div>
-      </div>
-
-
     </div>
   </div>
 </div>

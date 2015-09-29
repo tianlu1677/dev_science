@@ -2,7 +2,8 @@ class GroupsController < ApplicationController
   layout 'application'
 
   def index
-    @groups = Group.all
+    @q = Group.search(params[:q])
+    @groups = @q.result
   end
 
   def new

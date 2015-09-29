@@ -11,7 +11,7 @@
           <div class="col-md-12 blog-page">
             <div class="row">
               <div class="col-md-12 article-block">
-                <h3 style="margin-top:10px;"><%= @topic.title %></h3>
+                <h2 style="margin-top:10px;"><%= @topic.title %></h2>
                 <div class="blog-tag-data">
                   <div class="row">
                     <div class="col-md-6">
@@ -29,13 +29,16 @@
                       <ul class="list-inline">
                         <li>
                           <i class="fa fa-calendar"></i>
-                          <%= @topic.created_at %>
-
+                          <%= @topic.created_at.to_formatted_s(:db) %>
                         </li>
                         <li>
                           <i class="fa fa-comments"></i>
                           <a href="javascript:;">
                             <%= @topic.posts_count %> 回复 </a>
+                        </li>
+                        <li>
+                          <i class="glyphicon glyphicon-user"></i>
+                          <%= @topic.user.username %>
                         </li>
                       </ul>
                     </div>
@@ -89,7 +92,7 @@
     </div>
     <!--群组成员-->
     <div class="">
-      <%= render 'groups/group_members' %>
+      <%= render 'groups/group_members', members: @group.users %>
     </div>
   </div>
 

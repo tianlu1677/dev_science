@@ -2,29 +2,26 @@
   <div class="portlet-title">
     <div class="caption">
       <i class="icon-speech"></i>
-      <span class="caption-subject bold uppercase"><%= group.name %></span>
+      <span class="caption-subject bold uppercase">
+        <%= group.name %>
+      </span>
       <span class="caption-helper"></span>
     </div>
-    <div class="actions">
-      <%= link_to new_group_groups_user_path(group), class: 'btn btn-circle btn-default' do %>
-        <i class="fa fa-plus"></i> 加入
-      <% end %>
+    <div class="actions joined_group">
+      <%= render 'groups_users/joined_group', group: group %>
     </div>
   </div>
   <div class="portlet-body">
     <div class="">
+      <%= link_to group_path(group) do %>
       <%= image_tag group.logo, width: "200px", height: "200px" %>
       <div class="caption">
-        <h3><%= group.name %></h3>
         <p>
           <%= group.intro %>
         </p>
-        <p>
-          <%= link_to '查看', group_path(group), class: 'btn blue' %>
-        </p>
       </div>
+      <% end %>
     </div>
 
   </div>
 </div>
-
