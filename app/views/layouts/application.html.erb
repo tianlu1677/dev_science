@@ -4,24 +4,29 @@
     <title>Scrinium</title>
     <script src="/assets/global/plugins/pace/pace.min.js"></script>
     <link href="/assets/global/plugins/pace/themes/pace-theme-barber-shop.css" rel="stylesheet" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
   </head>
   <!-- DOC: Apply "page-full-width" class to the body element to have full width page without the sidebar menu -->
-  <body class="page-header-fixed page-sidebar-closed-hide-logo page-sidebar-closed">
-    <div class="clearfix"></div>
+  <body class="page-md page-sidebar-closed-hide-logo page-sidebar-closed-hide-logo page-boxed page-header-fixed page-full-width">
+   <!--page-sidebar-closed-hide-logo page-sidebar-closed page-boxed page-header-fixed-->
+
     <% if current_user %>
       <%= render 'application/logined_header' %>
     <% else %>
       <%= render 'application/unlogin_header' %>
     <% end %>
-
-    <div class="page-container">
-      <div class="page-content-wrapper">
-        <div class="page-content">
-          <%= render 'application/messages' %>
-          <%= yield %>
+    <div class="clearfix"></div>
+    <div class="container">
+      <div class="page-container">
+        <div class="page-content-wrapper">
+          <div class="page-content">
+            <%= render 'application/messages' %>
+            <%= yield %>
+          </div>
         </div>
       </div>
     </div>
@@ -31,7 +36,7 @@
         Metronic.init(); // init metronic core componets
         Layout.init(); // init layout
         QuickSidebar.init(); // init quick sidebar
-        Tasks.initDashboardWidget(); // init tash dashboard widget
+
       });
     </script>
 
