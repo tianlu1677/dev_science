@@ -4,12 +4,14 @@ default: &default
   host: localhost
   port: 5432
   encoding: unicode
-  database: scrinium
-  username: postgres
+  database: scrinium_development
+  username: jacksontom
   password: 123456
   pool: 5
 
 development:
+  username: jacksontom
+  database: scrinium_development
   <<: *default
 
 # Warning: The database defined as "test" will be erased and
@@ -20,4 +22,6 @@ test:
 
 production:
   <<: *default
+#  username: jacksontom
+#  database: scrinium_development
 
