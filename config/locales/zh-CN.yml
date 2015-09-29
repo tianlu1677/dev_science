@@ -177,8 +177,8 @@ zh-CN:
         updated_at:       更新时间
       topic:
         id:               ID
-        context_id:       所属类别ID
-        context_type:     所属类别
+        topicable_id:       所属类别ID
+        topicable_type:     所属类别
         user_id:          用户ID
         title:            标题
         body:             内容
@@ -193,8 +193,8 @@ zh-CN:
         id:              ID
         user_id:         用户ID
         body:            内容
-        context_id:      所属类别ID
-        context_type:    所属类别
+        postable_id:      所属类别ID
+        postable_type:    所属类别
         status:          状态
         created_at:      创建时间
         updated_at:      更新时间
@@ -263,8 +263,8 @@ zh-CN:
         updated_at:           更新时间
       asset:
         id:                   ID
-        context_id:           所属ID
-        context_type:         所属类别
+        assetable_id:           所属ID
+        assetable_type:         所属类别
         title:                文件标题
         desc:                 文件描述
         width:                宽
