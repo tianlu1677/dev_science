@@ -20,8 +20,7 @@
  *= require global/plugins/bootstrap-switch/css/bootstrap-switch.min.css
 
  *= require global/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css
- *= require global/plugins/fullcalendar/fullcalendar.min.css
- *= require global/plugins/morris/morris.css
+
 
  *= require admin/pages/css/tasks.css
 

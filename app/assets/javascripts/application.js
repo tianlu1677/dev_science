@@ -27,7 +27,6 @@
 //= require global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js
 //= require global/plugins/jquery-slimscroll/jquery.slimscroll.min.js
 //= require global/plugins/jquery.blockui.min.js
-//= require global/plugins/jquery.cokie.min.js
 //= require global/plugins/uniform/jquery.uniform.min.js
 //= require global/plugins/bootstrap-switch/js/bootstrap-switch.min.js
 
@@ -43,7 +42,6 @@
 //=require  admin/layout4/scripts/quick-sidebar.js
 
 
-//=require admin/pages/scripts/login.js
 
 ////plugin
 //=require global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js
