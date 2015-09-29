@@ -34,8 +34,6 @@
 ////fullcalendar depends
 
 
-//= require global/plugins/morris/morris.min.js
-//= require global/plugins/morris/raphael-min.js
 //= require global/plugins/jquery.sparkline.min.js
 
 ////pages
