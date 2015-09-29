@@ -11,7 +11,7 @@ jQuery.validator.setDefaults({
   focusInvalid: false, // do not focus the last invalid input
   ignore: "",  // validate all fields including form hidden input
   invalidHandler: function (event, validator) { //display error alert on form submit
-    var form = validator.currentForm
+    var form = validator.currentForm;
     var error = $('.alert-danger', form);
     var success = $('.alert-success', form);
     success.hide();
@@ -54,6 +54,6 @@ jQuery.validator.setDefaults({
     var success = $('.alert-success', form);
     success.show();
     error.hide();
-    form[0].submit(); // submit the form
+    form.submit(); // submit the form
   }
 });
