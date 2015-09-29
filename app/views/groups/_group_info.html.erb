@@ -5,10 +5,8 @@
       <span class="caption-subject bold uppercase"><%= group.name %></span>
       <span class="caption-helper"></span>
     </div>
-    <div class="actions">
-      <%= link_to new_group_groups_user_path(group), class: 'btn btn-circle btn-default' do %>
-        <i class="fa fa-plus"></i> 加入
-      <% end %>
+    <div class="actions joined_group">
+      <%= render 'groups_users/joined_group', group: group %>
     </div>
   </div>
   <div class="portlet-body">
@@ -22,7 +20,7 @@
         <p>
           <%=  %>
         </p>
-        <%= link_to "退出小组" %>
+
       </div>
     </div>
 

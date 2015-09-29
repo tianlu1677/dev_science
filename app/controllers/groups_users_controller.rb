@@ -30,7 +30,8 @@ class GroupsUsersController < ApplicationController
   end
 
   def destroy
-
+    # group_groups_user_path
+    @groups_user = GroupsUser.find(params[:id]).destroy
   end
 
   protected

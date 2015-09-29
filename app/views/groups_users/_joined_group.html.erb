@@ -1,0 +1,7 @@
+<% if current_user_joined_group(group) %>
+  <%= link_to "退出小组", group_groups_user_path(group, current_user_joined_group(group)), class: "leave_group btn btn-default", remote: true, method: :delete %>
+<% else %>
+  <%= link_to new_group_groups_user_path(group), class: 'btn green-meadow' do %>
+    <i class="fa fa-plus"></i> 加入
+  <% end %>
+<% end %>

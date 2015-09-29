@@ -6,19 +6,12 @@
       <span class="caption-helper">weekly stats...</span>
     </div>
     <div class="actions">
-      <a href="javascript:;" class="btn btn-circle btn-default">
-        <i class="fa fa-pencil"></i> Edit </a>
-      <a href="javascript:;" class="btn btn-circle btn-default">
-        <i class="fa fa-plus"></i> Add </a>
-      <a href="javascript:;" class="btn btn-circle btn-default btn-icon-only fullscreen" data-original-title="" title=""></a>
+      <%= link_to new_group_path, class: "btn btn-circle green-meadow" do %>
+        <i class="fa fa-plus"></i> 新建群组
+      <% end %>
     </div>
   </div>
   <div class="portlet-body">
-    <div class="note note-info">
-      <p>
-        Extend Bootstrap's grid system with the thumbnail component to easily display grids of images, videos, text, and more.
-      </p>
-    </div>
 
     <h4 class="block">Custom Content</h4>
     <div class="row">

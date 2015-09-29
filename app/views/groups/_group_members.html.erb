@@ -14,7 +14,7 @@
     <div class="portlet-body">
       <div class="table-scrollable table-scrollable-borderless">
         <ul>
-          <% members.each do |member| %>
+          <% members.uniq.each do |member| %>
             <%= image_tag member.avatar, width: "50px", height: "50px", class: "img-circle"%>
           <% end %>
         </ul>
