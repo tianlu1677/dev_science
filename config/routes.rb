@@ -22,12 +22,16 @@ Rails.application.routes.draw do
   end
 
   resources :organizations do
-    resources :organizations_users
+    resources :organizations_users do
+      delete :leave, on: :collection
+    end
     resources :groups_organizations
   end
   resources :groups do
     resources :topics
-    resources :groups_users
+    resources :groups_users do
+      delete :leave, on: :collection
+    end
   end
 
   resources :tags

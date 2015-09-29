@@ -73,6 +73,7 @@ zh-CN:
     are_you_sure: 您确定删除这条数据吗？
     add:  追加
     are_you_sure_operation: 您确定要进行此操作吗？
+    are_you_sure_leave:   您确定要退出此小组？
   user:
     <<: *action_labels
   role:

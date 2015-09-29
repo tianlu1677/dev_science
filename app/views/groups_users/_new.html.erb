@@ -1,0 +1,44 @@
+<div class="modal fade" id="new_groups_user_form" tabindex="-1" role="basic" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+        <h4 class="modal-title">申请加入<%= @group.name %></h4>
+      </div>
+      <div class="modal-body">
+        <div class="note note-success">
+          <p>
+            申请加入该群组，申请完后，机构管理员会尽快审核。
+          </p>
+        </div>
+        <%= render "form" %>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+
+<script>
+  //放在application 里面时候，无法正常执行
+  var groupsUsersFormValidate = function() {
+    var groupsUsersForm = $('#new_groups_user');
+    groupsUsersForm.validate({
+      rules: {
+        "groups_user[desc]": {
+          minlength: 2,
+          required: true
+        }
+      },
+      messages: {
+        "groups_user[desc]": {
+          minlength: "至少为2个字",
+          required: "请填写申请的相关信息"
+        }
+      }
+    });
+  };
+  $(function(){
+    groupsUsersFormValidate();
+  });
+</script>

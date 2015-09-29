@@ -1,6 +1,6 @@
 class GroupsUsersController < ApplicationController
   layout 'application'
-  before_action :get_group, only: [:index, :new, :create, :update, :destroy]
+  before_action :get_group
 
 
   def index
@@ -17,7 +17,7 @@ class GroupsUsersController < ApplicationController
     if @groups_user.save
       redirect_to group_path(@group)
     else
-      render 'new'
+
     end
   end
 
@@ -32,6 +32,10 @@ class GroupsUsersController < ApplicationController
   def destroy
     # group_groups_user_path
     @groups_user = GroupsUser.find(params[:id]).destroy
+  end
+
+  def leave
+    @group_users = current_user.groups_users.where(group_id: params[:group_id]).destroy_all
   end
 
   protected
