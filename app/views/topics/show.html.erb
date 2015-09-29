@@ -18,7 +18,7 @@
                       <ul class="list-inline blog-tags">
                         <li>
                           <% tag_cloud @topic.tag_counts, %w[s m l] do |tag, css_class| %>
-                            <%= link_to tag_path(tag.name), class: css_class do %>
+                            <%= link_to group_path(tag: tag.name), class: css_class do %>
                               <i class="fa fa-tags"></i> <%= tag.name %>
                         <% end %>
                           <% end %>

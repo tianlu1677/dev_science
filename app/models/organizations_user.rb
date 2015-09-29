@@ -18,11 +18,15 @@
 
 class OrganizationsUser < ActiveRecord::Base
   extend Enumerize
-  enumerize :status, in: [:new, :online, :offline], default: :new
+  enumerize :status, in: [:checking, :online, :offline], default: :checking
 
   validates :desc, presence: true
 
   belongs_to :user
   belongs_to :organization
+
+  scope :checking,  -> { where(status: :checking) }
+  scope :online,    -> { where(status: :online) }
+  scope :offline,   -> { where(status: :offline) }
 
 end

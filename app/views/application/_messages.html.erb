@@ -1,13 +1,13 @@
 <% if flash[:notice] %>
-  <div class="note note-success">
-    <p>
-      <%= flash[:notice] %>
-    </p>
+  <div class=" alert alert-success fade in">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
+    <i class="fa-lg fa fa-check"></i>
+    <%= flash[:notice] %>
   </div>
 <% elsif flash[:error] %>
-  <div class="note note-error">
-    <p>
-      <%= flash[:error] %>
-    </p>
+  <div class=" alert alert-danger fade in">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
+    <i class="fa-lg fa fa-warning"></i>
+    <%= flash[:error] %>
   </div>
 <% end %>

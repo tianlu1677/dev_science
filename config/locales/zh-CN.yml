@@ -41,9 +41,15 @@ zh-CN:
       <<: *enumerize_meaning
     organizations_user:
       status:
-        new:     审核中
-        online:  通过审核
-        offline: 未通过审核
+        checking:   审核中
+        online:     通过审核
+        offline:    未通过审核
+
+    groups_user:
+      status:
+        checking:   审核中
+        online:     通过审核
+        offline:    未通过审核
     comment:
       <<: *enumerize_meaning
     profile:

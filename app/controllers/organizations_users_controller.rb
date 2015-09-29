@@ -11,7 +11,8 @@ class OrganizationsUsersController < ApplicationController
     if @organizations_user.save
       redirect_to organization_path(@organization)
     else
-      render 'new'
+      flash[:error] = "this is something wrong"
+      redirect_to organizations_path
     end
   end
 

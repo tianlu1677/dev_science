@@ -5,7 +5,8 @@
     <%= f.input :apply_at, as: :hidden, input_html: {value: DateTime.now} %>
     <div class="form-actions noborder">
       <%= f.submit '提交', class: 'btn green', data: { disable_with: '提交中...' }  %>
-      <%= link_to '取消',  request.referer.present? ? request.referer : organizations_path, class: 'btn default' %>
+      <button type="button" class="btn default" data-dismiss="modal">取消</button>
+      <%#= link_to '取消',  request.referer.present? ? request.referer : organizations_path, class: 'btn default' %>
     </div>
 
   </div>

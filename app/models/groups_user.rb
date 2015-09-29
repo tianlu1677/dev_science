@@ -22,9 +22,9 @@ class GroupsUser < ActiveRecord::Base
 
   extend Enumerize
   enumerize :authority, in: [:super_admin, :admin, :member], default: :member
-  enumerize :status, in: [:new, :online, :offline], default: :online
+  enumerize :status, in: [:checking, :online, :offline], default: :online
 
-  scope :checking,       -> { where(status: :new) }
+  scope :checking,       -> { where(status: :checking) }
   scope :online,         -> { where(status: :online) }
   scope :offline,        -> { where(status: :offline) }
 
