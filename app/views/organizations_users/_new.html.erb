@@ -18,3 +18,27 @@
   </div>
   <!-- /.modal-dialog -->
 </div>
+
+<script>
+  //放在application 里面时候，无法正常执行
+  var organizationsUsersFormValidate = function() {
+    var organizationsUsersForm = $('#new_organizations_user');
+    organizationsUsersForm.validate({
+      rules: {
+        "organizations_user[desc]": {
+          minlength: 2,
+          required: true
+        }
+      },
+      messages: {
+        "organizations_user[desc]": {
+          minlength: "至少为2个字",
+          required: "请填写申请的相关信息"
+        }
+      }
+    });
+  };
+  $(function(){
+    organizationsUsersFormValidate();
+  });
+</script>

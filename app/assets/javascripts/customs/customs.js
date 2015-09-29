@@ -1,4 +1,6 @@
 
+//= require customs/users_center.coffee
+//= require customs/organizations.coffee.js
 
 jQuery.validator.setDefaults({
   debug: true,
@@ -53,9 +55,4 @@ jQuery.validator.setDefaults({
     form.submit(); // submit the form
   }
 });
-
-//
-//= require customs/users_center.coffee
-//= require customs/organizations.coffee.js
-//= require customs/organizations_users.js
 
