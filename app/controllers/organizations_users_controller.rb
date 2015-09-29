@@ -1,6 +1,6 @@
 class OrganizationsUsersController < ApplicationController
   layout 'application'
-  before_action :get_organization, only: [:new, :create, :update, :destroy]
+  before_action :get_organization
 
   def new
     @organizations_user = OrganizationsUser.new
@@ -8,6 +8,7 @@ class OrganizationsUsersController < ApplicationController
 
   def create
     @organizations_user = current_user.organizations_users.new(permitted_params)
+    @organizations_user.organization_id = params[:organization_id]
     if @organizations_user.save
       redirect_to organization_path(@organization)
     else
@@ -24,10 +25,14 @@ class OrganizationsUsersController < ApplicationController
 
   end
 
+  def leave
+    @organization_users = current_user.organizations_users.where(organization_id: params[:organization_id]).destroy_all
+  end
+
   protected
 
   def permitted_params
-    params.require(:organizations_user).permit(:user_id, :organization_id, :desc, :apply_at, :reject_reason, :reject_at, :status)
+    params.require(:organizations_user).permit(:desc, :apply_at, :reject_reason, :reject_at, :status)
   end
 
   def get_organization
