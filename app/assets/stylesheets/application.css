@@ -43,6 +43,6 @@
  *= require global/plugins/bootstrap-datepicker/css/bootstrap-datepicker.css
 
 
-
+*= require custom/page_bar.css
 
  */
