@@ -18,13 +18,17 @@
 
 class Topic < ActiveRecord::Base
   extend Enumerize
-  enumerize :status, in: [:new, :online, :offline], default: :online
+  enumerize :status, in: [:new, :online, :offline], default: :new
 
   belongs_to :user
   belongs_to :topicable, polymorphic: true
   has_many :posts, as: :postable, dependent: :destroy
 
   acts_as_taggable
+
+  has_many :attachments, as: :assetable, dependent: :destroy
+  delegate :link_url, to: :attachment, prefix: true, allow_nil: true
+  accepts_nested_attributes_for :attachments, allow_destroy: true
 
   validates :title, :body, presence: true
   # enum status: [:new, :online, :offline].map { |x| I18n.t("user.role_types.#{x}") }

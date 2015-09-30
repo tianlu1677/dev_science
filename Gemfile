@@ -73,6 +73,8 @@ gem 'paper_trail'
 source 'http://rails-assets.org' do
   gem 'rails-assets-select2'
 end
+gem "jquery-fileupload-rails"
+
 group :development, :test do
   gem 'quiet_assets'
   gem 'annotate'

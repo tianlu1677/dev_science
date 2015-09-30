@@ -2,6 +2,7 @@
 //= require customs/users_center.coffee
 //= require customs/organizations.coffee.js
 //= require customs/users_sign_in
+//= require customs/jquery-file-upload
 
 jQuery.validator.setDefaults({
   debug: true,

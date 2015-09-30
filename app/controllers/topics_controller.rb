@@ -2,8 +2,16 @@ class TopicsController < ApplicationController
   layout 'application'
 
   def new
-    @group = Group.find(params[:group_id])
     @topic = Topic.new
+    @group = Group.find(params[:group_id])
+    @topic = current_user.topics.new
+    @topic.topicable = @group
+    @topic.user_id = current_user.id
+    if @topic.save(validate: false)
+      redirect_to edit_group_topic_path(@group, @topic)
+    else
+      render 'new'
+    end
   end
 
   def create
@@ -24,7 +32,11 @@ class TopicsController < ApplicationController
   end
 
   def edit
+    @group = Group.find(params[:group_id])
     @topic = Topic.find(params[:id])
+
+    @attachment = @topic.attachments.build
+    @attachments = []
   end
 
   def update
