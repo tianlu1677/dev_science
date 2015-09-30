@@ -52,7 +52,7 @@ zh-CN:
       already_confirmed: 已经确认，请重新登录.
       confirmation_period_expired: 必须在 %{period} 以内确认，请重新申请
       expired: 您已过期，请重新申请
-      not_found: 没有找到
+      not_found: 没有找到邮箱
       not_locked: 未锁定
       not_saved:
         one: '因为1个错误导致此%{resource}保存失败:'
