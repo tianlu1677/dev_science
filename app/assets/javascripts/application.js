@@ -19,7 +19,6 @@
 
 //// for ie9
 //= require global/plugins/respond.min.js
-//= require global/plugins/excanvas.min.js
 ////==========
 
 //= require global/plugins/jquery-ui/jquery-ui.min.js
@@ -33,7 +32,6 @@
 ////fullcalendar depends
 
 
-//= require global/plugins/jquery.sparkline.min.js
 
 ////pages
 //=require  global/scripts/metronic.js
