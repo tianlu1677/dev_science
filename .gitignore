@@ -18,3 +18,5 @@
 .idea/
 /db/schema.rb
 Gemfile.lock
+/config/settings.yml
+/config/database.yml
