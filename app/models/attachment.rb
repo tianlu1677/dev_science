@@ -26,4 +26,14 @@ class Attachment < Asset
 
   mount_uploader :link, AttachmentUploader
 
+  def output_json
+    {
+        "name" => read_attribute(:link),
+        "size" => link.size,
+        "url" => link.url,
+        "delete_url" => id,
+        "picture_id" => id,
+        "delete_type" => "DELETE"
+    }.to_json
+  end
 end

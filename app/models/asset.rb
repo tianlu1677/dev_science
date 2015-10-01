@@ -24,4 +24,20 @@
 
 class Asset < ActiveRecord::Base
   belongs_to :assetable, polymorphic: true
+
+  before_save :update_asset_attributes
+
+
+
+  def update_asset_attributes
+    if link.present? && link_changed?
+      self.file_type = link.file.content_type
+      self.file_size = link.file.size
+      self.file_name = link.file.filename
+      self.title ||= link.file.filename
+
+    end
+  end
+
+
 end

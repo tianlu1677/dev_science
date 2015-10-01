@@ -1,8 +1,11 @@
 class AttachmentsController < ApplicationController
 
   def index
-
-
+    @attachments = Attachment.all
+    respond_to do |format|
+      format.json { render json: @attachments, status: :ok}
+      format.html
+    end
   end
 
 
@@ -21,46 +24,27 @@ class AttachmentsController < ApplicationController
   end
 
   def create
-    if params[:attachment][:topic_id]
-      @topic = Topic.find(params[:attachment][:topic_id])
-      @attachment = @topic.attachments.new(link: params[:attachment][:link])
-      @attachment.assetable = @topic
-      @attachment.user_id = current_user.id
-      if @attachment.save!
-        respond_to do |format|
-          format.json { render json: {}, status: :ok}
-          format.html
+    attachments_link =  params[:attachments][:link].class == Array ? params[:attachments][:link].first : params[:attachments][:link]
+    @attachment = Attachment.new(link: attachments_link)
+    @attachment.assetable_id = params[:attachment][:assetable_id]
+    @attachment.assetable_type = params[:attachment][:assetable_type]
+    @attachment.user_id = current_user.id
 
-        end
-      else
-        render :json => [{:error => "custom_failure"}], :status => 304
+    if @attachment.save!
+      respond_to do |format|
+        format.html {
+          render :json => @attachment.output_json,
+                 :content_type => 'text/html',
+                 :layout => false
+        }
+        format.json {
+          render :json => @attachment.output_json
+        }
       end
-    end
 
-    # p_attr = params[:picture]
-    # p_attr[:image] = params[:picture][:image].first if params[:picture][:image].class == Array
-    #
-    # if params[:gallery_id]
-    #   @gallery = Gallery.find(params[:gallery_id])
-    #   @picture = @gallery.pictures.build(p_attr)
-    # else
-    #   @picture = Picture.new(p_attr)
-    # end
-    #
-    # if @picture.save
-    #   respond_to do |format|
-    #     format.html {
-    #       render :json => [@picture.to_jq_upload].to_json,
-    #              :content_type => 'text/html',
-    #              :layout => false
-    #     }
-    #     format.json {
-    #       render :json => [@picture.to_jq_upload].to_json
-    #     }
-    #   end
-    # else
-    #   render :json => [{:error => "custom_failure"}], :status => 304
-    # end
+    else
+      render :json => [{:error => "custom_failure"}], :status => 304
+    end
   end
 
 
