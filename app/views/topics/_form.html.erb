@@ -71,7 +71,6 @@
         $('#fileupload').fileupload({
           disableImageResize: false,
           autoUpload: false,
-          dropZone: $("#fileupload"),
 //          uploadTemplateId:   "template-upload",
 //          downloadTemplateId: "template-download",
           disableImageResize: /Android(?!.*Chrome)|Opera/.test(window.navigator.userAgent),
@@ -183,7 +182,7 @@
         </td>
         <td>
             {% if (file.deleteUrl) { %}
-                <button class="btn btn-danger delete" data-type="{%=file.deleteType%}" data-confirm="确定要删除？" data-url="{%=file.deleteUrl%}"{% if (file.deleteWithCredentials) { %} data-xhr-fields='{"withCredentials":true}'{% } %}>
+                <button class="btn btn-danger delete" data-type="{%=file.deleteType%}" data-url="{%=file.deleteUrl%}"{% if (file.deleteWithCredentials) { %} data-xhr-fields='{"withCredentials":true}'{% } %}>
                     <i class="glyphicon glyphicon-trash"></i>
                     <span>删除</span>
                 </button>

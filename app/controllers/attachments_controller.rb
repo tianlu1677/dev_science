@@ -48,7 +48,7 @@ class AttachmentsController < ApplicationController
 
     respond_to do |format|
       format.html {  }
-      format.json { render json: @attachment, status: :destroy }
+      format.json { head :no_content }
     end
   end
 
