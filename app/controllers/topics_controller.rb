@@ -42,6 +42,8 @@ class TopicsController < ApplicationController
   def update
     @group = Group.find(params[:group_id])
     @topic = Topic.find(params[:id])
+    @attachment = @topic.attachments.build
+
     if @topic.update(permit_params)
       redirect_to group_topic_path(@group, @topic)
     else

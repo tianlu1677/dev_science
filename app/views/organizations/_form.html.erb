@@ -1,4 +1,4 @@
-<%= simple_form_for @organization, wrapper: :vertical_form, validate: true, html: { role: 'form' }  do |f| %>
+<%= simple_form_for @organization, wrapper: :vertical_form, validate: true, html: { role: 'form', id: 'organization_form' }  do |f| %>
   <div class="form-body">
     <%= f.input :name, placeholder: '中国大气研究所' %>
     <%= f.input :city  %>

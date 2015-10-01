@@ -1,4 +1,4 @@
-<%= simple_form_for [@group, @topic], wrapper: :vertical_form, validate: true,  html: { role: 'form' }  do |f| %>
+<%= simple_form_for [@group, @topic], wrapper: :vertical_form, validate: true,  html: { role: 'form', id: 'topic_form' }  do |f| %>
   <div class="form-body">
     <%= f.input :title, as: :string %>
     <%= f.input :body  %>

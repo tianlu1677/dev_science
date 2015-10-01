@@ -2,7 +2,7 @@ var organizationFormValidate = function() {
   // for more info visit the official plugin documentation:
   // http://docs.jquery.com/Plugins/Validation
 
-  var organizationForm = $('#new_organization');
+  var organizationForm = $('#organization_form');
 
   organizationForm.validate({
     rules: {
