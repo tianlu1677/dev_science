@@ -17,13 +17,40 @@
                     html: { role: 'form',  multipart: true, id: 'fileupload'}  do |f| %>
     <div class=" fileupload-buttonbar">
       <div class="progressbar fileupload-progressbar nofade"><div style="width:0%;"></div></div>
-      <span class="btn btn-mini fileinput-button">
-        <i class="icon-plus"></i>
-        <span>上传文件</span>
-        <%= f.input :link, input_html: {name: "attachments[link][]", multiple: true } %>
         <%= f.input :assetable_id, input_html: {value: @topic.id }, as: :hidden%>
         <%= f.input :assetable_type, input_html: {value: "Topic" }, as: :hidden%>
-      </span>
+
+        <div class="row fileupload-buttonbar">
+          <div class="col-lg-7">
+            <!-- The fileinput-button span is used to style the file input field as button -->
+            <span class="btn btn-success fileinput-button">
+                    <i class="glyphicon glyphicon-plus"></i>
+                    文件上传
+              <%= f.input_field :link, label: false, name: "attachments[link][]", multiple: true %>
+              </span>
+            <button type="submit" class="btn btn-primary start">
+              <i class="glyphicon glyphicon-upload"></i>
+              <span>开始上传</span>
+            </button>
+            <button type="reset" class="btn btn-warning cancel">
+              <i class="glyphicon glyphicon-ban-circle"></i>
+              <span>取消上传</span>
+            </button>
+            <!-- The global file processing state -->
+            <span class="fileupload-process"></span>
+          </div>
+          <!-- The global progress state -->
+          <div class="col-lg-5 fileupload-progress fade">
+            <!-- The global progress bar -->
+            <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+              <div class="progress-bar progress-bar-success" style="width: 0%;"></div>
+            </div>
+            <!-- The extended global progress state -->
+            <div class="progress-extended">&nbsp;</div>
+          </div>
+        </div>
+
+
     </div>
 
 
@@ -44,11 +71,14 @@
         $('#fileupload').fileupload({
           disableImageResize: false,
           autoUpload: false,
+          dropZone: $("#fileupload"),
 //          uploadTemplateId:   "template-upload",
 //          downloadTemplateId: "template-download",
           disableImageResize: /Android(?!.*Chrome)|Opera/.test(window.navigator.userAgent),
-          maxFileSize: 5000000,
-          acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i
+          maxFileSize: 5000000
+
+
+//          acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i
         });
 
 
@@ -75,18 +105,24 @@
   }();
   $(function () {
     FormFileUpload.init();
+    var getAttachmentsUrl = "/attachments?q[assetable_id]=<%= @topic.id %>";
+    $.getJSON(getAttachmentsUrl, function (files) {
+      var fu = $('#fileupload').data('blueimpFileupload'),
+              template;
+
+      console.log(files);
+      template = fu._renderDownload(files)
+              .appendTo($('#fileupload .files'));
+      // Force reflow:
+      fu._reflow = fu._transition && template.length &&
+      template[0].offsetWidth;
+      template.addClass('in');
+      $('#loading').remove();
+    });
+
   });
 </script>
-<!-- The blueimp Gallery widget -->
-<div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls" data-filter=":even">
-  <div class="slides"></div>
-  <h3 class="title"></h3>
-  <a class="prev">‹</a>
-  <a class="next">›</a>
-  <a class="close">×</a>
-  <a class="play-pause"></a>
-  <ol class="indicator"></ol>
-</div>
+
 <!-- The template to display files available for upload -->
 <script id="template-upload" type="text/x-tmpl">
 {% for (var i=0, file; file=o.files[i]; i++) { %}
@@ -106,13 +142,13 @@
             {% if (!i && !o.options.autoUpload) { %}
                 <button class="btn btn-primary start" disabled>
                     <i class="glyphicon glyphicon-upload"></i>
-                    <span>Start</span>
+                    <span>开始上传</span>
                 </button>
             {% } %}
             {% if (!i) { %}
                 <button class="btn btn-warning cancel">
                     <i class="glyphicon glyphicon-ban-circle"></i>
-                    <span>Cancel</span>
+                    <span>取消上传</span>
                 </button>
             {% } %}
         </td>
@@ -147,15 +183,14 @@
         </td>
         <td>
             {% if (file.deleteUrl) { %}
-                <button class="btn btn-danger delete" data-type="{%=file.deleteType%}" data-url="{%=file.deleteUrl%}"{% if (file.deleteWithCredentials) { %} data-xhr-fields='{"withCredentials":true}'{% } %}>
+                <button class="btn btn-danger delete" data-type="{%=file.deleteType%}" data-confirm="确定要删除？" data-url="{%=file.deleteUrl%}"{% if (file.deleteWithCredentials) { %} data-xhr-fields='{"withCredentials":true}'{% } %}>
                     <i class="glyphicon glyphicon-trash"></i>
-                    <span>Delete</span>
+                    <span>删除</span>
                 </button>
-                <input type="checkbox" name="delete" value="1" class="toggle">
             {% } else { %}
                 <button class="btn btn-warning cancel">
                     <i class="glyphicon glyphicon-ban-circle"></i>
-                    <span>Cancel</span>
+                    <span>取消上传</span>
                 </button>
             {% } %}
         </td>

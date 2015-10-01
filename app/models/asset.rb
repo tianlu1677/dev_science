@@ -40,4 +40,8 @@ class Asset < ActiveRecord::Base
   end
 
 
+  # jpg jpeg gif png, 判断文件是不是图片
+  def image?
+    link.content_type.start_with? 'image'
+  end
 end

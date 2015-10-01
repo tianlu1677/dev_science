@@ -28,12 +28,20 @@ class Attachment < Asset
 
   def output_json
     {
-        "name" => read_attribute(:link),
-        "size" => link.size,
+        "name" => file_name,
+        "size" => file_size.to_i,
         "url" => link.url,
-        "delete_url" => id,
+        "deleteUrl" => "/attachments/#{id}",
         "picture_id" => id,
-        "delete_type" => "DELETE"
-    }.to_json
+        "thumbnailUrl" => thumbanil_url,
+        "delete_type" => "DELETE",
+        "title" => title
+    }
   end
+
+  # 七牛进行裁剪，文档 http://developer.qiniu.com/docs/v6/api/reference/fop/image/imageview2.html
+  def thumbanil_url
+    image? ? "#{link.url}?imageView2/0/w/100/h/100" : nil
+  end
+
 end

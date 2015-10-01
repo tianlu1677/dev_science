@@ -1,11 +1,8 @@
 class AttachmentsController < ApplicationController
 
   def index
-    @attachments = Attachment.all
-    respond_to do |format|
-      format.json { render json: @attachments, status: :ok}
-      format.html
-    end
+    @q = Attachment.search(params[:q])
+    @attachments = @q.result
   end
 
 
@@ -29,24 +26,15 @@ class AttachmentsController < ApplicationController
     @attachment.assetable_id = params[:attachment][:assetable_id]
     @attachment.assetable_type = params[:attachment][:assetable_type]
     @attachment.user_id = current_user.id
-
-    if @attachment.save!
-      respond_to do |format|
-        format.html {
-          render :json => @attachment.output_json,
-                 :content_type => 'text/html',
-                 :layout => false
-        }
-        format.json {
-          render :json => @attachment.output_json
-        }
+    respond_to do |format|
+      if @attachment.save!
+        format.json { render :json => {files: [@attachment.output_json], status: :created}  }
+      else
+        format.json { render json: @attachment.error, status: unprocessable_entity }
       end
-
-    else
-      render :json => [{:error => "custom_failure"}], :status => 304
     end
-  end
 
+  end
 
   def update
 
@@ -55,7 +43,13 @@ class AttachmentsController < ApplicationController
 
 
   def destroy
+    @attachment = Attachment.find(params[:id])
+    @attachment.destroy
 
+    respond_to do |format|
+      format.html {  }
+      format.json { render json: @attachment, status: :destroy }
+    end
   end
 
 
