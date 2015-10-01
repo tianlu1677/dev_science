@@ -43,5 +43,5 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = Settings.smtp_settings_symbol_hash
 
   config.action_mailer.default_url_options = { host: Settings.domain, port: 3000 }
-
+  config.middleware.use JQuery::FileUpload::Rails::Middleware
 end
