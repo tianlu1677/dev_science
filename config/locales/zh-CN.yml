@@ -74,6 +74,7 @@ zh-CN:
     add:  追加
     are_you_sure_operation: 您确定要进行此操作吗？
     are_you_sure_leave:   您确定要退出此小组？
+    reply: 回复
   user:
     <<: *action_labels
   role:
@@ -94,6 +95,9 @@ zh-CN:
     <<: *action_labels
   comment:
     <<: *action_labels
+    has_new_comments: "有新的评论"
+
+
   organizations_user:
     <<: *action_labels
   groups_user:

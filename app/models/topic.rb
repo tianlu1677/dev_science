@@ -24,6 +24,7 @@ class Topic < ActiveRecord::Base
   belongs_to :topicable, polymorphic: true
   has_many :posts, as: :postable, dependent: :destroy
 
+  has_many :comments, as: :commentable, dependent: :destroy
   acts_as_taggable
 
   has_many :attachments, as: :assetable, dependent: :destroy

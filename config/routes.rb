@@ -21,6 +21,11 @@ Rails.application.routes.draw do
     end
   end
 
+  concern :commentable do
+    resources :comments, except: [ :new, :show ]
+    get '/comments/reply/:id' => 'comments#reply', as: :reply_comment
+  end
+
   resources :organizations do
     resources :organizations_users do
       delete :leave, on: :collection
@@ -33,6 +38,8 @@ Rails.application.routes.draw do
       delete :leave, on: :collection
     end
   end
+
+  resources :topics, concerns: [ :commentable  ]
 
   resources :tags
   resources :attachments

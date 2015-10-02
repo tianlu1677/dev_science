@@ -52,7 +52,16 @@
                 <div style="padding-bottom: 30px"></div>
                 <hr>
 
-                <%= render 'posts/index' %>
+                <%#= render 'posts/index' %>
+                <dl>
+                  <dt></dt>
+                  <dd>
+                    <%=
+                        render partial: 'comments/list',
+                               locals: { commentable: @topic }
+                    %>
+                  </dd>
+                </dl>
 
                 <!--end media-->
                 <hr>

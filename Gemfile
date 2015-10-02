@@ -57,6 +57,7 @@ gem 'enumerize'
 gem "ransack"
 gem 'awesome_nested_set'
 gem 'friendly_id', '~> 5.0.4'
+gem 'closure_tree'
 # gem 'country_select'
 #settings
 gem 'settingslogic'
