@@ -29,9 +29,6 @@
 //= require global/plugins/uniform/jquery.uniform.min.js
 //= require global/plugins/bootstrap-switch/js/bootstrap-switch.min.js
 
-////fullcalendar depends
-
-
 
 ////pages
 //=require  global/scripts/metronic.js

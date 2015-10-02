@@ -70,9 +70,11 @@ gem 'paper_trail'
 
 
 #rails-assets
-source 'http://rails-assets.org' do
-  gem 'rails-assets-select2'
-end
+# source 'http://rails-assets.org' do
+#   gem 'rails-assets-select2'
+#   gem 'rails-assets-bootstrap'
+# end
+gem "select2-rails"
 gem "jquery-fileupload-rails"
 
 group :development, :test do
