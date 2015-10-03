@@ -22,12 +22,12 @@
 ////==========
 
 //= require global/plugins/jquery-ui/jquery-ui.min.js
-//= require global/plugins/bootstrap/js/bootstrap.min.js
-//= require global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js
+//= require global/plugins/bootstrap/js/bootstrap.js
+//= require global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.js
 //= require global/plugins/jquery-slimscroll/jquery.slimscroll.min.js
 //= require global/plugins/jquery.blockui.min.js
 //= require global/plugins/uniform/jquery.uniform.min.js
-//= require global/plugins/bootstrap-switch/js/bootstrap-switch.min.js
+//= require global/plugins/bootstrap-switch/js/bootstrap-switch.js
 
 
 ////pages
