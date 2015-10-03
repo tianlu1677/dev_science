@@ -78,6 +78,13 @@ gem 'paper_trail'
 gem "select2-rails"
 gem "jquery-fileupload-rails"
 
+## api
+gem 'grape'
+gem 'grape-entity'
+gem 'grape-swagger'
+gem 'rack-cors', :require => 'rack/cors'
+gem 'grape-kaminari'
+
 group :development, :test do
   gem 'quiet_assets'
   gem 'annotate'

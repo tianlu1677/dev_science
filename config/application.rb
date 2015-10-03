@@ -25,6 +25,19 @@ module Scrinium
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
 
+    # reload_api
+    config.paths.add File.join("app", "api"), glob: File.join("**", "*.rb")
+    config.autoload_paths += Dir[Rails.root.join("app", "api", "*")]
+
+
+     #跨域操作
+    config.middleware.insert_before 0, "Rack::Cors" do
+      allow do
+        origins '*'
+        resource '*', :headers => :any, :methods => [:get, :post, :put, :delete, :options]
+      end
+    end
+
     config.generators do |g|
       g.template_engine :erb
       g.jbuilder false

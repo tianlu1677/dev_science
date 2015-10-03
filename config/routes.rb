@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root 'home#index'
+  mount API => '/'
 
   devise_for :users, :controllers =>
                        { :sessions => "users/sessions",
@@ -8,10 +9,6 @@ Rails.application.routes.draw do
                          :passwords => "users/passwords",
                          :emails=>"users/emails"
                        }
-
-
-
-
 
   namespace :users do
     resources :center do
