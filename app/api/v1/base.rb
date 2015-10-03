@@ -7,7 +7,7 @@ module V1
 
     helpers AuthenticateHelper
 
-    mount V1::Group
+    mount V1::Groups
 
   end
 end

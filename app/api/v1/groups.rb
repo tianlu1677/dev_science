@@ -1,7 +1,7 @@
 
 
 module V1
-  class Group < Base
+  class Groups < Base
     resource :groups do
       desc 'List all groups.'
       get :names do
