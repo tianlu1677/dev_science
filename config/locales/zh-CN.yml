@@ -33,6 +33,7 @@ zh-CN:
     list: 全部列表
     back_list: 返回
     cancel: 取消
+    save: 保存
     are_you_sure: 您确定删除这条数据吗？
     add:  追加
     are_you_sure_operation: 您确定要进行此操作吗？

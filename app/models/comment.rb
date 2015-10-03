@@ -17,12 +17,12 @@
 class Comment < ActiveRecord::Base
   extend Enumerize
   enumerize :status, in: [:new, :online, :offline], default: :online
-
+  belongs_to :parent, class_name: "Comment", foreign_key: :parent_id
   belongs_to :commentable, polymorphic: true
   belongs_to :user
 
-  has_closure_tree
-
+  # has_closure_tree
+  delegate :username, to: :user, prefix: true, allow_nil: true
   validates :content, presence: true
 
 end

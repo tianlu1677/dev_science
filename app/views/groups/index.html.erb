@@ -1,42 +1,47 @@
-<div class="portlet light">
-  <div class="portlet-title col-md-8">
-    <div class="caption">
-      <i class="icon-speech"></i>
-      <span class="caption-subject bold uppercase"> 群组列表</span>
-      <span class="caption-helper">共<%= @groups.count %>个</span>
-    </div>
+<div class="row">
+  <div class="col-md-12">
 
-    <div class="actions">
-      <%= link_to new_group_path, class: "btn btn-circle green-meadow" do %>
-        <i class="fa fa-plus"></i> 新建群组
-      <% end %>
-    </div>
+    <div class="portlet light">
+      <div class="portlet-title">
+        <div class="caption">
+          <i class="icon-speech"></i>
+          <span class="caption-subject bold uppercase"> 群组列表</span>
+          <span class="caption-helper">共<%= @groups.count %>个</span>
+        </div>
 
-    <div class="inputs">
-      <div class="portlet-input input-inline input-medium">
-        <%= search_form_for [@q], html: { class: 'form-inline form-horizontal' } do |f| %>
-          <div class="input-group">
-            <%= f.text_field :name_cont, placeholder: '群组名称...', class: 'form-control input-circle-left' %>
-            <span class="input-group-btn">
+        <div class="actions">
+          <%= link_to new_group_path, class: "btn btn-circle green-meadow" do %>
+            <i class="fa fa-plus"></i> 新建群组
+          <% end %>
+        </div>
+
+        <div class="inputs">
+          <div class="portlet-input input-inline input-medium">
+            <%= search_form_for [@q], html: { class: 'form-inline form-horizontal' } do |f| %>
+              <div class="input-group">
+                <%= f.text_field :name_cont, placeholder: '群组名称...', class: 'form-control input-circle-left' %>
+                <span class="input-group-btn">
                 <button class="btn btn-circle-right btn-default" type="submit">搜索</button>
                 </span>
+              </div>
+            <% end %>
           </div>
-        <% end %>
-      </div>
-    </div>
-
-
-
-  </div>
-  <div class="portlet-body">
-
-    <h4 class="block">加入到你喜欢的小组</h4>
-    <div class="row">
-      <% @groups.each do |group| %>
-        <div class="col-md-4">
-          <%= render 'groups/group', group: group %>
         </div>
-      <% end %>
+
+
+
+      </div>
+      <div class="portlet-body">
+
+        <h4 class="block">加入到你喜欢的小组</h4>
+        <div class="row">
+          <% @groups.each do |group| %>
+            <div class="col-md-4">
+              <%= render 'groups/group', group: group %>
+            </div>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>

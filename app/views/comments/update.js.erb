@@ -1,7 +1,1 @@
-$("li#comment-<%= @comment.id %>").html("<%=
-  j render partial: 'comments/show', locals: { app: @app, comment: @comment }
-%>");
-
-$('li#comment-<%= @comment.id %> .markdown').each(function () {
-  markdown($(this).html(), $(this));
-});
+$("#comment_<%= @comment.id %>").html(<%= raw render('comments/comment', comment: @comment).inspect %> )

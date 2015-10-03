@@ -1,0 +1,5 @@
+<% if current_user %>
+  <%= render 'application/logined_header' %>
+<% else %>
+  <%= render 'application/unlogin_header' %>
+<% end %>

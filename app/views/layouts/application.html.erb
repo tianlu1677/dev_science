@@ -14,11 +14,8 @@
   <body class="page-md page-sidebar-closed-hide-logo page-sidebar-closed-hide-logo page-boxed page-header-fixed page-full-width">
    <!--page-sidebar-closed-hide-logo page-sidebar-closed page-boxed page-header-fixed-->
 
-    <% if current_user %>
-      <%= render 'application/logined_header' %>
-    <% else %>
-      <%= render 'application/unlogin_header' %>
-    <% end %>
+   <%= render 'layouts/application_content/top' %>
+
     <div class="clearfix"></div>
     <div class="container">
       <div class="page-container">
@@ -26,6 +23,9 @@
           <div class="page-content">
             <%= render 'application/page_bar' %>
             <%= render 'application/messages' %>
+            <%= render 'layouts/application_content/left' %>
+            <%= render 'layouts/application_content/main' %>
+            <%= render 'layouts/application_content/right' %>
             <%= yield %>
           </div>
         </div>

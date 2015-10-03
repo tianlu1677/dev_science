@@ -16,7 +16,9 @@ Rails.application.routes.draw do
       patch :update_password, on: :collection
     end
   end
-
+  resources :comments do
+    get :reply
+  end
   concern :commentable do
     resources :comments, except: [ :new, :show ]
     get '/comments/reply/:id' => 'comments#reply', as: :reply_comment
