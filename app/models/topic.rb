@@ -27,7 +27,7 @@ class Topic < ActiveRecord::Base
   has_many :comments, as: :commentable, dependent: :destroy
   acts_as_taggable
 
-  has_many :attachments, as: :assetable, dependent: :destroy
+  has_many :attachments, as: :resourceable, dependent: :destroy
   delegate :link_url, to: :attachment, prefix: true, allow_nil: true
   accepts_nested_attributes_for :attachments, allow_destroy: true
 
