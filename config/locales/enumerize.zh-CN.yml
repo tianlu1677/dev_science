@@ -1,0 +1,38 @@
+zh-CN:
+  enumerize_meaning: &enumerize_meaning
+    status:
+      new: 新建
+      online: 上线
+      offline: 下线
+  enumerize:
+    user:
+      <<: *enumerize_meaning
+    topic:
+      <<: *enumerize_meaning
+    group:
+      <<: *enumerize_meaning
+      privacy:
+        hidden: 隐藏
+        protected: 群组可见
+        public: 公开
+    organization:
+      <<: *enumerize_meaning
+    post:
+      <<: *enumerize_meaning
+    organizations_user:
+      status:
+        checking:   审核中
+        online:     通过审核
+        offline:    未通过审核
+
+    groups_user:
+      status:
+        checking:   审核中
+        online:     通过审核
+        offline:    未通过审核
+    comment:
+      <<: *enumerize_meaning
+    profile:
+      gender:
+        male:     男
+        female:   女
