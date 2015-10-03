@@ -17,8 +17,8 @@
                     html: { role: 'form',  multipart: true, id: 'fileupload'}  do |f| %>
     <div class=" fileupload-buttonbar">
       <div class="progressbar fileupload-progressbar nofade"><div style="width:0%;"></div></div>
-        <%= f.input :assetable_id, input_html: {value: @topic.id }, as: :hidden%>
-        <%= f.input :assetable_type, input_html: {value: "Topic" }, as: :hidden%>
+        <%= f.input :resourceable_id, input_html: {value: @topic.id }, as: :hidden%>
+        <%= f.input :resourceable_type, input_html: {value: "Topic" }, as: :hidden%>
 
         <div class="row fileupload-buttonbar">
           <div class="col-lg-7">

@@ -104,7 +104,7 @@ zh-CN:
     <<: *action_labels
   experience:
     <<: *action_labels
-  asset:
+  resource:
     <<: *action_labels
   activerecord:
     models:
@@ -121,7 +121,7 @@ zh-CN:
       organizations_user: 机构与人
       groups_user: 群组与人
       experience: 工作经历
-      asset: 文件
+      resource: 文件
     attributes:
       user:
         id:                     ID
@@ -272,10 +272,11 @@ zh-CN:
         place:                经历时地点
         created_at:           创建时间
         updated_at:           更新时间
-      asset:
+      resource:
         id:                   ID
-        assetable_id:           所属ID
-        assetable_type:         所属类别
+        user_id:              用户
+        resourceable_id:      所属ID
+        resourceable_type:    所属类别
         title:                文件标题
         desc:                 文件描述
         width:                宽

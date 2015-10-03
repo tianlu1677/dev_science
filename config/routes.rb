@@ -71,7 +71,7 @@ Rails.application.routes.draw do
     resources :posts
     resources :comments
     resources :tags
-    resources :assets
+    resources :resources
     resources :roles
     resources :permissions
   end

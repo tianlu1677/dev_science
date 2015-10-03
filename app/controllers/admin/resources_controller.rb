@@ -1,4 +1,4 @@
-class Admin::AssetsController < Admin::ApplicationController
+class Admin::ResourcesController < Admin::ApplicationController
 
 
   # protected

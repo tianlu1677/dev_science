@@ -23,8 +23,8 @@ class AttachmentsController < ApplicationController
   def create
     attachments_link =  params[:attachments][:link].class == Array ? params[:attachments][:link].first : params[:attachments][:link]
     @attachment = Attachment.new(link: attachments_link)
-    @attachment.assetable_id = params[:attachment][:assetable_id]
-    @attachment.assetable_type = params[:attachment][:assetable_type]
+    @attachment.resourceable_id = params[:attachment][:resourceable_id]
+    @attachment.resourceable_type = params[:attachment][:resourceable_type]
     @attachment.user_id = current_user.id
     respond_to do |format|
       if @attachment.save!
