@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b User:
+  = @resource.user_id
+%p
+  %b Title:
+  = @resource.title
+
+= link_to 'Edit', edit_resource_path(@resource)
+\|
+= link_to 'Back', resources_path

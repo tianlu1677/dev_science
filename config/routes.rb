@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   root 'home#index'
 
   devise_for :users, :controllers =>
@@ -43,7 +42,7 @@ Rails.application.routes.draw do
 
   resources :tags
   resources :attachments
-
+  resources :resources
 
   ## for admin routes
   namespace :admin do
