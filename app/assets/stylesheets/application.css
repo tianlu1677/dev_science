@@ -19,7 +19,6 @@
  *= require global/plugins/uniform/css/uniform.default.css
  *= require global/plugins/bootstrap-switch/css/bootstrap-switch.min.css
 
- *= require global/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css
  *= require global/plugins/bootstrap-datepicker/css/bootstrap-datepicker.css
 
  *= require global/css/components-md.css
@@ -29,7 +28,6 @@
  *= require global/css/plugins.css
  *= require admin/layout4/css/layout.css
  *= require admin/layout4/css/themes/light.css
- *= require admin/layout4/css/custom.css
 
  *= require admin/pages/css/login.css
 

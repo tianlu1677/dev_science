@@ -44,5 +44,6 @@
 //=require global/plugins/jquery-validation/js/jquery.validate.js
 //=require global/plugins/jquery-validation/js/additional-methods.js
 //=require global/plugins/jquery-validation/js/localization/messages_zh.js
+//=require global/plugins/autosize/autosize.min.js
 //// customs.js
 //=require customs/customs.js
