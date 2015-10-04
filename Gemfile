@@ -85,6 +85,13 @@ gem 'grape-swagger'
 gem 'rack-cors', :require => 'rack/cors'
 gem 'grape-kaminari'
 
+# Translate ActiveRecord model.
+gem 'globalize', '~> 5.0.0'
+
+gem 'i18n-js', '>= 3.0.0.rc11'
+
+gem 'font-awesome-rails'
+
 group :development, :test do
   gem 'quiet_assets'
   gem 'annotate'
@@ -110,6 +117,3 @@ group :development, :test do
   gem 'brakeman'
   gem 'rspec-rails', '~> 3.0'
 end
-
-
-

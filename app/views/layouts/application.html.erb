@@ -3,6 +3,13 @@
   <head>
     <title>Scrinium</title>
     <script src="/assets/global/plugins/pace/pace.min.js"></script>
+    <script type="text/javascript" charset="utf-8">
+      var ROOT_PATH = '<%= main_app.root_url %>';
+      I18n = {
+        defaultLocale: '<%= I18n.default_locale %>',
+        locale: '<%= I18n.locale %>'
+      };
+    </script>
     <link href="/assets/global/plugins/pace/themes/pace-theme-barber-shop.css" rel="stylesheet" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1" name="viewport">
@@ -23,9 +30,11 @@
           <div class="page-content">
             <%= render 'application/page_bar' %>
             <%= render 'application/messages' %>
-            <%= render 'layouts/application_content/left' %>
-            <%= render 'layouts/application_content/main' %>
-            <%= render 'layouts/application_content/right' %>
+            <div class="row">
+              <%= render 'layouts/application_content/left' %>
+              <%= render 'layouts/application_content/main' %>
+              <%= render 'layouts/application_content/right' %>
+            </div>
             <%= yield %>
           </div>
         </div>
