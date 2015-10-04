@@ -1,0 +1,9 @@
+<% if content_for? :main %>
+  <% if content_for? :left %>
+    <div class="col-md-9">
+  <% else %>
+    <div class="col-md-12">
+  <% end %>
+      <%= yield :main %>
+    </div>
+<% end %>

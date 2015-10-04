@@ -1,5 +1,5 @@
-<% if current_user %>
-  <%= render 'application/logined_header' %>
-<% else %>
-  <%= render 'application/unlogin_header' %>
+<% if content_for? :left %>
+  <div class="col-md-3">
+    <%= yield :left %>
+  </div>
 <% end %>

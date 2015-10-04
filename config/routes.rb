@@ -136,4 +136,8 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+
+  if File.exist? "#{Rails.root}/config/engine_routes.rb"
+    instance_eval File.read "#{Rails.root}/config/engine_routes.rb"
+  end
 end
