@@ -1,0 +1,43 @@
+<% app ||= main_app %>
+<!-- 不知道为什么如下的simple_form_for写法无法在edit时自动设为PATCH动作。 -->
+<% method ||= :post %>
+<%= simple_form_for :comment, url: app.url_for([commentable, comment]), method: method, remote: true do |f| %>
+  <div class='panel panel-default'>
+    <div class='panel-heading'>
+      <%= f.input :commentable_id, as: :hidden, input_html: {value: commentable.id} %>
+      <%= f.input :commentable_type, as: :hidden, input_html: {value: commentable.class.name} %>
+      <% if comment.floor %>
+        #<%= comment.floor %>
+      <% end %>
+      <%= link_to current_user.username %>
+      <%= current_user.username %>
+      <% if comment.parent_id %>
+        <%= t('action_labels.reply') %>#<%= Comment.find(comment.parent_id).floor %>
+      <% end %>
+      <%=
+        f.button :submit, t('action_labels.create'),
+        class: 'button btn-xs float-right', id: 'save-comment',
+        remote: true
+      %>
+    </div>
+    <div class='panel-body'>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.hidden_field :parent_id, value: comment.parent_id %>
+      <% if not comment.floor %>
+        <% floor = max_comment_floor(commentable) + 1 %>
+        <%= f.hidden_field :floor, value: floor %>
+      <% end %>
+      <%=
+        f.input :content,
+        label: false,
+        as: :text,
+        wrapper_html: {
+          id: 'new-comment-content'
+        },
+        input_html: {
+          value: comment.content # FIXME: 不知道为什么提交了新的评论，这里会遗留那个评论的内容。只能显式设置（此时的评论内容为空）。
+        }
+      %>
+    </div>
+  </div>
+<% end %>
