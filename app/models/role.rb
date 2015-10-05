@@ -16,7 +16,17 @@ class Role < ActiveRecord::Base
   accepts_nested_attributes_for :permissions
 
   enumerize :basename, in: [:god_admin,:organization_super_admin, :organization_admin,
-                            :group_super_admin, :group_admin, :user]
+                            :group_super_admin, :group_admin, :member], default: :member
+
+
+  def self.init_roles
+    [:god_admin,:organization_super_admin, :organization_admin,
+     :group_super_admin, :group_admin, :member].each do |basename|
+
+      Role.create_with(name: basename.to_s).find_or_create_by!(basename: basename)
+    end
+
+  end
 
 
   validates :name, presence: true

@@ -31,6 +31,7 @@ class User < ActiveRecord::Base
 
   mount_uploader :avatar, AvatarUploader
 
+  after_create :set_default_role
   has_and_belongs_to_many :roles
   accepts_nested_attributes_for :roles
 
@@ -56,6 +57,15 @@ class User < ActiveRecord::Base
   alias avatar! avatar
   def avatar
     self.avatar! || self.create_avatar
+  end
+
+  def has_role?(role_name)
+    self.roles.pluck(:basename).include?(role_name)
+  end
+
+  def set_default_role
+    role = Role.find_by(basename: :member)
+    self.role_ids = [role.id]
   end
 
 end
