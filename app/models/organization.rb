@@ -26,7 +26,7 @@
 
 class Organization < ActiveRecord::Base
   extend Enumerize
-  enumerize :status, in: [:new, :online, :offline], default: :online
+  enumerize :status, in: [:check, :online, :offline], default: :check
 
   acts_as_nested_set
 
@@ -38,6 +38,6 @@ class Organization < ActiveRecord::Base
   has_many :organizations_users, dependent: :destroy
   has_many :users, through: :organizations_users
 
-  validates :name, :city, :short_name, :intro, :desc, :address, :logo, :contact_name, :contact_mobile, presence: true
+  validates :name, :city, :short_name, :intro, :desc, :address, :contact_name, :contact_mobile, presence: true
 
 end

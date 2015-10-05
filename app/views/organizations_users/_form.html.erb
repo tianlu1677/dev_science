@@ -3,6 +3,7 @@
   <div class="form-body">
     <%= f.input :desc, placeholder: '请表明你的身份' %>
     <%= f.input :apply_at, as: :hidden, input_html: {value: DateTime.now} %>
+    <%= f.input :organization_id, as: :hidden, input_html: {value: @organization.id} %>
     <div class="form-actions noborder">
       <%= f.submit '提交', class: 'btn green', data: { disable_with: '提交中...' }  %>
       <button type="button" class="btn default" data-dismiss="modal">取消</button>

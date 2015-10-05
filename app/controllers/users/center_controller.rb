@@ -32,6 +32,14 @@ class Users::CenterController < ApplicationController
     end
   end
 
+  def joined_organizations
+    @organizations_users = current_user.organizations_users
+  end
+
+  def joined_groups
+    @groups = current_user.groups_users
+  end
+
   protected
 
   def user_params

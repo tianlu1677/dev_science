@@ -1,0 +1,103 @@
+<div class="row">
+  <div class="col-md-12">
+    <!-- BEGIN PROFILE SIDEBAR -->
+    <div class="profile-sidebar" style="width: 250px;">
+      <!-- PORTLET MAIN -->
+      <%= render 'left_profile' %>
+      <!-- END PORTLET MAIN -->
+
+    </div>
+    <!-- END BEGIN PROFILE SIDEBAR -->
+    <!-- BEGIN PROFILE CONTENT -->
+    <div class="profile-content">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="note note-success note-shadow">
+            <h4 class="block">我的机构</h4>
+            <p>
+              下面是您加入的机构
+            </p>
+          </div>
+
+          <div class="portlet box green">
+            <div class="portlet-title">
+              <div class="caption">
+                <i class="fa fa-gift"></i>
+													<span class="hidden-480">
+													 </span>
+              </div>
+              <ul class="nav nav-tabs">
+                <li class="active">
+                  <a href="#organization_all_tab" data-toggle="tab" aria-expanded="true">
+                      我的相关机构 </a>
+                </li>
+                <li class="">
+                  <a href="#organization_online_tab" data-toggle="tab" aria-expanded="false">
+                    已加入机构 </a>
+                </li>
+                <li class="">
+                  <a href="#organization_admin_tab" data-toggle="tab" aria-expanded="false">
+                    机构管理员
+                  </a>
+                </li>
+                <li class="">
+                  <a href="#organization_check_tab" data-toggle="tab" aria-expanded="false">
+                    申请中的机构</a>
+                </li>
+                <li class="">
+                  <a href="#organization_offline_tab" data-toggle="tab" aria-expanded="false">
+                    被拒绝的机构 </a>
+                </li>
+              </ul>
+            </div>
+            <div class="portlet-body util-btn-margin-bottom-5">
+              <div class="tab-content">
+                <div class="tab-pane " id="organization_all_tab">
+                  <%  @organizations_users.each do |organizations_user| %>
+                    <%= render 'organizations/organization', organization: organizations_user.organization %>
+                  <% end %>
+
+                </div>
+                <div style="padding-top: 100px"></div>
+                <div class="tab-pane " id="organization_online_tab">
+
+                  <%  @organizations_users.online.each do |organizations_user| %>
+                    <%= render 'organizations/organization', organization: organizations_user.organization %>
+                  <% end %>
+
+                </div>
+
+                <div class="tab-pane" id="organization_admin_tab">
+                  <%  @organizations_users.organization_admin.each do |organizations_user| %>
+                    <%= render 'organizations/organization', organization: organizations_user.organization %>
+                  <% end %>
+
+                  <%  @organizations_users.organization_super_admin.each do |organizations_user| %>
+                    <%= render 'organizations/organization', organization: organizations_user.organization %>
+                  <% end %>
+
+                </div>
+
+                <div class="tab-pane" id="organization_check_tab">
+                  <%  @organizations_users.check.each do |organizations_user| %>
+                    <%= render 'organizations/organization', organization: organizations_user.organization %>
+                  <% end %>
+                </div>
+                <div class="tab-pane active" id="organization_offline_tab">
+                  <%  @organizations_users.offline.each do |organizations_user| %>
+                    <%= render 'organizations/organization', organization: organizations_user.organization %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          
+          
+          
+        </div>
+      </div>
+    </div>
+    <!-- END PROFILE CONTENT -->
+  </div>
+</div>

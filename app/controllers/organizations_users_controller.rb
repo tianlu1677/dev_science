@@ -8,7 +8,6 @@ class OrganizationsUsersController < ApplicationController
 
   def create
     @organizations_user = current_user.organizations_users.new(permitted_params)
-    @organizations_user.organization_id = params[:organization_id]
     if @organizations_user.save
       redirect_to organization_path(@organization)
     else
@@ -32,7 +31,7 @@ class OrganizationsUsersController < ApplicationController
   protected
 
   def permitted_params
-    params.require(:organizations_user).permit(:desc, :apply_at, :reject_reason, :reject_at, :status)
+    params.require(:organizations_user).permit(:desc, :organization_id, :apply_at, :reject_reason, :reject_at, :status)
   end
 
   def get_organization

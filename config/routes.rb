@@ -14,6 +14,8 @@ Rails.application.routes.draw do
     resources :center do
       get :edit, on: :collection
       patch :update_password, on: :collection
+      get :joined_organizations, on: :collection
+      get :joined_groups, on: :collection
     end
   end
   resources :comments do
@@ -133,7 +135,7 @@ Rails.application.routes.draw do
   # Example resource route within a namespace:
   #   namespace :admin do
   #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
+  #     # (ap p/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
 

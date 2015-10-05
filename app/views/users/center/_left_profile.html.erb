@@ -42,10 +42,11 @@
         <% end %>
       </li>
       <li>
-         <a>我加入的群组</a>
+        <%= link_to raw('<i class="icon-info"></i>我的群组'), joined_groups_users_center_index_path %>
+
       </li>
       <li>
-          <a>我加入的机构</a>
+        <%= link_to raw('<i class="icon-info"></i>我的机构'), joined_organizations_users_center_index_path %>
       </li>
       <li>
           <a>我的实验</a>
