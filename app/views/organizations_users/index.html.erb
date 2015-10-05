@@ -1,64 +1,91 @@
-<div class="portlet box green">
-  <div class="portlet-title">
-    <div class="caption">
-      <i class="fa fa-cogs"></i>机构列表
+<div class="col-md-12">
+  <!-- BEGIN SAMPLE TABLE PORTLET -->
+  <div class="portlet light">
+    <div class="portlet-title">
+      <div class="caption">
+        <i class="fa fa-cogs font-green-sharp"></i>
+          <span class="caption-subject font-green-sharp bold uppercase">
+            <%= @organization.name %>用户列表
+          </span>
+      </div>
+      <div class="tools">
+        <a class="collapse" data-original-title="" href="javascript:;" title=""></a>
+        <a class="config" data-original-title="" data-toggle="modal" href="#portlet-config" title=""></a>
+        <a class="reload" data-original-title="" href="javascript:;" title=""></a>
+        <a class="remove" data-original-title="" href="javascript:;" title=""></a>
+      </div>
     </div>
-    <div class="tools">
-      <a href="javascript:;" class="collapse" data-original-title="" title="">
-      </a>
-      <a href="#portlet-config" data-toggle="modal" class="config" data-original-title="" title="">
-      </a>
-    </div>
-  </div>
-  <div class="portlet-body">
-    <div class="note note-info">
-      <p>
-        Extend Bootstrap's grid system with the thumbnail component to easily display grids of images, videos, text, and more.
-      </p>
-      <p>
-        <%= link_to "新建机构", new_organization_path, class: "black" %>
-      </p>
-    </div>
+    <div class="portlet-body flip-scroll">
+      <!--<div class="row search-form-default">-->
+        <!--<div class="col-md-12">-->
+          <!--<form class="form-inline form-horizontal" id="user_search" action="/admin/users" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="✓">    <div class="input-group">-->
+            <!--<div class="input-cont">-->
+              <!--<input placeholder="搜索用户名..." class="form-control" type="text" name="q[username_cont]" id="q_username_cont">-->
+            <!--</div>-->
+          <!--</div>-->
+            <!--<div class="input-group">-->
 
-    <h4 class="block">Custom Content</h4>
-    <div class="row">
-      <% @organizations.each do |organization| %>
-      <div class="col-sm-12 col-md-3">
-        <div class="thumbnail">
-          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMzQiIGhlaWdodD0iMjAwIj48cmVjdCB3aWR0aD0iMjM0IiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2VlZSIvPjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjExNyIgeT0iMTAwIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjE1cHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MjM0eDIwMDwvdGV4dD48L3N2Zz4=" alt="100%x200" style="width: 100%; height: 200px; display: block;" data-src="holder.js/100%x200">
-          <div class="caption">
-            <h3><%= organization.name %></h3>
-            <p>
-              Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-            </p>
-            <p>
-              <%= link_to "查看", organization_path(organization), class: 'btn blue' %>
-            </p>
+                  <!--<span class="input-group-btn">-->
+                    <!--<button class="btn green">-->
+                      <!--查询-->
+                      <!--<i class="m-icon-swapright m-icon-white"></i>-->
+                    <!--</button>-->
+                  <!--</span>-->
+            <!--</div>-->
+          <!--</form>-->
+        <!--</div>-->
+      <!--</div>-->
+      <hr/>
+      <div class="row">
+        <% @organization_users.each do |organization_user| %>
+          <div class="col-sm-12 col-sm-2">
+          <div class="thumbnail">
+
+            <%= image_tag organization_user.user.avatar %>
+            <div class="caption">
+              <h4><%= organization_user.user.username %></h4>
+
+
+              <div class="btn-group">
+                <a href="javascript:;" class="btn blue btn-sm text-center">
+                  <i class="fa fa-plus"></i>
+                  关注 </a>
+              </div>
+
+              <div class="btn-group">
+                <button type="button" class="btn green">管理</button>
+                <button type="button" class="btn green dropdown-toggle" data-toggle="dropdown"><i class="fa fa-angle-down"></i></button>
+                <ul class="dropdown-menu" role="menu">
+                  <li>
+                    <%=link_to "编辑", edit_organization_organizations_user_path(@organization, organization_user), remote: true %>
+
+                  </li>
+
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      <% end %>
-
-      <!--原始页面-->
-      <div class="col-sm-12 col-md-3">
-        <div class="thumbnail">
-          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMzQiIGhlaWdodD0iMjAwIj48cmVjdCB3aWR0aD0iMjM0IiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2VlZSIvPjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjExNyIgeT0iMTAwIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjE1cHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MjM0eDIwMDwvdGV4dD48L3N2Zz4=" alt="100%x200" style="width: 100%; height: 200px; display: block;" data-src="holder.js/100%x200">
-          <div class="caption">
-            <h3>Thumbnail label</h3>
-            <p>
-              Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-            </p>
-            <p>
-              <a href="javascript:;" class="btn red">
-                Button </a>
-              <a href="javascript:;" class="btn default">
-                Button </a>
-            </p>
-          </div>
-        </div>
+        <% end %>
       </div>
 
+      <%= paginate @organization_users %>
+      <br>
 
     </div>
   </div>
+  <!-- END SAMPLE TABLE PORTLET -->
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+

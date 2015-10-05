@@ -2,6 +2,12 @@ class OrganizationsUsersController < ApplicationController
   layout 'application'
   before_action :get_organization
 
+  def index
+
+    @q = @organization.organizations_users.online.search(params[:q])
+    @organization_users = @q.result.page(params[:page] || 1)
+  end
+
   def new
     @organizations_user = OrganizationsUser.new
   end
@@ -14,6 +20,10 @@ class OrganizationsUsersController < ApplicationController
       flash[:error] = "this is something wrong"
       redirect_to organizations_path
     end
+  end
+
+  def edit
+    @organizations_user = OrganizationsUser.find(params[:id])
   end
 
   def update

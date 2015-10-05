@@ -1,4 +1,5 @@
-<%= simple_form_for [@organization, @organizations_user], wrapper: :vertical_form, validate: true, html: { role: 'form' }  do |f| %>
+<%= simple_form_for [@organization, @organizations_user], wrapper: :vertical_form, validate: true,
+                    html: { role: 'form', id: "organizations_user_form" }  do |f| %>
 
   <div class="form-body">
     <%= f.input :desc, placeholder: '请表明你的身份' %>

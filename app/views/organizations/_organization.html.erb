@@ -5,20 +5,29 @@
       <span class="caption-subject bold uppercase">
         <%= link_to organization.name, organization_path(organization) %>
       </span>
-      <span class="caption-helper">right click inside the box</span>
+      <span class="caption-helper"><%= "#{organization.short_name} | #{organization.city}" %></span>
     </div>
     <div class="actions">
+      <div class="btn-group">
+        <a class="btn btn-sm red" href="javascript:;" data-toggle="dropdown" aria-expanded="false">
+          <i class="fa fa-user"></i> 管理 <i class="fa fa-angle-down "></i>
+        </a>
+        <ul class="dropdown-menu pull-right">
+          <li>
+            <%= link_to raw('<i class="fa fa-pencil"></i>编辑'), edit_organization_path(organization) %>
+          </li>
+          <li>
+            <%= link_to raw('<i class="fa fa-pencil"></i>管理成员'), organization_organizations_users_path(organization) %>
+          </li>
+        </ul>
+      </div>
       <%= render 'organizations_users/joined_organization', organization: organization %>
+
     </div>
   </div>
   <div class="portlet-body" style="height: auto;">
     <div id="context" data-toggle="context" data-target="#context-menu">
-      <p>
-        Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.
-        Cras mattis consectetur purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat
-        porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit.
-      </p>
+      <%= raw organization.intro %>
     </div>
-
   </div>
 </div>

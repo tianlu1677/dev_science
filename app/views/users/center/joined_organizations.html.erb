@@ -12,27 +12,17 @@
     <div class="profile-content">
       <div class="row">
         <div class="col-md-12">
-          <div class="note note-success note-shadow">
-            <h4 class="block">我的机构</h4>
-            <p>
-              下面是您加入的机构
-            </p>
-          </div>
 
           <div class="portlet box green">
             <div class="portlet-title">
               <div class="caption">
                 <i class="fa fa-gift"></i>
-													<span class="hidden-480">
+													<span class="hidden-480">我的机构
 													 </span>
               </div>
               <ul class="nav nav-tabs">
                 <li class="active">
-                  <a href="#organization_all_tab" data-toggle="tab" aria-expanded="true">
-                      我的相关机构 </a>
-                </li>
-                <li class="">
-                  <a href="#organization_online_tab" data-toggle="tab" aria-expanded="false">
+                  <a href="#organization_online_tab" data-toggle="tab" aria-expanded="true">
                     已加入机构 </a>
                 </li>
                 <li class="">
@@ -52,14 +42,8 @@
             </div>
             <div class="portlet-body util-btn-margin-bottom-5">
               <div class="tab-content">
-                <div class="tab-pane " id="organization_all_tab">
-                  <%  @organizations_users.each do |organizations_user| %>
-                    <%= render 'organizations/organization', organization: organizations_user.organization %>
-                  <% end %>
 
-                </div>
-                <div style="padding-top: 100px"></div>
-                <div class="tab-pane " id="organization_online_tab">
+                <div class="tab-pane active " id="organization_online_tab">
 
                   <%  @organizations_users.online.each do |organizations_user| %>
                     <%= render 'organizations/organization', organization: organizations_user.organization %>
@@ -88,6 +72,9 @@
                     <%= render 'organizations/organization', organization: organizations_user.organization %>
                   <% end %>
                 </div>
+
+                <div style="padding-top: 50px"></div>
+
               </div>
             </div>
           </div>

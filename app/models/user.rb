@@ -59,6 +59,10 @@ class User < ActiveRecord::Base
     self.avatar! || self.create_avatar
   end
 
+  def thumbanil_url
+    avatar ? "#{avatar.url}?imageView2/0/w/50/h/50" : nil
+  end
+
   def has_role?(role_name)
     self.roles.pluck(:basename).include?(role_name)
   end
