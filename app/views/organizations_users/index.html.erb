@@ -16,56 +16,37 @@
       </div>
     </div>
     <div class="portlet-body flip-scroll">
-      <!--<div class="row search-form-default">-->
-        <!--<div class="col-md-12">-->
-          <!--<form class="form-inline form-horizontal" id="user_search" action="/admin/users" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="✓">    <div class="input-group">-->
-            <!--<div class="input-cont">-->
-              <!--<input placeholder="搜索用户名..." class="form-control" type="text" name="q[username_cont]" id="q_username_cont">-->
-            <!--</div>-->
-          <!--</div>-->
-            <!--<div class="input-group">-->
-
-                  <!--<span class="input-group-btn">-->
-                    <!--<button class="btn green">-->
-                      <!--查询-->
-                      <!--<i class="m-icon-swapright m-icon-white"></i>-->
-                    <!--</button>-->
-                  <!--</span>-->
-            <!--</div>-->
-          <!--</form>-->
-        <!--</div>-->
-      <!--</div>-->
       <hr/>
       <div class="row">
         <% @organization_users.each do |organization_user| %>
           <div class="col-sm-12 col-sm-2">
-          <div class="thumbnail">
+            <div class="thumbnail">
 
-            <%= image_tag organization_user.user.avatar %>
-            <div class="caption">
-              <h4><%= organization_user.user.username %></h4>
+              <%= image_tag organization_user.user.avatar %>
+              <div class="caption">
+                <h4><%= organization_user.user.username %></h4>
 
 
-              <div class="btn-group">
-                <a href="javascript:;" class="btn blue btn-sm text-center">
-                  <i class="fa fa-plus"></i>
-                  关注 </a>
-              </div>
+                <div class="btn-group">
+                  <a href="javascript:;" class="btn blue btn-sm text-center">
+                    <i class="fa fa-plus"></i>
+                    关注 </a>
+                </div>
 
-              <div class="btn-group">
-                <button type="button" class="btn green">管理</button>
-                <button type="button" class="btn green dropdown-toggle" data-toggle="dropdown"><i class="fa fa-angle-down"></i></button>
-                <ul class="dropdown-menu" role="menu">
-                  <li>
-                    <%=link_to "编辑", edit_organization_organizations_user_path(@organization, organization_user), remote: true %>
+                <div class="btn-group">
+                  <button type="button" class="btn green">管理</button>
+                  <button type="button" class="btn green dropdown-toggle" data-toggle="dropdown"><i class="fa fa-angle-down"></i></button>
+                  <ul class="dropdown-menu" role="menu">
+                    <li>
+                      <%=link_to "编辑", edit_organization_organizations_user_path(@organization, organization_user), remote: true %>
 
-                  </li>
+                    </li>
 
-                </ul>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
-        </div>
         <% end %>
       </div>
 
@@ -76,16 +57,4 @@
   </div>
   <!-- END SAMPLE TABLE PORTLET -->
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
 

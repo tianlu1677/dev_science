@@ -3,7 +3,6 @@ class OrganizationsUsersController < ApplicationController
   before_action :get_organization
 
   def index
-
     @q = @organization.organizations_users.online.search(params[:q])
     @organization_users = @q.result.page(params[:page] || 1)
   end
@@ -32,6 +31,11 @@ class OrganizationsUsersController < ApplicationController
 
   def destroy
 
+  end
+
+  def manage
+    @q = @organization.organizations_users.search(params[:q])
+    @organization_users = @q.result.page(params[:page] || 1)
   end
 
   def leave

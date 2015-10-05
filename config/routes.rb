@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   resources :organizations do
     resources :organizations_users do
       delete :leave, on: :collection
+      get :manage, on: :collection
     end
     resources :groups_organizations
   end

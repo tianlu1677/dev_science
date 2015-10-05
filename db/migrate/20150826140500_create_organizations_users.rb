@@ -8,7 +8,6 @@ class CreateOrganizationsUsers < ActiveRecord::Migration
       t.text        :reject_reason        #拒绝原因
       t.datetime    :reject_at            #拒接时间
       t.integer     :reject_user_id       #拒绝人的ID
-      t.string      :authority            # 申请人的角色，分为 super_admin, admin, member
       t.string      :status               # 审核, 审核通过，取消资格，new | online | offline
       t.string      :role_type
       t.string      :role_id

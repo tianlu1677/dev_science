@@ -33,4 +33,6 @@ class OrganizationsUser < ActiveRecord::Base
   scope :organization_admin, -> { where(role_type: :organization_admin, status: :online)}
   scope :organization_super_admin, -> { where(role_type: :organization_super_admin, status: :online)}
 
+  delegate :username, :email, to: :user, prefix: true, allow_nil: true
+
 end
