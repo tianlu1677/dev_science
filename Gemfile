@@ -92,6 +92,8 @@ gem 'i18n-js', '>= 3.0.0.rc11'
 
 gem 'font-awesome-rails'
 
+gem 'scrinium_esm', '=0.0.1', path: '../scrinium_esm'
+
 group :development, :test do
   gem 'quiet_assets'
   gem 'annotate'
