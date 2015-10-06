@@ -18,10 +18,10 @@ class OrganizationsController < ApplicationController
   end
 
   def create
-    role = Role.find_by(basename: :super_organization_admin)
+    role = Role.find_by(basename: :organization_super_admin)
     @organization = Organization.new(permit_params)
     organization_user = current_user.organizations_users.new(
-        organization_id: @organization.id, desc: :super_organization_admin,
+        organization_id: @organization.id, desc: :organization_super_admin,
         status: :online, apply_at: Time.now, role_type: role.basename, role_id: role.id)
 
     if @organization.save and organization_user
@@ -44,6 +44,12 @@ class OrganizationsController < ApplicationController
     end
   end
 
+  def destroy
+    @organization = Organization.find(params[:id])
+    if @organization.destroy
+      redirect_to organizations_path
+    end
+  end
 
   protected
   def permit_params

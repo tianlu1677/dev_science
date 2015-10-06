@@ -15,19 +15,23 @@
             <i class="fa fa-user"></i> 管理 <i class="fa fa-angle-down"></i>
           </a>
           <ul class="dropdown-menu pull-right">
-            <li>
-              <a href="javascript:;">
-                <i class="fa fa-pencil"></i> 修改信息 </a>
+            <li><%= link_to edit_organization_path(@organization) do %>
+                <i class="fa fa-pencil"></i> 修改信息 <% end %>
             </li>
             <li>
-              <a href="javascript:;">
-                <i class="fa fa-trash-o"></i> 关闭 </a>
-            </li>
-            <li>
-              <a href="javascript:;">
-                <i class="fa fa-ban"></i> 删除 </a>
+              <%= link_to organization_path(@organization), method: :delete, data: {confirm: "delete?"} do %>
+                <i class="fa fa-trash-o"></i> 删除 <% end %>
             </li>
 
+            <li>
+              <%= link_to new_organization_path(parent_id: @organization.id) do %>
+                <i class="fa fa-trash-o"></i> 新建子机构 <% end %>
+            </li>
+
+            <li>
+              <%= link_to manage_organization_organizations_users_path(@organization) do %>
+                <i class="fa fa-trash-o"></i> 管理该机构成员 <% end %>
+            </li>
 
           </ul>
         </div>
@@ -48,7 +52,7 @@
 
         <p>负责人: <%= @organization.contact_name %></p>
 
-        <p>创建于: <%= @organization.created_at %>  <strong>隶属于 中国研究所</strong></p>
+        <p>创建于: <%= @organization.created_at %>  <strong>隶属于 <%= @organization.parent.try(:name) %></strong></p>
 
         <p>地址：<%= @organization.city %> </p>
       </div>

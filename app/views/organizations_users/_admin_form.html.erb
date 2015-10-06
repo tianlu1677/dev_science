@@ -7,7 +7,7 @@
     <%= f.input :reject_reason %>
     <%#= f.input :reject_at, as: :string %>
     <%= f.input :last_user_id, as: :hidden, input_html: { value: current_user.id } %>
-    <%= f.input :role_type %>
+    <%= f.input :role_type, as: :radio_buttons, :item_wrapper_class => 'inline'  %>
     <%#= f.input :role_id %>
 
     <div class="form-actions noborder">

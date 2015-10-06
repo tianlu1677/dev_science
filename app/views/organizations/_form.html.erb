@@ -1,15 +1,38 @@
 <%= simple_form_for @organization, wrapper: :vertical_form, validate: true, html: { role: 'form', id: 'organization_form' }  do |f| %>
   <div class="form-body">
-    <%= f.input :name, placeholder: '中国大气研究所' %>
-    <%= f.input :city  %>
-    <%= f.input :short_name %>
+    <%= f.input :parent_id, as: :hidden, input_html: {value: params[:parent_id]} %>
+    <div class="col-md-6">
+      <%= f.input :name, placeholder: '中国大气研究所' %>
+    </div>
+    <div class="col-md-6">
+      <%= f.input :short_name %>
+    </div>
+
+    <div class="col-md-6">
+      <%= f.input :city  %>
+    </div>
+    <div class="col-md-6">
+      <%= f.input :address %>
+    </div>
+
+    <div class="col-md-6">
+      <%= f.input :logo %>
+    </div>
+    <div class="col-md-6">
+      <%= f.input :website %>
+    </div>
+
+    <div class="col-md-6">
+      <%= f.input :contact_name %>
+    </div>
+    <div class="col-md-6">
+      <%= f.input :contact_mobile %>
+    </div>
+
     <%= f.input :intro %>
     <%= f.input :desc %>
-    <%= f.input :logo %>
-    <%= f.input :website %>
-    <%= f.input :address %>
-    <%= f.input :contact_name %>
-    <%= f.input :contact_mobile %>
+
+
     <div class="form-actions noborder">
       <%= f.submit class: 'btn green', data: { disable_with: '提交中...' }  %>
       <%= link_to '取消',  request.referer.present? ? request.referer : organizations_path, class: 'btn default' %>
