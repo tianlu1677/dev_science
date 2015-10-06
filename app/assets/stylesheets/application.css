@@ -21,8 +21,6 @@
 
  *= require global/plugins/bootstrap-datepicker/css/bootstrap-datepicker.css
 
- *= require global/css/components-md.css
- *= require global/css/plugins-md.css
 
  *= require global/css/components-rounded.css
  *= require global/css/plugins.css
@@ -33,6 +31,9 @@
 
  *= require admin/pages/css/profile.css
  *= require admin/pages/css/tasks.css
+
+ *= require global/css/components-md.css
+ *= require global/css/plugins-md.css
 
  *= require jquery.fileupload
  *= require custom/page_bar.css
