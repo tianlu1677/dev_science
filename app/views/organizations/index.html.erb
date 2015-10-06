@@ -34,14 +34,13 @@
       <div class="portlet-body">
         <div class="row">
           <% @organizations.each do |organization| %>
-            <div class="col-md-12">
-              <%= render 'organizations/organization', organization: organization  %>
-            </div>
+            <div class="col-sm-12 col-md-6">
+              <%= render 'organizations/organization', organization: organization %>
+          </div>
           <% end %>
-
-          <!--原始页面-->
-
         </div>
+
+
       </div>
     </div>
     <!-- END Portlet PORTLET-->
@@ -49,9 +48,9 @@
 
   <!--推荐机构-->
   <div class="col-md-3">
-    推荐机构
-    <% 3.times do %>
-      <%= render 'organizations/hot_organization' %>
+    推荐群组
+    <% Group.last(3).each do |group| %>
+      <%= render 'groups/group', group: group %>
     <% end %>
   </div>
 </div>

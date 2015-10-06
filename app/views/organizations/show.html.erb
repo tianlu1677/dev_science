@@ -1,66 +1,138 @@
-<div class="row">
-
-  <div class="col-md-12">
-    <!-- BEGIN Portlet PORTLET-->
-    <div class="portlet light">
-      <div class="portlet-title">
-        <div class="caption">
-          <h1><%= @organization.name %></h1>
-          <%= @organization.short_name %> | <%= @organization.city %> | <%= @organization.website %>
-        </div>
-        <div class="actions">
-          <a href="javascript:;" class="btn blue btn-sm">
-            <i class="fa fa-share"></i> Share </a>
-
-          <div class="btn-group">
-            <a class="btn btn-sm purple" href="javascript:;" data-toggle="dropdown">
-              <i class="fa fa-user"></i> User <i class="fa fa-angle-down "></i>
-            </a>
-          </div>
-        </div>
+<div class="col-md-12 #organization_show">
+  <!-- BEGIN Portlet PORTLET-->
+  <div class="portlet light">
+    <div class="portlet-title">
+      <div class="caption font-green-sharp">
+        <i class="icon-speech font-green-sharp"></i>
+        <span class="caption-subject"><%= @organization.name %></span>
+        <span class="caption-helper"></span>
       </div>
-      <div class="pull-right">
-        <%= image_tag @organization.logo, height: "268px", width: "268px" %>
-      </div>
-      <div class="portlet-body">
-        <p>
-          机构简介 <%= @organization.intro %>
-        </p>
 
-        <p>
-          机构介绍 <%= @organization.desc %>
-        </p>
+      <div class="actions">
+        <div class="btn-group">
 
-        <hr/>
+          <a class="btn btn-circle btn-default " href="javascript:;" data-toggle="dropdown">
+            <i class="fa fa-user"></i> 管理 <i class="fa fa-angle-down"></i>
+          </a>
+          <ul class="dropdown-menu pull-right">
+            <li>
+              <a href="javascript:;">
+                <i class="fa fa-pencil"></i> 修改信息 </a>
+            </li>
+            <li>
+              <a href="javascript:;">
+                <i class="fa fa-trash-o"></i> 关闭 </a>
+            </li>
+            <li>
+              <a href="javascript:;">
+                <i class="fa fa-ban"></i> 删除 </a>
+            </li>
 
-        <div class="row">
-          <div>
-            <h3>下属子机构</h3>
-          </div>
-          <% @sub_organizations.each do |organization| %>
-            <div class="col-md-4">
-              <%= render 'organizations/organization', organization: organization %>
-            </div>
-          <% end %>
+
+          </ul>
         </div>
+        <%= render 'organizations_users/joined_organization', organization: @organization %>
 
-        <div class="row">
-          <div>
-            <h3>下属群组</h3>
+        <a href="javascript:;" class="btn btn-circle btn-default btn-icon-only fullscreen" data-original-title="" title=""></a>
+      </div>
+    </div>
+    <hr/>
+    <div class="portlet-body">
+      <div class="col-md-3">
+        <img src="/assets/admin/pages/media/profile/profile_user.jpg" style="width: 100%;height: 250px" alt=""/>
+      </div>
+      <div class="col-md-6">
+        <h1><%= @organization.name %></h1>
+
+        <h3><%= @organization.short_name %></h3>
+
+        <p>负责人: <%= @organization.contact_name %></p>
+
+        <p>创建于: <%= @organization.created_at %>  <strong>隶属于 中国研究所</strong></p>
+
+        <p>地址：<%= @organization.city %> </p>
+      </div>
+
+
+      <div class="clearfix" style="padding-bottom: 20px">
+      </div>
+
+      <ul class="nav nav-tabs">
+        <li class="active">
+          <a href="#organization_info_tabl" data-toggle="tab" aria-expanded="true">
+            基本信息 </a>
+        </li>
+        <li class="">
+          <a href="#organization_info_suborganizations" data-toggle="tab" aria-expanded="false">
+            子机构 </a>
+        </li>
+
+        <li class="">
+          <a href="#organization_info_groups" data-toggle="tab" aria-expanded="false">
+            群组 </a>
+        </li>
+
+        <li class="">
+          <a href="#organization_memebers" data-toggle="tab" aria-expanded="false">
+            成员 </a>
+        </li>
+
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade active in " id="organization_info_tabl">
+
+          <ul class="list-group">
+            <% attributes.each do |attr| %>
+              <li class="list-group-item">
+                <div class="row">
+                  <div class="col-md-2">
+                    <strong><%= resource_class.human_attribute_name(attr) %></strong>
+                  </div>
+                  <div class="col-md-9">
+                    <%= resource.send(attr) %>
+                  </div>
+                </div>
+
+              </li>
+            <% end %>
+
+          </ul>
+
+        </div>
+        <div class="tab-pane fade " id="organization_info_suborganizations">
+          <div class="row">
+            <% @sub_organizations.each do |organization| %>
+              <div class="col-sm-12 col-md-3">
+                <%= render 'organizations/organization', organization: organization %>
+              </div>
+            <% end %>
           </div>
-          <% @groups.each do |group| %>
-            <div class="col-md-4">
-              <%= render 'groups/group', group: group %>
+
+        </div>
+        <div class="tab-pane fade" id="organization_info_groups">
+          <div class="row">
+            <% @groups.each do |group| %>
+              <div class="col-sm-12 col-md-3">
+                <%= render 'groups/group', group: group %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="organization_memebers">
+          <div class="row">
+            <% @organization.organizations_users.online.each do |organization_user| %>
+              <div class="col-sm-12 col-sm-2">
+                <%= render 'organizatsions_users/organization_user', organization_user: organization_user %>
+              </div>
+              </div>
+            <% end %>
+
             </div>
-          <% end %>
+        <div class="clearfix margin-bottom-30">
         </div>
 
       </div>
     </div>
     <!-- END Portlet PORTLET-->
   </div>
-
-
-  </div>
-
-
+</div>
