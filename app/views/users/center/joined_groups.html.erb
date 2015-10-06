@@ -1,0 +1,119 @@
+<div class="row">
+  <div class="col-md-12">
+    <!-- BEGIN PROFILE SIDEBAR -->
+    <div class="profile-sidebar" style="width: 250px;">
+      <!-- PORTLET MAIN -->
+      <%= render 'left_profile' %>
+      <!-- END PORTLET MAIN -->
+    </div>
+    <!-- END BEGIN PROFILE SIDEBAR -->
+
+    <div class="col-md-9">
+      <div class="portlet light">
+        <div class="portlet-title">
+          <div class="caption">
+            <i class="icon-basket font-green-sharp"></i>
+									<span class="caption-subject font-green-sharp bold uppercase">
+									我的群组 </span>
+            <span class="caption-helper">群组</span>
+          </div>
+          <div class="actions btn-set">
+            <!--<button type="button" name="back" class="btn btn-default btn-circle"><i class="fa fa-angle-left"></i> Back-->
+            <!--</button>-->
+            <!--<button class="btn btn-default btn-circle "><i class="fa fa-reply"></i> Reset</button>-->
+            <!--<button class="btn green-haze btn-circle"><i class="fa fa-check"></i> Save</button>-->
+            <!--<button class="btn green-haze btn-circle"><i class="fa fa-check-circle"></i> Save &amp; Continue Edit-->
+            <!--</button>-->
+            <!--<div class="btn-group">-->
+            <!--<a class="btn yellow btn-circle" href="javascript:;" data-toggle="dropdown">-->
+            <!--<i class="fa fa-share"></i> More <i class="fa fa-angle-down"></i>-->
+            <!--</a>-->
+            <!--<ul class="dropdown-menu pull-right">-->
+            <!--<li>-->
+            <!--<a href="javascript:;">-->
+            <!--Duplicate </a>-->
+            <!--</li>-->
+            <!--<li>-->
+            <!--<a href="javascript:;">-->
+            <!--Delete </a>-->
+            <!--</li>-->
+            <!--<li class="divider">-->
+            <!--</li>-->
+            <!--<li>-->
+            <!--<a href="javascript:;">-->
+            <!--Print </a>-->
+            <!--</li>-->
+            <!--</ul>-->
+            <!--</div>-->
+          </div>
+        </div>
+        <div class="portlet-body">
+          <div class="tabbable">
+
+            <ul class="nav nav-tabs">
+              <li class="active">
+                <a href="#group_online_tab" data-toggle="tab" aria-expanded="true">
+                  已加入群组 <%= @groups_users.online.count %></a>
+              </li>
+              <li class="">
+                <a href="#group_admin_tab" data-toggle="tab" aria-expanded="false">
+                  群组管理员 <%= @groups_users.admin.count %>
+                </a>
+              </li>
+              <li class="">
+                <a href="#group_check_tab" data-toggle="tab" aria-expanded="false">
+                  申请中的群组 <%= @groups_users.check.count %>
+                </a>
+              </li>
+              <li class="">
+                <a href="#group_offline_tab" data-toggle="tab" aria-expanded="false">
+                  被拒绝的群组 <%= @groups_users.offline.count %>
+                </a>
+              </li>
+            </ul>
+
+
+            <div class="tab-content no-space">
+              <div class="tab-content">
+
+                <div class="tab-pane active " id="group_online_tab">
+
+                  <% @groups_users.online.each do |groups_user| %>
+                    <%= render 'groups/group',  group: groups_user.group %>
+                  <% end %>
+
+                </div>
+
+                <div class="tab-pane" id="group_admin_tab">
+                  <% @groups_users.admin.each do |groups_user| %>
+                    <%= render 'groups/group',  group: groups_user.group %>
+                  <% end %>
+
+                </div>
+
+                <div class="tab-pane" id="group_check_tab">
+                  <!-- 审核中的机构-->
+                  <div class="row">
+                    <% @groups_users.check.each do |groups_user| %>
+                      <div class="col-sm-12 col-md-4">
+                        <%= render 'groups/group',  group: groups_user.group %>
+                      </div>
+                    <% end %>
+                  </div>
+
+                </div>
+                <div class="tab-pane active" id="group_offline_tab">
+                  <% @groups_users.offline.each do |groups_user| %>
+                    <%= render 'groups/group', group: groups_user.group %>
+                  <% end %>
+                </div>
+                <div style="padding-top: 50px"></div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

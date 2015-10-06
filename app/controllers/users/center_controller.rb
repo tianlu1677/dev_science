@@ -37,7 +37,7 @@ class Users::CenterController < ApplicationController
   end
 
   def joined_groups
-    @groups = current_user.groups_users
+    @groups_users = current_user.groups_users
   end
 
   protected

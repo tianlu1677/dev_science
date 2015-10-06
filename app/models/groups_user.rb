@@ -21,16 +21,21 @@
 class GroupsUser < ActiveRecord::Base
 
   extend Enumerize
-  enumerize :authority, in: [:super_admin, :admin, :member], default: :member
-  enumerize :status, in: [:checking, :online, :offline], default: :online
-
-  scope :checking,       -> { where(status: :checking) }
-  scope :online,         -> { where(status: :online) }
-  scope :offline,        -> { where(status: :offline) }
+  enumerize :role_type, in: [:group_admin, :member], default: nil
+  enumerize :status, in: [:check, :online, :offline]
 
   belongs_to :user
   belongs_to :group
 
+  scope :check,               -> { where(status: :check) }
+  scope :online,              -> { where(status: :online) }
+  scope :offline,             -> { where(status: :offline) }
+  scope :group_admin,         -> { where(role_type: :group_admin, status: :online)}
+  scope :group_super_admin,   -> { where(role_type: :group_super_admin, status: :online)}
+  scope :admin,               -> { where(role_type: [:organization_admin, :organization_super_admin], status: :online)}
+
   validates :desc, presence: true
+  delegate :username, :email, to: :user, prefix: true, allow_nil: true
+
 
 end
