@@ -40,7 +40,9 @@ class Organization < ActiveRecord::Base
 
   belongs_to :parent, class_name: "Organization"
 
-  scope :online, -> {where(status: :check)}
+  scope :check, -> {where(status: :check)}
+  scope :online, -> {where(status: :online)}
+  scope :offline, -> {where(status: :offline)}
 
   validates :name, :city, :short_name, :intro, :desc, :address, :contact_name, :contact_mobile, presence: true
 

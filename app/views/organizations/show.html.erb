@@ -40,6 +40,14 @@
         <a href="javascript:;" class="btn btn-circle btn-default btn-icon-only fullscreen" data-original-title="" title=""></a>
       </div>
     </div>
+
+    <% if @organization.status != 'online' %>
+      <div class="alert alert-warning alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
+        <strong>提醒!</strong> 该机构还在审核中，只有当前机构管理员可见！！！
+      </div>
+    <% end %>
+
     <hr/>
     <div class="portlet-body">
       <div class="col-md-3">
