@@ -5,60 +5,87 @@
       <!-- PORTLET MAIN -->
       <%= render 'left_profile' %>
       <!-- END PORTLET MAIN -->
-
     </div>
     <!-- END BEGIN PROFILE SIDEBAR -->
-    <!-- BEGIN PROFILE CONTENT -->
-    <div class="profile-content">
-      <div class="row">
-        <div class="col-md-12">
 
-          <div class="portlet box green">
-            <div class="portlet-title">
-              <div class="caption">
-                <i class="fa fa-gift"></i>
-													<span class="hidden-480">我的机构
-													 </span>
-              </div>
-              <ul class="nav nav-tabs">
-                <li class="active">
-                  <a href="#organization_online_tab" data-toggle="tab" aria-expanded="true">
-                    已加入机构 <%= @organizations_users.online.count %></a>
-                </li>
-                <li class="">
-                  <a href="#organization_admin_tab" data-toggle="tab" aria-expanded="false">
-                    机构管理员 <%= @organizations_users.admin.count %>
-                  </a>
-                </li>
-                <li class="">
-                  <a href="#organization_check_tab" data-toggle="tab" aria-expanded="false">
-                    申请中的机构 <%= @organizations_users.check.count %>
-                  </a>
-                </li>
-                <li class="">
-                  <a href="#organization_offline_tab" data-toggle="tab" aria-expanded="false">
-                    被拒绝的机构 <%= @organizations_users.offline.count %>
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div class="portlet-body util-btn-margin-bottom-5">
+    <div class="col-md-9">
+      <div class="portlet light">
+        <div class="portlet-title">
+          <div class="caption">
+            <i class="icon-basket font-green-sharp"></i>
+									<span class="caption-subject font-green-sharp bold uppercase">
+									我的机构 </span>
+            <span class="caption-helper">机构</span>
+          </div>
+          <div class="actions btn-set">
+            <!--<button type="button" name="back" class="btn btn-default btn-circle"><i class="fa fa-angle-left"></i> Back-->
+            <!--</button>-->
+            <!--<button class="btn btn-default btn-circle "><i class="fa fa-reply"></i> Reset</button>-->
+            <!--<button class="btn green-haze btn-circle"><i class="fa fa-check"></i> Save</button>-->
+            <!--<button class="btn green-haze btn-circle"><i class="fa fa-check-circle"></i> Save &amp; Continue Edit-->
+            <!--</button>-->
+            <!--<div class="btn-group">-->
+              <!--<a class="btn yellow btn-circle" href="javascript:;" data-toggle="dropdown">-->
+                <!--<i class="fa fa-share"></i> More <i class="fa fa-angle-down"></i>-->
+              <!--</a>-->
+              <!--<ul class="dropdown-menu pull-right">-->
+                <!--<li>-->
+                  <!--<a href="javascript:;">-->
+                    <!--Duplicate </a>-->
+                <!--</li>-->
+                <!--<li>-->
+                  <!--<a href="javascript:;">-->
+                    <!--Delete </a>-->
+                <!--</li>-->
+                <!--<li class="divider">-->
+                <!--</li>-->
+                <!--<li>-->
+                  <!--<a href="javascript:;">-->
+                    <!--Print </a>-->
+                <!--</li>-->
+              <!--</ul>-->
+            <!--</div>-->
+          </div>
+        </div>
+        <div class="portlet-body">
+          <div class="tabbable">
+
+            <ul class="nav nav-tabs">
+              <li class="active">
+                <a href="#organization_online_tab" data-toggle="tab" aria-expanded="true">
+                  已加入机构 <%= @organizations_users.online.count %></a>
+              </li>
+              <li class="">
+                <a href="#organization_admin_tab" data-toggle="tab" aria-expanded="false">
+                  机构管理员 <%= @organizations_users.admin.count %>
+                </a>
+              </li>
+              <li class="">
+                <a href="#organization_check_tab" data-toggle="tab" aria-expanded="false">
+                  申请中的机构 <%= @organizations_users.check.count %>
+                </a>
+              </li>
+              <li class="">
+                <a href="#organization_offline_tab" data-toggle="tab" aria-expanded="false">
+                  被拒绝的机构 <%= @organizations_users.offline.count %>
+                </a>
+              </li>
+            </ul>
+
+
+            <div class="tab-content no-space">
               <div class="tab-content">
 
                 <div class="tab-pane active " id="organization_online_tab">
 
-                  <%  @organizations_users.online.each do |organizations_user| %>
+                  <% @organizations_users.online.each do |organizations_user| %>
                     <%= render 'organizations/organization', organization: organizations_user.organization %>
                   <% end %>
 
                 </div>
 
                 <div class="tab-pane" id="organization_admin_tab">
-                  <%  @organizations_users.organization_admin.each do |organizations_user| %>
-                    <%= render 'organizations/organization', organization: organizations_user.organization %>
-                  <% end %>
-
-                  <%  @organizations_users.organization_super_admin.each do |organizations_user| %>
+                  <% @organizations_users.admin.each do |organizations_user| %>
                     <%= render 'organizations/organization', organization: organizations_user.organization %>
                   <% end %>
 
@@ -69,30 +96,24 @@
                   <div class="row">
                     <% @organizations_users.check.each do |organizations_user| %>
                       <div class="col-sm-12 col-md-4">
-                        <%= render 'organizations/organization',  organization: organizations_user.organization %>
+                        <%= render 'organizations/organization', organization: organizations_user.organization %>
                       </div>
                     <% end %>
                   </div>
 
                 </div>
                 <div class="tab-pane active" id="organization_offline_tab">
-                  <%  @organizations_users.offline.each do |organizations_user| %>
+                  <% @organizations_users.offline.each do |organizations_user| %>
                     <%= render 'organizations/organization', organization: organizations_user.organization %>
                   <% end %>
                 </div>
-
                 <div style="padding-top: 50px"></div>
-
               </div>
+
             </div>
           </div>
-
-          
-          
-          
         </div>
       </div>
     </div>
-    <!-- END PROFILE CONTENT -->
   </div>
 </div>
