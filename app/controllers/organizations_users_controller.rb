@@ -26,7 +26,18 @@ class OrganizationsUsersController < ApplicationController
   end
 
   def update
-
+    @organizations_user = OrganizationsUser.find(params[:id])
+    status = params[:organizations_user][:status]
+    reject_reason = params[:organizations_user][:reject_reason]
+    role_type = params[:organizations_user][:role_type]
+    if status == "check"
+      @organizations_user.update(status: :check, role_type: nil, role_id: nil, reject_reason: nil, reject_at: nil )
+    elsif status == "online"
+      role = Role.find_by(basename: role_type)
+      @organizations_user.update(status: :online, role_type: role_type, role_id: role.try(:id), reject_reason: nil, reject_at: nil )
+    elsif status == "offline"
+      @organizations_user.update(status: :offline, role_type: nil, role_id: nil, reject_reason: reject_reason, reject_at: Time.now )
+    end
   end
 
   def destroy
@@ -35,7 +46,7 @@ class OrganizationsUsersController < ApplicationController
 
   def manage
     @q = @organization.organizations_users.search(params[:q])
-    @organization_users = @q.result.page(params[:page] || 1)
+    @organization_users = @q.result(distinct: true).page(params[:page] || 1).per(20)
   end
 
   def leave

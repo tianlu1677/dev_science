@@ -3,15 +3,15 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-        <h4 class="modal-title">申请加入<%= @organization.name %></h4>
+        <h4 class="modal-title"><%= @organizations_user.user_username %>申请加入<%= @organization.name %></h4>
       </div>
       <div class="modal-body">
         <div class="note note-success">
           <p>
-            申请加入该机构，申请完后，机构管理员会尽快审核。
+            您可以把该用户加入机构，或者拒绝，后者设置为机构管理员
           </p>
         </div>
-        <%= render "form" %>
+        <%= render "admin_form" %>
       </div>
     </div>
     <!-- /.modal-content -->

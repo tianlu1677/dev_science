@@ -21,7 +21,7 @@
 class OrganizationsUser < ActiveRecord::Base
   extend Enumerize
   enumerize :status, in: [:check, :online, :offline], default: :check
-
+  enumerize :role_type, in: [:organization_admin, :member], default: nil
   validates :desc, presence: true
 
   belongs_to :user

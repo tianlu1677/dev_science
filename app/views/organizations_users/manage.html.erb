@@ -2,15 +2,14 @@
   <div class="portlet-title">
     <div class="caption">
       <i class="fa fa-cogs"></i><%= @organization.name %> 用户列表
+      <span>|
+      通过审请: <%= @organization.organizations_users.online.count %> 人
+      | 拒绝审请: <%= @organization.organizations_users.offline.count %> 人
+        | 审核中: <%= @organization.organizations_users.check.count %> 人
+    </span>
     </div>
     <div class="tools">
       <a href="javascript:;" class="collapse" data-original-title="" title="">
-      </a>
-      <a href="#portlet-config" data-toggle="modal" class="config" data-original-title="" title="">
-      </a>
-      <a href="javascript:;" class="reload" data-original-title="" title="">
-      </a>
-      <a href="javascript:;" class="remove" data-original-title="" title="">
       </a>
     </div>
   </div>
@@ -20,11 +19,11 @@
       <div class="col-md-12">
         <%= search_form_for [@q], url: manage_organization_organizations_users_path(@organization) , html: { class: 'form-inline form-horizontal' } do |f| %>
           <div class="input-group">
-            <%= f.text_field :user_id_cont, placeholder: '用户名称...', class: 'form-control input-circle-left' %>
+            <%#= f.text_field :users_username_cont, placeholder: '用户名称...', class: 'form-control input-circle-left' %>
           </div>
           <div class="input-group">
 
-              <%= f.text_field :user_id_cont, placeholder: '用户邮箱...', class: 'form-control input-circle-left' %>
+              <%= f.text_field :user_email_cont, placeholder: '用户邮箱...', class: 'form-control input-circle-left' %>
 
             <span class="input-group-btn">
               <button class="btn green">
@@ -40,7 +39,7 @@
     </div>
 
     <hr/>
-    <% attributes = %w( user_username user_email desc apply_at reject_at reject_user_id role_type role_id  ) %>
+    <% attributes = %w( user_username user_email status role_type  desc apply_at reject_reason reject_at ) %>
     <!--#  user_id         :integer-->
     <!--#  organization_id :integer-->
     <!--#  desc            :text-->
@@ -57,16 +56,17 @@
 
     <table class="table table-bordered table-striped table-condensed flip-content">
       <thead class="flip-content">
-      <tr>
+      <tr class="">
         <% attributes.each do |attribute| %>
-          <th width="20%"><%= OrganizationsUser.human_attribute_name(attribute) %></th>
+          <%= content_tag :th, sort_link(@q, attribute) %>
         <% end %>
-
+        <th scope="col" styple="min-width:150px !important">操作</th>
       </tr>
       </thead>
       <tbody>
-      <tr>
+
         <% @organization_users.each do |resource| %>
+        <tr id="organization_users_<%= resource.id %>">
           <% attributes.each do |attr| %>
             <% if respond_to?("#{attr}_text".to_sym) %>
             <td><%= self.send("#{attr}_text".to_sym) %></td>
@@ -82,32 +82,21 @@
             <td><%= resource.send(attr).to_s.truncate(20) %></td>
             <% end %>
           <% end %>
+          <td>
+            <%= link_to edit_organization_organizations_user_path(@organization, resource), class: "btn  red", remote: true do %>
+              <i class="fa fa-edit"></i> 编辑
+            <% end %>
+          </td>
+
+        </tr>
         <% end %>
-      </tr>
+
+
 
       </tbody>
+
+      <%= paginate @organization_users %>
     </table>
   </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

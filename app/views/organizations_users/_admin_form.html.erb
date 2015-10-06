@@ -1,0 +1,62 @@
+<%= simple_form_for [@organization, @organizations_user], wrapper: :vertical_form, validate: true,
+                    html: { role: 'form', id: "organizations_user_form" }, remote: true do |f| %>
+
+  <div class="form-body">
+    <%= f.input :desc, disabled: true %>
+    <%= f.input :status, as: :radio_buttons, :item_wrapper_class => 'inline' %>
+    <%= f.input :reject_reason %>
+    <%#= f.input :reject_at, as: :string %>
+    <%#= f.input :reject_user_id %>
+    <%= f.input :role_type %>
+    <%#= f.input :role_id %>
+
+    <div class="form-actions noborder">
+      <%= f.submit '提交', class: 'btn green', data: { disable_with: '提交中...' }  %>
+      <button type="button" class="btn default" data-dismiss="modal">取消</button>
+      <%#= link_to '取消',  request.referer.present? ? request.referer : organizations_path, class: 'btn default' %>
+    </div>
+  </div>
+<% end %>
+
+<script>
+
+  function change_status(){
+    var status = $('.organizations_user_status input:checked').val();
+    var $reason = $('.organizations_user_reject_reason');
+    var $role_type = $('.organizations_user_role_type');
+    if(status == 'check'){
+      $reason.hide();
+      $role_type.hide();
+    }else if (status == 'online'){
+      $reason.hide();
+      $role_type.show();
+    }else
+    {
+      $reason.show();
+      $role_type.hide();
+    }
+
+  }
+
+  $(function(){
+
+    change_status();
+    $(".organizations_user_status input").change(function(e){
+      change_status();
+    });
+  })
+</script>
+
+<!--#  user_id         :integer-->
+<!--#  organization_id :integer-->
+<!--#  desc            :text-->
+<!--#  apply_at        :datetime-->
+<!--#  reject_reason   :text-->
+<!--#  reject_at       :datetime-->
+<!--#  reject_user_id  :integer-->
+<!--#  authority       :string-->
+<!--#  status          :string-->
+<!--#  role_type       :string-->
+<!--#  role_id         :string-->
+<!--#  created_at      :datetime         not null-->
+<!--#  updated_at      :datetime         not null-->

@@ -21,15 +21,17 @@ zh-CN:
       <<: *enumerize_meaning
     organizations_user:
       status:
-        checking:   审核中
+        check:      审核中
         online:     通过审核
-        offline:    未通过审核
-
+        offline:    拒绝加入
+      role_type:
+        organization_admin: 机构管理员
+        member: 成员
     groups_user:
       status:
-        checking:   审核中
+        check:      审核中
         online:     通过审核
-        offline:    未通过审核
+        offline:    拒绝加入
     comment:
       <<: *enumerize_meaning
     profile:
