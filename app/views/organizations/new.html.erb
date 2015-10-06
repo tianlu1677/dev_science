@@ -5,17 +5,17 @@
       <div class="portlet-title">
         <div class="caption font-red-sunglo">
           <i class="icon-settings font-red-sunglo"></i>
-          <span class="caption-subject bold">申请新建机构</span>
-          <span></span>
+
+          <% if params[:parent_id].blank? %>
+            <span class="caption-subject bold">申请新建机构</span>
+          <% else %>
+            <span class="caption-subject bold">申请新建<%= Organization.find_by(parent_id: params[:parent_id]).name %>的子机构</span>
+          <% end %>
+
         </div>
       </div>
 
       <div class="portlet-body form">
-        <div class="note note-success">
-          <p>
-
-          </p>
-        </div>
         <%= render "form" %>
       </div>
     </div>

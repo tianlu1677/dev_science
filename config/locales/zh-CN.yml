@@ -69,6 +69,7 @@ zh-CN:
 
   organizations_user:
     <<: *action_labels
+    are_you_sure_leave: 您确定要退出此机构?
   groups_user:
     <<: *action_labels
   experience:
