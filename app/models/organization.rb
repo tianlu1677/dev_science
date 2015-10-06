@@ -38,6 +38,8 @@ class Organization < ActiveRecord::Base
   has_many :organizations_users, dependent: :destroy
   has_many :users, through: :organizations_users
 
+  scope :online, -> {where(status: :check)}
+
   validates :name, :city, :short_name, :intro, :desc, :address, :contact_name, :contact_mobile, presence: true
 
 end

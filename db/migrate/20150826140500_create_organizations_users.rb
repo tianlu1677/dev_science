@@ -7,7 +7,7 @@ class CreateOrganizationsUsers < ActiveRecord::Migration
       t.datetime    :apply_at             #申请时间，主要为了更清晰的标识时间
       t.text        :reject_reason        #拒绝原因
       t.datetime    :reject_at            #拒接时间
-      t.integer     :reject_user_id       #拒绝人的ID
+      t.integer     :last_user_id         #最后修改人的id
       t.string      :status               # 审核, 审核通过，取消资格，new | online | offline
       t.string      :role_type
       t.string      :role_id

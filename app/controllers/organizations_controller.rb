@@ -1,8 +1,8 @@
 class OrganizationsController < ApplicationController
   layout 'application'
   def index
-    @q = Organization.all.search(params[:q])
-    @organizations = @q.result.page(params[:page] || 1)
+    @q = Organization.online.search(params[:q])
+    @organizations = @q.result(distinct: true).page(params[:page] || 1)
   end
 
   def new
