@@ -5,7 +5,7 @@
 
     <% elsif current_user_joined_organization(organization).try(:status) == 'online' %>
       <%= link_to "已加入", leave_organization_organizations_users_path(organization), class: "leave_organization btn btn-default",
-                  remote: true, method: :delete, data: {confirm: t("#{OrganizationsUser.to_s.underscore}.are_you_sure_leave")} %>
+                  remote: true, method: :delete, data: {confirm: t("action_label.are_you_sure_leave")} %>
   <% elsif current_user_joined_organization(organization).try(:status) == 'offline' %>
     <%= link_to new_organization_organizations_user_path(organization), class: "btn btn-circle btn-success", remote: true do %>
       <i class="fa fa-plus"></i> 加入

@@ -41,7 +41,7 @@ class OrganizationsUsersController < ApplicationController
   end
 
   def destroy
-
+    # @organization_users = current_user.organizations_users.where(organization_id: params[:organization_id]).destroy_all
   end
 
   def manage

@@ -39,6 +39,11 @@ zh-CN:
     are_you_sure_operation: 您确定要进行此操作吗？
     are_you_sure_leave:   您确定要退出此小组？
     reply: 回复
+    cancel: 取消
+    submitting: 提交中...
+    join: 加入
+    manage: 管理
+
   user:
     <<: *action_labels
   role:
