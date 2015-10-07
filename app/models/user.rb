@@ -54,6 +54,10 @@ class User < ActiveRecord::Base
   validates :email, presence: true, uniqueness: true
 
 
+  def display_name
+    self.username || self.email.split('@')[0]
+  end
+
   alias avatar! avatar
   def avatar
     self.avatar! || self.create_avatar
