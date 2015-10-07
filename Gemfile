@@ -51,6 +51,9 @@ gem 'simple_form'
 gem 'nested_form'
 # gem 'select2-rails'
 gem 'haml-rails'
+
+gem 'slim'
+
 gem 'kaminari'
 gem 'kaminari-bootstrap', '~> 3.0.1'
 gem 'enumerize'
