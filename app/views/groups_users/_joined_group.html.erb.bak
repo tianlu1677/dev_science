@@ -1,0 +1,18 @@
+<div class="joined_group">
+  <% status = user_joined_group(group) %>
+  <% if  status == 'check' %>
+    <%= link_to t('enumerize.groups_user.status.check'), leave_group_groups_users_path(group), class: "leave_group btn btn-default",
+                remote: true, method: :delete, data: {confirm: t("#{GroupsUser.to_s.underscore}.are_you_sure_leave")} %>
+  <% elsif status == "online" %>
+    <%= link_to "退出小组", leave_group_groups_users_path(group), class: "leave_group btn btn-default",
+                remote: true, method: :delete, data: {confirm: t("#{GroupsUser.to_s.underscore}.are_you_sure_leave")} %>
+  <% elsif status == "offline" %>
+    <%= link_to new_group_groups_user_path(group), class: 'btn green-meadow', :"data-toggle" =>"modal", remote: true do %>
+      <i class="fa fa-plus"></i> 加入
+    <% end %>
+  <% else %>
+    <%= link_to new_group_groups_user_path(group), class: 'btn green-meadow', :"data-toggle" =>"modal", remote: true do %>
+      <i class="fa fa-plus"></i> 加入
+    <% end %>
+  <% end %>
+</div>

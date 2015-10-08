@@ -9,8 +9,7 @@
 #  apply_at        :datetime
 #  reject_reason   :text
 #  reject_at       :datetime
-#  reject_user_id  :integer
-#  authority       :string
+#  last_user_id    :integer
 #  status          :string
 #  role_type       :string
 #  role_id         :string
