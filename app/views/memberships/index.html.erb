@@ -5,7 +5,7 @@
       <div class="caption">
         <i class="fa fa-cogs font-green-sharp"></i>
           <span class="caption-subject font-green-sharp bold uppercase">
-            <%= @organization.name %>用户列表
+            <%= @manageable.name %>用户列表
           </span>
       </div>
       <div class="tools">
@@ -18,14 +18,14 @@
     <div class="portlet-body flip-scroll">
       <hr/>
       <div class="row">
-        <% @organization_users.each do |organization_user| %>
+        <% @memberships.each do |memberships| %>
           <div class="col-sm-12 col-sm-2">
-            <%= render 'organizations_users/organization_user', organization_user: organization_user %>
+            <%= render 'memberships/membership', memberships: memberships %>
           </div>
         <% end %>
       </div>
 
-      <%= paginate @organization_users %>
+      <%= paginate @memberships %>
       <br>
 
     </div>

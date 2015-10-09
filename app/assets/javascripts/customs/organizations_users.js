@@ -1,19 +1,19 @@
-var organizationsUsersFormValidate = function() {
+var membershipFormValidate = function() {
   // for more info visit the official plugin documentation:
   // http://docs.jquery.com/Plugins/Validation
 
-  var organizationsUsersForm = $('#new_organizations_user');
+  var membershipForm = $('#new_membership');
 
-  organizationsUsersForm.validate({
+  membershipForm.validate({
     rules: {
-      "organizations_user[desc]": {
+      "membership[desc]": {
         minlength: 2,
         required: true
       }
 
     },
     messages: {
-      "organizations_user[desc]": {
+      "membership[desc]": {
         minlength: "至少为2个字",
         required: "请填写申请的相关信息"
       }
@@ -23,7 +23,7 @@ var organizationsUsersFormValidate = function() {
 
 };
 $(function(){
-  organizationsUsersFormValidate();
+  membershipFormValidate();
 });
 
 

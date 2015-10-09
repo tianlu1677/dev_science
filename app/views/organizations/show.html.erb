@@ -29,13 +29,13 @@
             </li>
 
             <li>
-              <%= link_to manage_organization_organizations_users_path(@organization) do %>
+              <%= link_to manage_organization_memberships_path(@organization) do %>
                 <i class="fa fa-trash-o"></i> 管理该机构成员 <% end %>
             </li>
 
           </ul>
         </div>
-        <%= render 'organizations_users/joined_organization', organization: @organization %>
+        <%= render 'memberships/joined_organization', organization: @organization %>
 
         <a href="javascript:;" class="btn btn-circle btn-default btn-icon-only fullscreen" data-original-title="" title=""></a>
       </div>
@@ -132,9 +132,9 @@
         </div>
         <div class="tab-pane fade" id="organization_memebers">
           <div class="row">
-            <% @organization.organizations_users.online.each do |organization_user| %>
+            <% @organization.memberships.online.each do |membership| %>
               <div class="col-sm-12 col-sm-2">
-                <%= render 'organizatsions_users/organization_user', organization_user: organization_user %>
+                <%= render 'memberships/membership', membership: membership %>
               </div>
               </div>
             <% end %>

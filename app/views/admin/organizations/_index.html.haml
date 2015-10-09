@@ -39,7 +39,7 @@
             = link_to t("#{resource_class.name.underscore}.show"), resource_path(resource), class: 'btn btn-xs blue'
             = link_to t("#{resource_class.name.underscore}.edit"), edit_resource_path(resource), class: 'btn btn-xs yellow'
             = link_to t("#{resource_class.name.underscore}.destroy"), resource_path(resource), :method => :delete, data: {confirm: t("#{resource_class.name.underscore}.are_you_sure")}, class: 'btn btn-xs red'
-            = link_to "机构成员#{}", admin_organization_organizations_users_path(resource), class: 'btn btn-xs green'
+            = link_to "机构成员#{}", admin_organization_memberships_path(resource), class: 'btn btn-xs green'
     %tfoot
       %tr
         - (attributes).each do |attr|

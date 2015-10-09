@@ -67,7 +67,7 @@ zh-CN:
     has_new_comments: "有新的评论"
 
 
-  organizations_user:
+  membership:
     <<: *action_labels
     are_you_sure_leave: 您确定要退出此机构?
   groups_user:
@@ -88,7 +88,7 @@ zh-CN:
       post: 回复
       comment: 评论
       profile: 个人信息
-      organizations_user: 机构与人
+      membership: 机构与人
       groups_user: 群组与人
       experience: 工作经历
       resource: 文件
@@ -207,10 +207,13 @@ zh-CN:
         wechat:          微信
         created_at:      创建时间
         updated_at:      更新时间
-      organizations_user:
+      membership:
         id:                   ID
         user_id:              用户ID
-        organization_id:      机构ID
+        manageable_id:        加入者的ID
+        manageable_type:       所属者的类别
+        memberable_id:         申请者ID
+        memberable_type:       申请者的类别
         desc:                 申请加入理由
         apply_at:             申请时间
         reject_reason:        拒绝原因

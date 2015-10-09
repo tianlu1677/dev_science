@@ -1,5 +1,5 @@
-<%= simple_form_for [@organization, @organizations_user], wrapper: :vertical_form, validate: true,
-                    html: { role: 'form', id: "organizations_user_form" }, remote: true do |f| %>
+<%= simple_form_for [@manageable, @membership], wrapper: :vertical_form, validate: true,
+                    html: { role: 'form', id: "membership_form" }, remote: true do |f| %>
 
   <div class="form-body">
     <%= f.input :desc, disabled: true %>
@@ -21,9 +21,9 @@
 <script>
 
   function change_status(){
-    var status = $('.organizations_user_status input:checked').val();
-    var $reason = $('.organizations_user_reject_reason');
-    var $role_type = $('.organizations_user_role_type');
+    var status = $('.membership_status input:checked').val();
+    var $reason = $('.membership_reject_reason');
+    var $role_type = $('.membership_role_type');
     if(status == 'check'){
       $reason.hide();
       $role_type.hide();
@@ -41,7 +41,7 @@
   $(function(){
 
     change_status();
-    $(".organizations_user_status input").change(function(e){
+    $(".membership_status input").change(function(e){
       change_status();
     });
   })

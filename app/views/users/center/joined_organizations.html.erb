@@ -53,21 +53,21 @@
             <ul class="nav nav-tabs">
               <li class="active">
                 <a href="#organization_online_tab" data-toggle="tab" aria-expanded="true">
-                  已加入机构 <%= @organizations_users.online.count %></a>
+                  已加入机构 <%= @memberships.online.count %></a>
               </li>
               <li class="">
                 <a href="#organization_admin_tab" data-toggle="tab" aria-expanded="false">
-                  机构管理员 <%= @organizations_users.admin.count %>
+                  机构管理员 <%= @memberships.admin.count %>
                 </a>
               </li>
               <li class="">
                 <a href="#organization_check_tab" data-toggle="tab" aria-expanded="false">
-                  申请中的机构 <%= @organizations_users.check.count %>
+                  申请中的机构 <%= @memberships.check.count %>
                 </a>
               </li>
               <li class="">
                 <a href="#organization_offline_tab" data-toggle="tab" aria-expanded="false">
-                  被拒绝的机构 <%= @organizations_users.offline.count %>
+                  被拒绝的机构 <%= @memberships.offline.count %>
                 </a>
               </li>
             </ul>
@@ -78,15 +78,15 @@
 
                 <div class="tab-pane active " id="organization_online_tab">
 
-                  <% @organizations_users.online.each do |organizations_user| %>
-                    <%= render 'organizations/organization', organization: organizations_user.organization %>
+                  <% @memberships.online.each do |memberships| %>
+                    <%= render 'organizations/organization', organization: memberships.organization %>
                   <% end %>
 
                 </div>
 
                 <div class="tab-pane" id="organization_admin_tab">
-                  <% @organizations_users.admin.each do |organizations_user| %>
-                    <%= render 'organizations/organization', organization: organizations_user.organization %>
+                  <% @memberships.admin.each do |memberships| %>
+                    <%= render 'organizations/organization', organization: memberships.organization %>
                   <% end %>
 
                 </div>
@@ -94,17 +94,17 @@
                 <div class="tab-pane" id="organization_check_tab">
                   <!-- 审核中的机构-->
                   <div class="row">
-                    <% @organizations_users.check.each do |organizations_user| %>
+                    <% @memberships.check.each do |memberships| %>
                       <div class="col-sm-12 col-md-4">
-                        <%= render 'organizations/organization', organization: organizations_user.organization %>
+                        <%= render 'organizations/organization', organization: memberships.organization %>
                       </div>
                     <% end %>
                   </div>
 
                 </div>
                 <div class="tab-pane active" id="organization_offline_tab">
-                  <% @organizations_users.offline.each do |organizations_user| %>
-                    <%= render 'organizations/organization', organization: organizations_user.organization %>
+                  <% @memberships.offline.each do |memberships| %>
+                    <%= render 'organizations/organization', organization: memberships.organization %>
                   <% end %>
                 </div>
                 <div style="padding-top: 50px"></div>

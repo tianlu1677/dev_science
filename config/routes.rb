@@ -21,17 +21,16 @@ Rails.application.routes.draw do
   resources :comments do
     get :reply
   end
-  concern :commentable do
-    resources :comments, except: [ :new, :show ]
-    get '/comments/reply/:id' => 'comments#reply', as: :reply_comment
-  end
+  # concern :commentable do
+  #   resources :comments, except: [ :new, :show ]
+  #   get '/comments/reply/:id' => 'comments#reply', as: :reply_comment
+  # end
 
   resources :organizations do
-    resources :organizations_users do
+    resources :memberships do
       delete :leave, on: :collection
       get :manage, on: :collection
     end
-    resources :groups_organizations
   end
   resources :groups do
     resources :topics
@@ -40,7 +39,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :topics, concerns: [ :commentable  ]
+  resources :topics
 
   resources :tags
   resources :attachments
@@ -58,9 +57,9 @@ Rails.application.routes.draw do
     end
     resources :experiences
     resources :organizations do
-      resources :organizations_users
+      resources :memberships
     end
-    resources :organizations_users
+    resources :memberships
     resources :groups do
       resources :groups_users
     end

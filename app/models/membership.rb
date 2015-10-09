@@ -1,10 +1,13 @@
 # == Schema Information
 #
-# Table name: organizations_users
+# Table name: memberships
 #
 #  id              :integer          not null, primary key
 #  user_id         :integer
-#  organization_id :integer
+#  manageable_id   :integer
+#  manageable_tye  :string
+#  memberable_id   :integer
+#  memberable_type :string
 #  desc            :text
 #  apply_at        :datetime
 #  reject_reason   :text
@@ -17,21 +20,22 @@
 #  updated_at      :datetime         not null
 #
 
-class OrganizationsUser < ActiveRecord::Base
+class Membership < ActiveRecord::Base
   extend Enumerize
   enumerize :status, in: [:check, :online, :offline], default: :check
-  enumerize :role_type, in: [:organization_admin, :member], default: nil
+  enumerize :role_type, in: [:admin, :member], default: nil
   validates :desc, presence: true
 
   belongs_to :user
-  belongs_to :organization
+  belongs_to :manageable, polymorphic: true
+  belongs_to :memberable, polymorphic: true
 
   scope :check,  -> { where(status: :check) }
   scope :online,    -> { where(status: :online) }
   scope :offline,   -> { where(status: :offline) }
-  scope :organization_admin, -> { where(role_type: :organization_admin, status: :online)}
-  scope :organization_super_admin, -> { where(role_type: :organization_super_admin, status: :online)}
-  scope :admin, -> { where(role_type: [:organization_admin, :organization_super_admin], status: :online)}
+  scope :admin, -> { where(role_type: :admin, status: :online)}
+  scope :super_admin, -> { where(role_type: :super_admin, status: :online)}
+  scope :manage, -> { where(role_type: [:admin, :super_admin], status: :online)}
 
   delegate :username, :email, to: :user, prefix: true, allow_nil: true
 

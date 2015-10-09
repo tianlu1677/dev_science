@@ -1,11 +1,11 @@
 <div class="portlet box green">
   <div class="portlet-title">
     <div class="caption">
-      <i class="fa fa-cogs"></i><%= @organization.name %> 用户列表
+      <i class="fa fa-cogs"></i><%= @manageable.name %> 用户列表
       <span>|
-      通过审请: <%= @organization.organizations_users.online.count %> 人
-      | 拒绝审请: <%= @organization.organizations_users.offline.count %> 人
-        | 审核中: <%= @organization.organizations_users.check.count %> 人
+      通过审请: <%= @manageable.memberships.online.count %> 人
+      | 拒绝审请: <%= @manageable.memberships.offline.count %> 人
+        | 审核中: <%= @manageable.memberships.check.count %> 人
     </span>
     </div>
     <div class="tools">
@@ -17,7 +17,7 @@
 
     <div class="row search-form-default">
       <div class="col-md-12">
-        <%= search_form_for [@q], url: manage_organization_organizations_users_path(@organization) , html: { class: 'form-inline form-horizontal' } do |f| %>
+        <%= search_form_for [@q], url: manage_manageable_memberships_path(@manageable) , html: { class: 'form-inline form-horizontal' } do |f| %>
           <div class="input-group">
             <%#= f.text_field :users_username_cont, placeholder: '用户名称...', class: 'form-control input-circle-left' %>
           </div>
@@ -40,19 +40,6 @@
 
     <hr/>
     <% attributes = %w( user_username user_email status role_type  desc apply_at reject_reason reject_at ) %>
-    <!--#  user_id         :integer-->
-    <!--#  organization_id :integer-->
-    <!--#  desc            :text-->
-    <!--#  apply_at        :datetime-->
-    <!--#  reject_reason   :text-->
-    <!--#  reject_at       :datetime-->
-    <!--#  reject_user_id  :integer-->
-    <!--#  authority       :string-->
-    <!--#  status          :string-->
-    <!--#  role_type       :string-->
-    <!--#  role_id         :string-->
-    <!--#  created_at      :datetime         not null-->
-    <!--#  updated_at      :datetime-->
 
     <table class="table table-bordered table-striped table-condensed flip-content">
       <thead class="flip-content">
@@ -65,8 +52,8 @@
       </thead>
       <tbody>
 
-        <% @organization_users.each do |resource| %>
-        <tr id="organization_users_<%= resource.id %>">
+        <% @memberships.each do |resource| %>
+        <tr id="membership_<%= resource.id %>">
           <% attributes.each do |attr| %>
             <% if respond_to?("#{attr}_text".to_sym) %>
             <td><%= self.send("#{attr}_text".to_sym) %></td>
@@ -83,7 +70,7 @@
             <% end %>
           <% end %>
           <td>
-            <%= link_to edit_organization_organizations_user_path(@organization, resource), class: "btn  red", remote: true do %>
+            <%= link_to edit_organization_membership_path(@manageable, resource), class: "btn  red", remote: true do %>
               <i class="fa fa-edit"></i> 编辑
             <% end %>
           </td>
@@ -95,7 +82,7 @@
 
       </tbody>
 
-      <%= paginate @organization_users %>
+      <%= paginate @memberships %>
     </table>
   </div>
 </div>

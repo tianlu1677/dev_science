@@ -1,3 +1,0 @@
-$('body').find('#new_organizations_user_form').remove();
-$('body').append(<%=  raw render("new", oranization: @organizations_user, remote: true).inspect %> );
-$('#new_organizations_user_form').modal('show');

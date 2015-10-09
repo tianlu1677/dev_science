@@ -1,3 +1,0 @@
-$('body').find('#edit_organizations_user_form').remove();
-$('body').append(<%=  raw render("edit", oranization: @organizations_user, remote: true).inspect %> );
-$('#edit_organizations_user_form').modal('show');
