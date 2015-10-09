@@ -1,6 +1,6 @@
 module OrganizationsHelper
   def current_user_joined_organization(organization)
-    current_user.memberships.find_by(organization_id: organization.id)
+    Membership.find_by(memberable: current_user, manageable: organization)
   end
 end
 

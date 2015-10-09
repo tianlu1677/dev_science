@@ -3,7 +3,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-        <h4 class="modal-title">申请加入<%= @membership.name %></h4>
+        <h4 class="modal-title">申请加入<%= manageable.name %></h4>
       </div>
       <div class="modal-body">
         <div class="note note-success">
@@ -11,7 +11,7 @@
             申请加入该机构，申请完后，机构管理员会尽快审核。
           </p>
         </div>
-        <%= render "form" %>
+        <%= render "form", manageable: manageable, membership: membership %>
       </div>
     </div>
     <!-- /.modal-content -->

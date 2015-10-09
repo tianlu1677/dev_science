@@ -78,15 +78,15 @@
 
                 <div class="tab-pane active " id="organization_online_tab">
 
-                  <% @memberships.online.each do |memberships| %>
-                    <%= render 'organizations/organization', organization: memberships.organization %>
+                  <% @memberships.online.each do |membership| %>
+                    <%= render 'organizations/organization', organization: membership.manageable %>
                   <% end %>
 
                 </div>
 
                 <div class="tab-pane" id="organization_admin_tab">
-                  <% @memberships.admin.each do |memberships| %>
-                    <%= render 'organizations/organization', organization: memberships.organization %>
+                  <% @memberships.admin.each do |membership| %>
+                    <%= render 'organizations/organization', organization: membership.manageable %>
                   <% end %>
 
                 </div>
@@ -94,17 +94,17 @@
                 <div class="tab-pane" id="organization_check_tab">
                   <!-- 审核中的机构-->
                   <div class="row">
-                    <% @memberships.check.each do |memberships| %>
+                    <% @memberships.check.each do |membership| %>
                       <div class="col-sm-12 col-md-4">
-                        <%= render 'organizations/organization', organization: memberships.organization %>
+                        <%= render 'organizations/organization', organization: membership.manageable %>
                       </div>
                     <% end %>
                   </div>
 
                 </div>
                 <div class="tab-pane active" id="organization_offline_tab">
-                  <% @memberships.offline.each do |memberships| %>
-                    <%= render 'organizations/organization', organization: memberships.organization %>
+                  <% @memberships.offline.each do |membership| %>
+                    <%= render 'organizations/organization', organization: membership.manageable %>
                   <% end %>
                 </div>
                 <div style="padding-top: 50px"></div>

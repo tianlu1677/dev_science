@@ -17,13 +17,13 @@
 
     <div class="row search-form-default">
       <div class="col-md-12">
-        <%= search_form_for [@q], url: manage_manageable_memberships_path(@manageable) , html: { class: 'form-inline form-horizontal' } do |f| %>
+        <%= search_form_for [@q], url:  manage_organization_memberships_path(@manageable) , html: { class: 'form-inline form-horizontal' } do |f| %>
           <div class="input-group">
             <%#= f.text_field :users_username_cont, placeholder: '用户名称...', class: 'form-control input-circle-left' %>
           </div>
           <div class="input-group">
 
-              <%= f.text_field :user_email_cont, placeholder: '用户邮箱...', class: 'form-control input-circle-left' %>
+              <%= f.text_field :manageable_id_cont, placeholder: '用户邮箱...', class: 'form-control input-circle-left' %>
 
             <span class="input-group-btn">
               <button class="btn green">
@@ -39,7 +39,7 @@
     </div>
 
     <hr/>
-    <% attributes = %w( user_username user_email status role_type  desc apply_at reject_reason reject_at ) %>
+    <% attributes = %w(  status role_type  desc apply_at reject_reason reject_at ) %>
 
     <table class="table table-bordered table-striped table-condensed flip-content">
       <thead class="flip-content">

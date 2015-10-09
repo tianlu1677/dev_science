@@ -1,0 +1,18 @@
+| <span id="organization_
+= manageable.id
+| ">
+/=current_user_joined_organization manageable
+- if current_user_joined_organization(manageable).try(:status) == 'check'
+  = link_to "审核中...", leave_organization_memberships_path(manageable), class: "leave_organization btn btn-default",
+               remote: true, method: :delete, data: {confirm: t("action_labels.are_you_sure_leave")}
+- elsif current_user_joined_organization(manageable).try(:status) == 'online'
+  = link_to "已加入", leave_organization_memberships_path(manageable), class: "leave_organization btn btn-default",
+                     remote: true, method: :delete, data: {confirm: t("action_labels.are_you_sure_leave")}
+- elsif current_user_joined_organization(manageable).try(:status) == 'offline'
+  = link_to new_organization_membership_path(manageable), class: "btn btn-circle btn-success", remote: true do
+    i.fa.fa-plus
+    |  加入 
+- else
+  = link_to new_organization_membership_path(manageable), class: "btn btn-circle btn-success", remote: true do
+    i.fa.fa-plus
+    |  加入1

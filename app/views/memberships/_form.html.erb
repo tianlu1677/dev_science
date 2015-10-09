@@ -1,10 +1,11 @@
-<%= simple_form_for [@manageable, @membership], wrapper: :vertical_form, validate: true,
+<%= simple_form_for [manageable, membership], wrapper: :vertical_form, validate: true,
                     html: { role: 'form', id: "membership_form" }  do |f| %>
 
   <div class="form-body">
     <%= f.input :desc, placeholder: '请表明你的身份' %>
     <%= f.input :apply_at, as: :hidden, input_html: {value: DateTime.now} %>
-    <%= f.input :organization_id, as: :hidden, input_html: {value: @organization.id} %>
+    <%= f.input :manageable_id, as: :hidden, input_html: {value: manageable.id} %>
+    <%= f.input :manageable_type, as: :hidden, input_html: {value: manageable.class.name} %>
     <div class="form-actions noborder">
       <%= f.submit '提交', class: 'btn green', data: { disable_with: t('action_labels.submitting') }  %>
       <button type="button" class="btn default" data-dismiss="modal">取消</button>

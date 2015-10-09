@@ -14,7 +14,7 @@ class MembershipsController < ApplicationController
   def create
     @membership = current_user.memberships.new(permitted_params)
     if @membership.save
-      redirect_to organization_path(@membership)
+      redirect_to organization_path(@manageable)
     else
       flash[:error] = "this is something wrong"
       redirect_to organizations_path
@@ -50,20 +50,20 @@ class MembershipsController < ApplicationController
   end
 
   def leave
-    @memberships = current_user.memberships.where(manageable_id: params[:manageable_id]).destroy_all
+    manageable_id = params[:organization_id] || params[:group_id]
+    @memberships = current_user.memberships.where(manageable_id: manageable_id).destroy_all
   end
 
   protected
 
   def permitted_params
-    params.require(:membership).permit(:desc, :manageable_id, :manageable_tye, :memberable_id, :memberable_type, :apply_at, :reject_reason, :reject_at, :status)
+    params.require(:membership).permit(:desc, :manageable_id, :manageable_type, :memberable_id, :memberable_type, :apply_at, :reject_reason, :reject_at, :status)
   end
 
   def get_manageable
     @manageable = Organization.find(params[:organization_id]) if params[:organization_id]
     @manageable = Group.find(params[:group_id]) if params[:group_id]
   end
-
 
 end
 

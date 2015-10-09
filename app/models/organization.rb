@@ -35,7 +35,7 @@ class Organization < ActiveRecord::Base
   has_many :groups_organizations, dependent: :destroy
   has_many :groups, through: :groups_organizations
 
-  has_many :memberships, dependent: :destroy
+  has_many :memberships, as: :manageable, dependent: :destroy
   has_many :users, through: :memberships
 
   belongs_to :parent, class_name: "Organization"

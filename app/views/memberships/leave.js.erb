@@ -1,1 +1,1 @@
-$('organization_<%= manageable.id %>').html(<%= raw render("memberships/membership", manageable: @manageable).inspect %>);
+$('organization_<%= @manageable.id %>').html(<%= raw render("memberships/joined_membership", manageable: @manageable).inspect %>);

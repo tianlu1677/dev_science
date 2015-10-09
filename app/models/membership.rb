@@ -3,7 +3,6 @@
 # Table name: memberships
 #
 #  id              :integer          not null, primary key
-#  user_id         :integer
 #  manageable_id   :integer
 #  manageable_tye  :string
 #  memberable_id   :integer
@@ -26,7 +25,6 @@ class Membership < ActiveRecord::Base
   enumerize :role_type, in: [:admin, :member], default: nil
   validates :desc, presence: true
 
-  belongs_to :user
   belongs_to :manageable, polymorphic: true
   belongs_to :memberable, polymorphic: true
 
@@ -37,6 +35,6 @@ class Membership < ActiveRecord::Base
   scope :super_admin, -> { where(role_type: :super_admin, status: :online)}
   scope :manage, -> { where(role_type: [:admin, :super_admin], status: :online)}
 
-  delegate :username, :email, to: :user, prefix: true, allow_nil: true
+  # delegate :username, :email, to: :user, prefix: true, allow_nil: true
 
 end

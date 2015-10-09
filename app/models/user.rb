@@ -43,11 +43,11 @@ class User < ActiveRecord::Base
   has_many :posts, as: :postable,  dependent: :destroy
   has_many :comments, dependent: :destroy
 
-  has_many :memberships, dependent: :destroy
+
+  has_many :memberships, as: :memberable,  dependent: :destroy
   has_many :organizations, through: :memberships
 
-  has_many :groups_users, dependent: :destroy
-  has_many :groups, through: :groups_users
+  has_many :groups, through: :memberships
 
   has_many :comments, as: :commable, dependent: :destroy
 

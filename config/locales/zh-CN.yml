@@ -37,7 +37,7 @@ zh-CN:
     are_you_sure: 您确定删除这条数据吗？
     add:  追加
     are_you_sure_operation: 您确定要进行此操作吗？
-    are_you_sure_leave:   您确定要退出此小组？
+    are_you_sure_leave:   您确定要退出？
     reply: 回复
     cancel: 取消
     submitting: 提交中...
@@ -65,8 +65,6 @@ zh-CN:
   comment:
     <<: *action_labels
     has_new_comments: "有新的评论"
-
-
   membership:
     <<: *action_labels
     are_you_sure_leave: 您确定要退出此机构?

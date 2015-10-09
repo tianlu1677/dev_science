@@ -1,9 +1,9 @@
 class CreateMemberships < ActiveRecord::Migration
   def change
     create_table :memberships do |t|
-      t.integer     :user_id
+      # t.integer     :user_id
       t.integer     :manageable_id        #所隶属的机构 | 群组
-      t.string      :manageable_tye       # 类型
+      t.string      :manageable_type       # 类型
       t.integer     :memberable_id        # 被控制的对象, 如加入机构的人，加入群组的人
       t.string      :memberable_type      #
       t.text        :desc                 #申请加入群组的简单描述，用于写明自己是谁，为什么加入
@@ -14,6 +14,7 @@ class CreateMemberships < ActiveRecord::Migration
       t.string      :status               # 审核, 审核通过，取消资格，new | online | offline
       t.string      :role_type            # 表明所属的角色
       t.string      :role_id              # 所属角色的id
+      t.string      :join_type            # 自己主动加入，邀请加入，被加入
       t.timestamps null: false
     end
   end
