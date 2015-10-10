@@ -25,7 +25,7 @@ development:
   <<: *default_settings
   # development模式下，探针开启并上传性能数据
   monitor_mode: true
-  app_name: LMS
+  app_name: Scrinium
 
 test:
   <<: *default_settings
