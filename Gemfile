@@ -70,8 +70,8 @@ gem 'settingslogic'
 gem 'acts-as-taggable-on', '~> 3.4'
 gem 'paper_trail'
 
-#API
 
+gem 'oneapm_rpm'
 
 #rails-assets
 # source 'http://rails-assets.org' do
