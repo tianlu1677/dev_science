@@ -1,1 +1,6 @@
-$('organization_<%= @manageable.id %>').html(<%= raw render("memberships/joined_membership", manageable: @manageable).inspect %>);
+<% if  @success %>
+toastr.success('good');
+$('span#membership_<%= @manageable.id %>').html(<%= raw render("memberships/joined_membership", manageable: @manageable).inspect %>);
+<% else %>
+toastr.warning('bad');
+<% end %>
