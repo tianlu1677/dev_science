@@ -46,5 +46,7 @@
 //=require global/plugins/jquery-validation/js/additional-methods.js
 //=require global/plugins/jquery-validation/js/localization/messages_zh.js
 //=require global/plugins/autosize/autosize.min.js
+//=require global/plugins/bootstrap-toastr/toastr.js
+
 //// customs.js
 //=require customs/customs.js
