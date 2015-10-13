@@ -35,6 +35,6 @@ class Membership < ActiveRecord::Base
   scope :super_admin, -> { where(role_type: :super_admin, status: :online)}
   scope :manage, -> { where(role_type: [:admin, :super_admin], status: :online)}
 
-  delegate :user_username, :email, to: :memberable, allow_nil: true
+  delegate :user_username, :user_email, to: :memberable, allow_nil: true
 
 end

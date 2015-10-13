@@ -25,7 +25,8 @@ zh-CN:
         online:     通过审核
         offline:    拒绝加入
       role_type:
-        super_admin: 机构管理员
+        super_admin: 超级管理员
+        admin: 管理员
         member: 成员
     groups_user:
       status:

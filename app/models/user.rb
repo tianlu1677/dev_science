@@ -80,4 +80,8 @@ class User < ActiveRecord::Base
     self.username
   end
 
+  def user_email
+    self.email
+  end
+
 end

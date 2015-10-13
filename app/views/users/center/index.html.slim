@@ -1,47 +1,5 @@
-<div class="row">
-  <div class="col-md-12">
-    <div class="profile-sidebar" style="width: 250px;">
-      = render 'left_profile'
-    </div>
+.row
+  .col-md-12
+    .profile-sidebar
+      = render 'users/center/left_profile'
 
-
-    body
-      h1 id="headline"
-        |
-          Welcome to my site.
-      | www#{1+2}
-
-      a href="http://slim-lang.com" title='Slim Homepage' class='btn' Goto the Slim homepage
-      a href=="&ewew;" dsddsd
-    table
-      -  User.all.each do |user|
-        td id="user_#{user.id}" class= "#{user.id}" =user.username
-    - user = User.last
-    .card*{'data-url'=>user, 'data-id'=>user.id} = user.username
-    .card{data-url="eee" data-id=user.id} = user.username
-    .card.name data-url="eee"  data-id=user.id = user.username
-
-    body
-      h1 Welcome #{current_user.username} to the show.
-
-        Unescaped \#{{content}} is also possible.
-
-    <!-- END PROFILE CONTENT -->
-  </div>
-</div>
-<!-- END PAGE CONTENT-->
-
-
-
-
-ruby:
-  def a_unless_current
-    @page_current ? {tag: 'span'} : {tag: 'a', href: 'http://slim-lang.com/'}
-  end
-- @page_current = true
-*a_unless_current Link
-- @page_current = false
-*a_unless_current Link
-
-
-javascript:
