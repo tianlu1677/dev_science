@@ -76,4 +76,8 @@ class User < ActiveRecord::Base
     self.role_ids = [role.id]
   end
 
+  def user_username
+    self.username
+  end
+
 end

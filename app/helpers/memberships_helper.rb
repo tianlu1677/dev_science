@@ -1,6 +1,6 @@
 module MembershipsHelper
-  def current_user_membership(manageable)
-    current_user.memberships.find_by(manageable_id: manageable.id, manageable_type: manageable.class.name)
+  def current_membership(manageable, memberable)
+    memberable.memberships.find_by(manageable_id: manageable.id, manageable_type: manageable.class.name)
   end
 end
 

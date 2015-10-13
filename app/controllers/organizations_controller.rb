@@ -14,7 +14,17 @@ class OrganizationsController < ApplicationController
 
 
   def new
-    @organization = Organization.new
+    if params[:parent_id]
+      @parent_organization = Organization.find_by(id: params[:parent_id])
+      new_params = {}
+      %w( city  website address contact_name contact_mobile).collect do |attribute|
+        new_params.merge!({attribute.to_sym => @parent_organization.send(attribute)})
+      end
+      @organization = Organization.new(new_params)
+    else
+      @organization = Organization.new
+    end
+
   end
 
   def create

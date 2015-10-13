@@ -44,4 +44,14 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { host: Settings.domain, port: 3000 }
   config.middleware.use JQuery::FileUpload::Rails::Middleware
+  config.action_mailer.delivery_method = :letter_opener
+
+  config.after_initialize do
+    Bullet.enable = true
+    Bullet.bullet_logger = true
+    Bullet.console = true
+    Bullet.rails_logger = true
+  end
+
+
 end

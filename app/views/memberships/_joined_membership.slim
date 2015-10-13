@@ -1,5 +1,5 @@
 span id="membership_#{manageable.id}"
-  - status = current_user_membership(manageable).try(:status)
+  - status = current_membership(manageable, current_user).try(:status)
   - if status.blank?
     = link_to new_organization_membership_path(manageable), class: "btn btn-circle btn-success", remote: true do
       i.fa.fa-plus

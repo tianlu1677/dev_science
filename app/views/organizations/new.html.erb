@@ -9,13 +9,17 @@
           <% if params[:parent_id].blank? %>
             <span class="caption-subject bold">申请新建机构</span>
           <% else %>
-            <span class="caption-subject bold">申请新建<%= Organization.find_by(parent_id: params[:parent_id]).name %>的子机构</span>
+            <span class="caption-subject bold">申请新建<%= @parent_organization.name %>的子机构</span>
           <% end %>
-
         </div>
       </div>
 
       <div class="portlet-body form">
+        <div class="note note-info">
+          <p>
+            请填写真实的机构信息，提交申请后我们通过审核后显示。
+          </p>
+        </div>
         <%= render "form" %>
       </div>
     </div>
