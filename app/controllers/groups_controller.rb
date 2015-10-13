@@ -12,8 +12,8 @@ class GroupsController < ApplicationController
 
   def create
     @group = Group.new(permitted_params)
-    @groups_user = @group.groups_users.new(user_id: current_user.id, role_id: 1, desc: 'super_admin', authority: :super_admin)
-    if @group.save and @groups_user.save
+
+    if @group.save
       redirect_to group_path(@group)
     else
       render 'new'

@@ -34,9 +34,7 @@ Rails.application.routes.draw do
   end
   resources :groups do
     resources :topics
-    resources :groups_users do
-      delete :leave, on: :collection
-    end
+
   end
 
   resources :topics
@@ -60,11 +58,7 @@ Rails.application.routes.draw do
       resources :memberships
     end
     resources :memberships
-    resources :groups do
-      resources :groups_users
-    end
-    resources :groups_users
-
+    resources :groups
 
     resources :topics do
       resources :posts
