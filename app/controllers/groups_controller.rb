@@ -12,8 +12,11 @@ class GroupsController < ApplicationController
 
   def create
     @group = Group.new(permitted_params)
-
-    if @group.save
+    role = Role.find_by(basename: :group_super_admin)
+    membership = current_user.memberships.new(
+        manageable_id: @group.id, desc: :super_admin, manageable_type: "Group",
+        status: :online, apply_at: Time.now, role_type: role.basename, role_id: role.id)
+    if @group.save and membership.save
       redirect_to group_path(@group)
     else
       render 'new'

@@ -25,14 +25,18 @@ Rails.application.routes.draw do
   #   resources :comments, except: [ :new, :show ]
   #   get '/comments/reply/:id' => 'comments#reply', as: :reply_comment
   # end
+
+
   resources :memberships
   resources :organizations do
     resources :memberships do
-      delete :leave, on: :collection
       get :manage, on: :collection
     end
   end
   resources :groups do
+    resources :memberships do
+      get :manage, on: :collection
+    end
     resources :topics
 
   end

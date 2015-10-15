@@ -2,26 +2,48 @@
   <div class="portlet-title">
     <div class="caption">
       <i class="icon-speech"></i>
-      <span class="caption-subject bold uppercase"><%= group.name %></span>
+      <span class="caption-subject bold uppercase">
+        <%= group.name %>
+      </span>
       <span class="caption-helper"></span>
     </div>
-    <div class="actions joined_group">
-      <%= render 'memberships/membership', membership: current_membership(group, current_user) %>
+    <div class="actions">
+
+      <div class="btn-group">
+
+        <a class="btn btn-circle btn-default " href="javascript:;" data-toggle="dropdown">
+          <i class="fa fa-user"></i> 管理 <i class="fa fa-angle-down"></i>
+        </a>
+        <ul class="dropdown-menu pull-right">
+          <li><%= link_to edit_organization_path(@group) do %>
+              <i class="fa fa-pencil"></i> 修改信息 <% end %>
+          </li>
+          <li>
+            <%= link_to group_path(@group), method: :delete, data: {confirm: "delete?"} do %>
+              <i class="fa fa-trash-o"></i> 删除 <% end %>
+          </li>
+
+          <li>
+            <%= link_to manage_group_memberships_path(@group) do %>
+              <i class="fa fa-trash-o"></i> 管理该机构成员 <% end %>
+          </li>
+
+        </ul>
+      </div>
+
+      <%= render 'memberships/membership', manageable: group %>
     </div>
   </div>
   <div class="portlet-body">
     <div class="">
-      <%= image_tag group.logo, width: "200px", height: "200px" %>
-      <div class="caption">
-        <h3><%= group.name %></h3>
-        <p>
-          <%= group.intro %>
-        </p>
-        <p>
-          <%=  %>
-        </p>
-
-      </div>
+      <%= link_to group_path(group) do %>
+        <%= image_tag group.logo, width: "200px", height: "200px" %>
+        <div class="caption">
+          <p>
+            <%= group.intro %>
+          </p>
+        </div>
+      <% end %>
     </div>
 
   </div>

@@ -51,6 +51,8 @@ class MembershipsController < ApplicationController
   end
 
   def manage
+    @manageable = Organization.find(params[:organization_id]) if params[:organization_id]
+    @manageable = Group.find(params[:group_id]) if params[:group_id]
     @q = @manageable.memberships.search(params[:q])
     @memberships = @q.result(distinct: true).page(params[:page] || 1).per(20)
   end
@@ -63,12 +65,8 @@ class MembershipsController < ApplicationController
   end
 
   def get_manageable
-    # @manageable = Organization.find(params[:organization_id]) if params[:organization_id]
-    # @manageable = Group.find(params[:group_id]) if params[:group_id]
-
     manageable_class = params[:manageable_type].classify.safe_constantize
     @manageable = manageable_class.find_by(id: params[:manageable_id])
-
   end
 
 end

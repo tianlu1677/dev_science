@@ -3,8 +3,9 @@
 # Table name: memberships
 #
 #  id              :integer          not null, primary key
+#  user_id         :integer
 #  manageable_id   :integer
-#  manageable_tye  :string
+#  manageable_type :string
 #  memberable_id   :integer
 #  memberable_type :string
 #  desc            :text
@@ -15,6 +16,7 @@
 #  status          :string
 #  role_type       :string
 #  role_id         :string
+#  join_type       :string
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #
@@ -23,6 +25,7 @@ class Membership < ActiveRecord::Base
   extend Enumerize
   enumerize :status, in: [:check, :online, :offline], default: :check
   enumerize :role_type, in: [:admin, :member], default: nil
+  enumerize :join_type, in: [:oneself, :control], default: :oneself
   validates :desc, presence: true
 
   belongs_to :manageable, polymorphic: true

@@ -1,6 +1,5 @@
-- membership = current_membership(manageable, current_user)
 span id="manageable_#{manageable.id}_membership"
-
+  - membership = current_membership(manageable, current_user)
   - membership_status = membership.try(:status)
   - if membership_status.blank?
     = link_to new_membership_path(manageable_id: manageable, manageable_type: manageable.class.name),
