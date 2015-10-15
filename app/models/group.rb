@@ -26,8 +26,10 @@ class Group < ActiveRecord::Base
   has_many :groups_organizations, dependent: :destroy
   has_many :organizations, through: :groups_organizations
 
-  has_many :groups_users, dependent: :destroy
-  has_many :users, through: :groups_users
+  has_many :memberships, as: :manageable, dependent: :destroy
+  has_many :memberships, as: :memberable, dependent: :destroy
+
+  # has_many :group_members, -> { where(manageable_id: self.id, manageable_type: "Group").order("position") }, class_name: "Membership"
 
   has_many :topics, as: :topicable, dependent: :destroy
   has_many :posts, as: :postable, dependent: :destroy

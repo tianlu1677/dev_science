@@ -50,8 +50,7 @@ class MembershipsController < ApplicationController
   end
 
   def leave
-    manageable_id = params[:organization_id] || params[:group_id]
-    if current_user.memberships.where(manageable_id: manageable_id).destroy_all
+    if current_user.memberships.where(manageable_id: @manageable.id).destroy_all
       @success = true
     else
       @success = false

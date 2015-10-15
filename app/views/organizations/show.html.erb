@@ -35,7 +35,7 @@
 
           </ul>
         </div>
-        <%= render 'memberships/joined_membership', manageable: @organization %>
+        <%= render 'memberships/membership', manageable: @organization, memberable: current_user %>
 
         <a href="javascript:;" class="btn btn-circle btn-default btn-icon-only fullscreen" data-original-title="" title=""></a>
       </div>
@@ -134,7 +134,7 @@
           <div class="row">
             <% @organization.memberships.online.each do |membership| %>
               <div class="col-sm-12 col-sm-2">
-                <%= render 'memberships/membership', membership: membership %>
+                <%#= render 'memberships/membership', membership: membership %>
               </div>
               </div>
             <% end %>

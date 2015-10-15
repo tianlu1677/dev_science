@@ -6,7 +6,7 @@
       <span class="caption-helper"></span>
     </div>
     <div class="actions joined_group">
-      <%= render 'groups_users/joined_group', group: group %>
+      <%= render 'memberships/membership', membership: current_membership(group, current_user) %>
     </div>
   </div>
   <div class="portlet-body">

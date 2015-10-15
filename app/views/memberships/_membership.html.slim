@@ -4,12 +4,12 @@ span id="membership_#{manageable.id}"
     = link_to new_organization_membership_path(manageable), class: "btn btn-circle btn-success", remote: true do
       i.fa.fa-plus
       |  加入
-  - elsif status == 'check'
+  - elsif status == 'online'
     = link_to "审核中...", "#", class: " btn btn-default"
 
-  - elsif status == 'online'
+  - elsif status == 'check'
     = link_to "已加入", leave_organization_memberships_path(manageable), class: "leave_organization btn btn-default",
-                       remote: true, method: :delete, data: {confirm: t("action_labels.are_you_sure_leave")}
+              remote: true, method: :delete, data: {confirm: t("action_labels.are_you_sure_leave")}
   - elsif status == 'offline'
     = link_to "#", class: "btn btn-circle btn-success" do
       i.fa.fa-plus
