@@ -5,7 +5,7 @@
 //= require customs/groups.coffee.js
 //= require customs/topics.coffee.js
 //= require customs/users_sign_in
-//= require customs/jquery-file-upload
+
 
 
 $(function(){

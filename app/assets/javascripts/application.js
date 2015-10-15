@@ -48,5 +48,7 @@
 //=require global/plugins/autosize/autosize.min.js
 //=require global/plugins/bootstrap-toastr/toastr.js
 
+//= require global/plugins/dropzone-4.2.0/dist/dropzone.js
+
 //// customs.js
 //=require customs/customs.js

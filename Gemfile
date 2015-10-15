@@ -60,7 +60,7 @@ gem 'oneapm_rpm'
 #   gem 'rails-assets-bootstrap'
 # end
 gem "select2-rails"
-gem "jquery-fileupload-rails"
+##gem "jquery-fileupload-rails"
 
 ## api
 gem 'grape'
