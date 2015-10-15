@@ -1,16 +1,19 @@
-span id="membership_#{manageable.id}"
-  - status = current_membership(manageable, current_user).try(:status)
-  - if status.blank?
-    = link_to new_organization_membership_path(manageable), class: "btn btn-circle btn-success", remote: true do
+- membership = current_membership(manageable, current_user)
+span id="manageable_#{manageable.id}_membership"
+
+  - membership_status = membership.try(:status)
+  - if membership_status.blank?
+    = link_to new_membership_path(manageable_id: manageable, manageable_type: manageable.class.name),
+              class: "btn btn-circle btn-success", remote: true do
       i.fa.fa-plus
       |  加入
-  - elsif status == 'online'
+  - elsif membership_status == 'online'
     = link_to "审核中...", "#", class: " btn btn-default"
 
-  - elsif status == 'check'
-    = link_to "已加入", leave_organization_memberships_path(manageable), class: "leave_organization btn btn-default",
+  - elsif membership_status == 'check'
+    = link_to "已加入", membership_path(membership), class: "leave_organization btn btn-default",
               remote: true, method: :delete, data: {confirm: t("action_labels.are_you_sure_leave")}
-  - elsif status == 'offline'
+  - elsif membership_status == 'offline'
     = link_to "#", class: "btn btn-circle btn-success" do
       i.fa.fa-plus
       |  被禁止

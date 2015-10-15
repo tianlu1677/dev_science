@@ -1,6 +1,6 @@
 class MembershipsController < ApplicationController
   layout 'application'
-  before_action :get_manageable
+  before_action :get_manageable, only: [:new]
 
   def index
     @q = @manageable.memberships.online.search(params[:q])
@@ -14,10 +14,10 @@ class MembershipsController < ApplicationController
   def create
     @membership = current_user.memberships.new(permitted_params)
     if @membership.save
-      redirect_to organization_path(@manageable)
+      @manageable = @membership.manageable
+      @success = true
     else
-      flash[:error] = "this is something wrong"
-      redirect_to organizations_path
+      @success = false
     end
   end
 
@@ -41,7 +41,13 @@ class MembershipsController < ApplicationController
   end
 
   def destroy
-
+    @membership = Membership.find(params[:id]).destroy
+    @manageable = @membership.manageable
+    if @membership.destroy
+      @success = true
+    else
+      @success = false
+    end
   end
 
   def manage
@@ -49,13 +55,6 @@ class MembershipsController < ApplicationController
     @memberships = @q.result(distinct: true).page(params[:page] || 1).per(20)
   end
 
-  def leave
-    if current_user.memberships.where(manageable_id: @manageable.id).destroy_all
-      @success = true
-    else
-      @success = false
-    end
-  end
 
   protected
 
@@ -64,8 +63,12 @@ class MembershipsController < ApplicationController
   end
 
   def get_manageable
-    @manageable = Organization.find(params[:organization_id]) if params[:organization_id]
-    @manageable = Group.find(params[:group_id]) if params[:group_id]
+    # @manageable = Organization.find(params[:organization_id]) if params[:organization_id]
+    # @manageable = Group.find(params[:group_id]) if params[:group_id]
+
+    manageable_class = params[:manageable_type].classify.safe_constantize
+    @manageable = manageable_class.find_by(id: params[:manageable_id])
+
   end
 
 end

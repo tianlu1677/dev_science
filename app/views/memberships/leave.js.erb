@@ -1,6 +1,0 @@
-<% if  @success %>
-toastr.success('good');
-$('span#membership_<%= @manageable.id %>').html(<%= raw render("memberships/membership", manageable: @manageable).inspect %>);
-<% else %>
-toastr.warning('bad');
-<% end %>
