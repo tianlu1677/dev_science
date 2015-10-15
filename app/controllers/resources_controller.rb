@@ -1,12 +1,14 @@
 class ResourcesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-
+  skip_before_action :verify_authenticity_token
   before_action :set_resource, only: [:show, :edit, :update, :destroy]
 
   # GET /resources
   # GET /resources.json
   def index
-    @resources = Resource.all
+    resourceable_class = params[:resourceable_type].classify.safe_constantize
+    @resourceable = resourceable_class.find_by(id: params[:resourceable_id])
+    @resources = @resourceable.resources
   end
 
   # GET /resources/1
@@ -26,14 +28,11 @@ class ResourcesController < ApplicationController
   # POST /resources
   # POST /resources.json
   def create
-    @resource = @resourceable.resources.new(resource_params)
+    @resource = Resource.new(resource_params)
 
     respond_to do |format|
       if @resource.save
-        format.html {
-          redirect_to ResourcesHelper.filter_user([ @app, current_user, @resourceable, @resource ]),
-                      notice: t('message.create_success', thing: t('scrinium.resource'))
-        }
+
         format.json {
           render json: { message: 'success', id: @resource.id }, status: 200
         }
@@ -82,7 +81,7 @@ class ResourcesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def resource_params
-    params.require(:resource).permit(:title, :desc, :link, :pdf_link, :position, :status)
+    params.require(:resource).permit(:title, :desc, :link, :resourceable_id, :resourceable_type, :pdf_link, :position, :status)
   end
 end
 

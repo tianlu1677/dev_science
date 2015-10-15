@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-class AttachmentUploader < BaseUploader
+class ResourceUploader < BaseUploader
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
