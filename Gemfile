@@ -69,6 +69,9 @@ gem 'grape-swagger'
 gem 'rack-cors', :require => 'rack/cors'
 gem 'grape-kaminari'
 
+## permission
+gem "pundit"
+
 # Translate ActiveRecord model.
 gem 'globalize', '~> 5.0.0'
 
