@@ -7,8 +7,8 @@
         <span class="caption-subject"><%= @organization.name %></span>
         <span class="caption-helper"></span>
       </div>
-
       <div class="actions">
+        <% if policy(@organization).update? %>
         <div class="btn-group">
 
           <a class="btn btn-circle btn-default " href="javascript:;" data-toggle="dropdown">
@@ -35,6 +35,7 @@
 
           </ul>
         </div>
+        <% end %>
         <%= render 'memberships/membership', manageable: @organization, memberable: current_user %>
 
         <a href="javascript:;" class="btn btn-circle btn-default btn-icon-only fullscreen" data-original-title="" title=""></a>
@@ -51,7 +52,8 @@
 
     <div class="portlet-body">
       <div class="col-md-3">
-        <img src="/assets/admin/pages/media/profile/profile_user.jpg" style="width: 100%;height: 250px" alt=""/>
+        <%= image_tag @organization.logo, style: "width: 100%;height: 250px" %>
+        <!--<img src="/assets/admin/pages/media/profile/profile_user.jpg" style="width: 100%;height: 250px" alt=""/>-->
       </div>
       <div class="col-md-6">
         <h1><%= @organization.name %></h1>

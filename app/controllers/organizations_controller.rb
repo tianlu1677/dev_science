@@ -1,5 +1,5 @@
 class OrganizationsController < ApplicationController
-  layout 'application'
+
   def index
     @q = Organization.online.search(params[:q])
     @organizations = @q.result(distinct: true).page(params[:page] || 1)
@@ -44,10 +44,13 @@ class OrganizationsController < ApplicationController
 
   def edit
     @organization = Organization.find(params[:id])
+    authorize @organization
   end
 
   def update
     @organization = Organization.find(params[:id])
+    authorize @organization
+
     if @organization.update(permit_params)
       redirect_to organization_path(@organization)
     else

@@ -37,7 +37,7 @@
   <div class="portlet-body">
     <div class="">
       <%= link_to group_path(group) do %>
-        <%= image_tag group.logo, width: "200px", height: "200px" %>
+        <%= image_tag group.logo, class: "img-responsive img-circle", style: "min-height: 200px"%>
         <div class="caption">
           <p>
             <%= group.intro %>

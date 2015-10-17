@@ -35,7 +35,7 @@ class Group < ActiveRecord::Base
 
   belongs_to :super_admin, class_name: "User", foreign_key: :super_admin
 
-  validates :name, :intro, :desc, :logo, presence: true
+  validates :name, :intro, :desc, presence: true
   default_scope { where(status: :online)}
 
 end
