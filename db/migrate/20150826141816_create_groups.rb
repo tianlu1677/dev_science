@@ -10,6 +10,7 @@ class CreateGroups < ActiveRecord::Migration
       t.string  :privacy            #组织权限， 隐藏， 私密，公开, hidden, protected | public
       t.integer :position           #位置
       t.string  :status             #状态, 上线|下线 ， online | offline
+      t.integer :super_admin_id     #小组管理员
       t.timestamps null: false
     end
   end

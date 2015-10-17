@@ -21,6 +21,7 @@ class CreateOrganizations < ActiveRecord::Migration
 
       t.integer  :position           #位置
       t.string   :status             #状态，新建|上线|下线
+      t.integer  :super_admin_id     #小组管理员
       t.timestamps null: false
     end
   end
