@@ -31,6 +31,7 @@ Rails.application.routes.draw do
   resources :organizations do
   end
   resources :groups do
+    resources :topics
   end
 
   resources :topics

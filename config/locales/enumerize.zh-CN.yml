@@ -12,9 +12,9 @@ zh-CN:
     group:
       <<: *enumerize_meaning
       privacy:
-        hidden: 隐藏
-        protected: 群组可见
-        public: 公开
+        hidden: 隐藏，只能邀请加入
+        protected: 需要审核才能被加入
+        public: 公开，任何人都可以加入
     organization:
       <<: *enumerize_meaning
     post:

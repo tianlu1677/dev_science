@@ -24,7 +24,7 @@ class Resource < ActiveRecord::Base
 
   belongs_to :resourceable, polymorphic: true
   mount_uploader :link, ResourceUploader
-  # before_save :update_resource_attributes
+  before_save :update_resource_attributes
 
 
 
