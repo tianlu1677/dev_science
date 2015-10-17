@@ -1611,18 +1611,18 @@ File dropzone
 /***
 Fontawesome Icons
 ***/
-[class^="fa-"]:not(.fa-stack),
-[class^="glyphicon-"],
-[class^="icon-"],
-[class*=" fa-"]:not(.fa-stack),
-[class*=" glyphicon-"],
-[class*=" icon-"] {
-  display: inline-block;
-  font-size: 14px;
-  *margin-right: .3em;
-  line-height: 14px;
-  -webkit-font-smoothing: antialiased;
-}
+/*[class^="fa-"]:not(.fa-stack),*/
+/*[class^="glyphicon-"],*/
+/*[class^="icon-"],*/
+/*[class*=" fa-"]:not(.fa-stack),*/
+/*[class*=" glyphicon-"],*/
+/*[class*=" icon-"] {*/
+  /*display: inline-block;*/
+  /*font-size: 14px;*/
+  /**margin-right: .3em;*/
+  /*line-height: 14px;*/
+  /*-webkit-font-smoothing: antialiased;*/
+/*}*/
 
 /* Make font awesome icons fixed width */
 li [class^="fa-"],

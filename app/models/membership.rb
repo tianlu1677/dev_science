@@ -34,7 +34,7 @@ class Membership < ActiveRecord::Base
   scope :check,  -> { where(status: :check) }
   scope :online,    -> { where(status: :online) }
   scope :offline,   -> { where(status: :offline) }
-  scope :admin, -> { where(role_type: :admin, status: :online)}
+  scope :admin, -> { where(role_type: [:admin, :super_admin], status: :online)}
   scope :super_admin, -> { where(role_type: :super_admin, status: :online)}
   scope :manage, -> { where(role_type: [:admin, :super_admin], status: :online)}
 

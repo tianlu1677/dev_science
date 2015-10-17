@@ -81,6 +81,7 @@
                   <% @memberships.online.each do |membership| %>
                     <%= render 'organizations/organization', organization: membership.manageable %>
                   <% end %>
+                  <%= show_nothing(@memberships.online) %>
 
                 </div>
 
@@ -88,6 +89,7 @@
                   <% @memberships.admin.each do |membership| %>
                     <%= render 'organizations/organization', organization: membership.manageable %>
                   <% end %>
+                  <%= show_nothing(@memberships.admin) %>
 
                 </div>
 
@@ -100,14 +102,16 @@
                       </div>
                     <% end %>
                   </div>
+                  <%= show_nothing(@memberships.check) %>
 
                 </div>
-                <div class="tab-pane active" id="organization_offline_tab">
+                <div class="tab-pane" id="organization_offline_tab">
                   <% @memberships.offline.each do |membership| %>
                     <%= render 'organizations/organization', organization: membership.manageable %>
                   <% end %>
+                  <%= show_nothing(@memberships.offline) %>
                 </div>
-                <div style="padding-top: 50px"></div>
+
               </div>
 
             </div>
