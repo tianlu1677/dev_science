@@ -7,7 +7,8 @@
   <%= f.input :last_user_id, as: :hidden, input_html: { value: current_user.id } %>
 
   <div class="form-body">
-    <%= f.input :memberable_id, collection: User.all.pluck(:username) %>
+    <%= f.input :memberable_id, collection: User.all %>
+    <%= f.input :memberable_type, as: :hidden, input_html: {value: "User"}%>
     <%= f.input :desc, input_html: {value: "你好，我邀请你加入#{@manageable.name}"} %>
 
     <%= f.input :role_type, as: :radio_buttons, :item_wrapper_class => 'inline'  %>

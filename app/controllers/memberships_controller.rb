@@ -12,8 +12,11 @@ class MembershipsController < ApplicationController
   end
 
   def create
-    @membership = current_user.memberships.new(permitted_params)
-    @membership.last_user_id = current_user.id
+    if params[:join_type]  == "invite"
+      @membership = Membership.new(permitted_params)
+    else
+      @membership = current_user.memberships.new(permitted_params)
+    end
     if @membership.save
       @manageable = @membership.manageable
       @success = true
@@ -54,7 +57,8 @@ class MembershipsController < ApplicationController
   protected
 
   def permitted_params
-    params.require(:membership).permit(:desc, :manageable_id, :manageable_type, :memberable_id, :memberable_type, :apply_at, :reject_reason, :reject_at, :status)
+    params.require(:membership).permit(:desc, :manageable_id, :manageable_type, :memberable_id, :memberable_type,
+                                       :apply_at, :reject_reason, :role_type, :reject_at, :status)
   end
 
   def get_manageable
