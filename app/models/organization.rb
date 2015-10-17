@@ -6,6 +6,7 @@
 #  name           :string
 #  city           :string
 #  short_name     :string
+#  logo           :string
 #  intro          :text
 #  desc           :text
 #  website        :string
@@ -19,9 +20,9 @@
 #  children_count :integer          default(0), not null
 #  position       :integer
 #  status         :string
+#  super_admin_id :integer
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
-#  logo           :string
 #
 
 class Organization < ActiveRecord::Base
@@ -39,6 +40,7 @@ class Organization < ActiveRecord::Base
   has_many :users, through: :memberships
 
   belongs_to :parent, class_name: "Organization"
+  belongs_to :super_admin, class_name: "User", foreign_key: :super_admin
 
   scope :check, -> {where(status: :check)}
   scope :online, -> {where(status: :online)}
