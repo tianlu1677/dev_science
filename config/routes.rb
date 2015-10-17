@@ -29,22 +29,14 @@ Rails.application.routes.draw do
 
   resources :memberships
   resources :organizations do
-    resources :memberships do
-      get :manage, on: :collection
-    end
   end
   resources :groups do
-    resources :memberships do
-      get :manage, on: :collection
-    end
-    resources :topics
-
   end
 
   resources :topics
 
   resources :tags
-  resources :attachments
+
   resources :resources
 
   ## for admin routes
