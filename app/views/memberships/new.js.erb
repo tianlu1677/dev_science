@@ -1,3 +1,3 @@
 $('body').find('#new_membership_form').remove();
-$('body').append(<%=  raw render("new", manageable: @manageable, membership: @membership, remote: true).inspect %> );
+$('body').append(<%=  raw render("new", manageable: @manageable, membership: @membership, join_type: params[:join_type], remote: true).inspect %> );
 $('#new_membership_form').modal('show');

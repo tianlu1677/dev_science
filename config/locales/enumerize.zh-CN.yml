@@ -28,11 +28,6 @@ zh-CN:
         super_admin: 超级管理员
         admin: 管理员
         member: 成员
-    groups_user:
-      status:
-        check:      审核中
-        online:     通过审核
-        offline:    拒绝加入
     comment:
       <<: *enumerize_meaning
     profile:

@@ -3,12 +3,10 @@
 
   <div class="form-body">
     <%= f.input :desc, disabled: true %>
-    <%= f.input :status, as: :radio_buttons, :item_wrapper_class => 'inline' %>
+    <%= f.input :status, as: :radio_buttons, collection: [:online, :offline], :item_wrapper_class => 'inline' %>
     <%= f.input :reject_reason %>
-    <%#= f.input :reject_at, as: :string %>
     <%= f.input :last_user_id, as: :hidden, input_html: { value: current_user.id } %>
     <%= f.input :role_type, as: :radio_buttons, :item_wrapper_class => 'inline'  %>
-    <%#= f.input :role_id %>
 
     <div class="form-actions noborder">
       <%= f.submit class: 'btn green', data: { disable_with: t('action_labels.submitting') }  %>
@@ -46,17 +44,3 @@
     });
   })
 </script>
-
-<!--#  user_id         :integer-->
-<!--#  organization_id :integer-->
-<!--#  desc            :text-->
-<!--#  apply_at        :datetime-->
-<!--#  reject_reason   :text-->
-<!--#  reject_at       :datetime-->
-<!--#  reject_user_id  :integer-->
-<!--#  authority       :string-->
-<!--#  status          :string-->
-<!--#  role_type       :string-->
-<!--#  role_id         :string-->
-<!--#  created_at      :datetime         not null-->
-<!--#  updated_at      :datetime         not null-->

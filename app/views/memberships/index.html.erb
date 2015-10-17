@@ -82,6 +82,20 @@
 
           <%= paginate @memberships %>
         </table>
+
+        <br/>
+        <div class="table-toolbar">
+          <div class="btn-group">
+            <%= link_to new_membership_path(manageable_id: @manageable, manageable_type: @manageable.class.name, join_type: :invite), class: 'btn green', remote: true do %>
+            <%= t("#{resource_class.name.underscore}.new") %>
+              <i class="fa fa-plus"></i>
+            <% end %>
+          </div>
+        </div>
+
+
+
+
       </div>
     </div>
   </div>

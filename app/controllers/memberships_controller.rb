@@ -13,6 +13,7 @@ class MembershipsController < ApplicationController
 
   def create
     @membership = current_user.memberships.new(permitted_params)
+    @membership.last_user_id = current_user.id
     if @membership.save
       @manageable = @membership.manageable
       @success = true

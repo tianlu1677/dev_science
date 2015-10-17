@@ -1,7 +1,6 @@
 class CreateMemberships < ActiveRecord::Migration
   def change
     create_table :memberships do |t|
-      t.integer     :user_id
       t.integer     :manageable_id        #所隶属的机构 | 群组
       t.string      :manageable_type       # 类型
       t.integer     :memberable_id        # 被控制的对象, 如加入机构的人，加入群组的人

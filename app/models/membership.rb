@@ -24,8 +24,8 @@
 class Membership < ActiveRecord::Base
   extend Enumerize
   enumerize :status, in: [:check, :online, :offline], default: :check
-  enumerize :role_type, in: [:admin, :member], default: nil
-  enumerize :join_type, in: [:oneself, :control], default: :oneself
+  enumerize :role_type, in: [:admin, :member], default: :member
+  enumerize :join_type, in: [:oneself, :invite], default: :oneself
   validates :desc, presence: true
 
   belongs_to :manageable, polymorphic: true

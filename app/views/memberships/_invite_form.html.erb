@@ -1,0 +1,20 @@
+<%= simple_form_for [@manageable, @membership], wrapper: :vertical_form, validate: true,
+                    html: { role: 'form', id: "membership_form" }, remote: true do |f| %>
+  <%= f.input :manageable_id, as: :hidden, input_html: {value: manageable.id} %>
+  <%= f.input :manageable_type, as: :hidden, input_html: {value: manageable.class.name} %>
+  <%= f.input :join_type, as: :hidden, input_html: {value: :invite} %>
+  <%= f.input :status, as: :hidden, input_html: {value: :online} %>
+  <%= f.input :last_user_id, as: :hidden, input_html: { value: current_user.id } %>
+
+  <div class="form-body">
+    <%= f.input :memberable_id, collection: User.all.pluck(:username) %>
+    <%= f.input :desc, input_html: {value: "你好，我邀请你加入#{@manageable.name}"} %>
+
+    <%= f.input :role_type, as: :radio_buttons, :item_wrapper_class => 'inline'  %>
+    <div class="form-actions noborder">
+      <%= f.submit class: 'btn green', data: { disable_with: t('action_labels.submitting') }  %>
+      <button type="button" class="btn default" data-dismiss="modal">取消</button>
+      <%#= link_to '取消',  request.referer.present? ? request.referer : organizations_path, class: 'btn default' %>
+    </div>
+  </div>
+<% end %>

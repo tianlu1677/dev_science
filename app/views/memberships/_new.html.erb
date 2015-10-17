@@ -6,12 +6,17 @@
         <h4 class="modal-title">申请加入<%= manageable.name %></h4>
       </div>
       <div class="modal-body">
-        <div class="note note-success">
-          <p>
-            申请加入该机构，申请完后，机构管理员会尽快审核。
-          </p>
-        </div>
-        <%= render "form", manageable: manageable, membership: membership %>
+        <% if params[:join_type] == "invite" %>
+        <%= render "invite_form", manageable: manageable, membership: membership %>
+        <% else %>
+
+          <div class="note note-success">
+            <p>
+              申请加入该机构，申请完后，机构管理员会尽快审核。
+            </p>
+          </div>
+          <%= render "form", manageable: manageable, membership: membership %>
+        <% end %>
       </div>
     </div>
     <!-- /.modal-content -->
