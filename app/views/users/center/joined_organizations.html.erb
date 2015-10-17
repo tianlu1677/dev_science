@@ -53,21 +53,21 @@
             <ul class="nav nav-tabs">
               <li class="active">
                 <a href="#organization_online_tab" data-toggle="tab" aria-expanded="true">
-                  已加入机构 <%= @memberships.online.count %></a>
+                  已加入机构 <%= @memberships.online.length %></a>
               </li>
               <li class="">
                 <a href="#organization_admin_tab" data-toggle="tab" aria-expanded="false">
-                  机构管理员 <%= @memberships.admin.count %>
+                  机构管理员 <%= @memberships.admin.length %>
                 </a>
               </li>
               <li class="">
                 <a href="#organization_check_tab" data-toggle="tab" aria-expanded="false">
-                  申请中的机构 <%= @memberships.check.count %>
+                  申请中的机构 <%= @memberships.check.length %>
                 </a>
               </li>
               <li class="">
                 <a href="#organization_offline_tab" data-toggle="tab" aria-expanded="false">
-                  被拒绝的机构 <%= @memberships.offline.count %>
+                  被拒绝的机构 <%= @memberships.offline.length %>
                 </a>
               </li>
             </ul>

@@ -53,21 +53,21 @@
             <ul class="nav nav-tabs">
               <li class="active">
                 <a href="#group_online_tab" data-toggle="tab" aria-expanded="true">
-                  已加入群组 <%= @groups_users.online.count %></a>
+                  已加入群组 <%= @memberships.online.count %></a>
               </li>
               <li class="">
                 <a href="#group_admin_tab" data-toggle="tab" aria-expanded="false">
-                  群组管理员 <%= @groups_users.admin.count %>
+                  群组管理员 <%= @memberships.admin.count %>
                 </a>
               </li>
               <li class="">
                 <a href="#group_check_tab" data-toggle="tab" aria-expanded="false">
-                  申请中的群组 <%= @groups_users.check.count %>
+                  申请中的群组 <%= @memberships.check.count %>
                 </a>
               </li>
               <li class="">
                 <a href="#group_offline_tab" data-toggle="tab" aria-expanded="false">
-                  被拒绝的群组 <%= @groups_users.offline.count %>
+                  被拒绝的群组 <%= @memberships.offline.count %>
                 </a>
               </li>
             </ul>
@@ -78,15 +78,15 @@
 
                 <div class="tab-pane active " id="group_online_tab">
 
-                  <% @groups_users.online.each do |groups_user| %>
-                    <%= render 'groups/group',  group: groups_user.group %>
+                  <% @memberships.online.each do |membership| %>
+                    <%= render 'groups/group',  group: membership.group %>
                   <% end %>
 
                 </div>
 
                 <div class="tab-pane" id="group_admin_tab">
-                  <% @groups_users.admin.each do |groups_user| %>
-                    <%= render 'groups/group',  group: groups_user.group %>
+                  <% @memberships.admin.each do |membership| %>
+                    <%= render 'groups/group',  group: membership.group %>
                   <% end %>
 
                 </div>
@@ -94,17 +94,17 @@
                 <div class="tab-pane" id="group_check_tab">
                   <!-- 审核中的机构-->
                   <div class="row">
-                    <% @groups_users.check.each do |groups_user| %>
+                    <% @memberships.check.each do |membership| %>
                       <div class="col-sm-12 col-md-4">
-                        <%= render 'groups/group',  group: groups_user.group %>
+                        <%= render 'groups/group',  group: membership.group %>
                       </div>
                     <% end %>
                   </div>
 
                 </div>
                 <div class="tab-pane active" id="group_offline_tab">
-                  <% @groups_users.offline.each do |groups_user| %>
-                    <%= render 'groups/group', group: groups_user.group %>
+                  <% @memberships.offline.each do |membership| %>
+                    <%= render 'groups/group', group: membership.group %>
                   <% end %>
                 </div>
                 <div style="padding-top: 50px"></div>

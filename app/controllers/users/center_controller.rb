@@ -33,11 +33,11 @@ class Users::CenterController < ApplicationController
   end
 
   def joined_organizations
-    @memberships = current_user.memberships#.includes(:organizations)
+    @memberships = current_user.memberships.manage_type("Organization").includes(:manageable)
   end
 
   def joined_groups
-    @groups_users = current_user.groups_users
+    @memberships = current_user.memberships.manage_type("Group").includes(:manageable)
   end
 
   protected
