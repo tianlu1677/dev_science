@@ -68,8 +68,6 @@ zh-CN:
   membership:
     <<: *action_labels
     are_you_sure_leave: 您确定要退出此机构?
-  groups_user:
-    <<: *action_labels
   experience:
     <<: *action_labels
   resource:
@@ -207,30 +205,19 @@ zh-CN:
         updated_at:      更新时间
       membership:
         id:                   ID
+        user_username:        用户名
+        user_email:           邮箱
         user_id:              用户ID
         manageable_id:        加入者的ID
-        manageable_type:       所属者的类别
-        memberable_id:         申请者ID
-        memberable_type:       申请者的类别
+        manageable_type:      所属者的类别
+        memberable_id:        申请者ID
+        memberable_type:      申请者的类别
         desc:                 申请加入理由
         apply_at:             申请时间
         reject_reason:        拒绝原因
         reject_at:            拒绝时间
         role_type:            机构角色
         status:               申请状态
-        created_at:           创建时间
-        updated_at:           更新时间
-      groups_user:
-        id:                   ID
-        group_id:             群组ID
-        user_id:              用户ID
-        role_id:              角色ID
-        authority:            角色类别
-        status:               状态
-        desc:                 申请加入描述
-        apply_at:             申请时间
-        reject_reason:        拒绝理由
-        reject_at:            拒绝时间
         created_at:           创建时间
         updated_at:           更新时间
       experience:

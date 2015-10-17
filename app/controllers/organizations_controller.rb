@@ -31,10 +31,10 @@ class OrganizationsController < ApplicationController
     role = Role.find_by(basename: :organization_super_admin)
     @organization = Organization.new(permit_params)
     membership = current_user.memberships.new(
-        manageable_id: @organization.id, desc: :super_admin, manageable_type: "Organization",
+        manageable_id: @organization.id, manageable_type: "Organization", desc: :super_admin, user_id: current_user.id,
         status: :online, apply_at: Time.now, role_type: role.basename, role_id: role.id)
 
-    if @organization.save and membership
+    if @organization.save and membership.save
       redirect_to organization_path(@organization)
     else
       render 'new'

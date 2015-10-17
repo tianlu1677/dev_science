@@ -108,4 +108,5 @@ group :development, :test do
   ## for letter preview
   gem 'letter_opener'  
   gem 'bullet'
+  gem 'puma'
 end

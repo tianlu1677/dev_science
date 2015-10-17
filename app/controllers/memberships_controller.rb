@@ -1,10 +1,10 @@
 class MembershipsController < ApplicationController
   layout 'application'
-  before_action :get_manageable, only: [:new]
+  before_action :get_manageable, only: [:new, :index, :edit]
 
   def index
-    @q = @manageable.memberships.online.search(params[:q])
-    @memberships = @q.result.page(params[:page] || 1)
+    @q = @manageable.memberships.search(params[:q])
+    @memberships = @q.result.includes(:memberable).page(params[:page] || 1)
   end
 
   def new
@@ -49,14 +49,6 @@ class MembershipsController < ApplicationController
       @success = false
     end
   end
-
-  def manage
-    @manageable = Organization.find(params[:organization_id]) if params[:organization_id]
-    @manageable = Group.find(params[:group_id]) if params[:group_id]
-    @q = @manageable.memberships.search(params[:q])
-    @memberships = @q.result(distinct: true).page(params[:page] || 1).per(20)
-  end
-
 
   protected
 

@@ -1,35 +1,89 @@
-<div class="col-md-12">
-  <!-- BEGIN SAMPLE TABLE PORTLET -->
-  <div class="portlet light">
-    <div class="portlet-title">
-      <div class="caption">
-        <i class="fa fa-cogs font-green-sharp"></i>
-          <span class="caption-subject font-green-sharp bold uppercase">
-            <%= @manageable.name %>用户列表
-          </span>
+<div class="row">
+  <div class="col-md-12">
+    <div class="portlet box green">
+      <div class="portlet-title">
+        <div class="caption">
+          <i class="fa fa-cogs"></i><%= @manageable.name %> 用户列表
+      <span>|
+      通过审请: <%= @manageable.memberships.online.count %> 人
+      | 拒绝审请: <%= @manageable.memberships.offline.count %> 人
+        | 审核中: <%= @manageable.memberships.check.count %> 人
+    </span>
+        </div>
+        <div class="tools">
+          <a href="javascript:;" class="collapse" data-original-title="" title="">
+          </a>
+        </div>
       </div>
-      <div class="tools">
-        <a class="collapse" data-original-title="" href="javascript:;" title=""></a>
-        <a class="config" data-original-title="" data-toggle="modal" href="#portlet-config" title=""></a>
-        <a class="reload" data-original-title="" href="javascript:;" title=""></a>
-        <a class="remove" data-original-title="" href="javascript:;" title=""></a>
-      </div>
-    </div>
-    <div class="portlet-body flip-scroll">
-      <hr/>
-      <div class="row">
-        <% @memberships.each do |memberships| %>
-          <div class="col-sm-12 col-sm-2">
-            <%= render 'memberships/membership', memberships: memberships %>
+      <div class="portlet-body flip-scroll">
+
+        <div class="row search-form-default">
+          <div class="col-md-12">
+            <%= search_form_for [@q], url:  memberships_path, html: { class: 'form-inline form-horizontal' } do |f| %>
+              <%= f.hidden_field :manageable_id, name: :manageable_id,  value: @manageable.id %>
+              <%= f.hidden_field :manageable_type, name: :manageable_type, value: @manageable.class.name %>
+              <div class="input-group">
+                <%= f.search_field :memberable_of_User_type_username_cont, placeholder: '用户名称...', class: 'form-control input-circle-left' %>
+              </div>
+              <div class="input-group">
+                <%= f.search_field :memberable_of_User_type_email_cont, placeholder: '用户邮箱...', class: 'form-control input-circle-left' %>
+                <span class="input-group-btn">
+              <button class="btn green">
+                查询
+                <i class="m-icon-swapright m-icon-white"></i>
+              </button>
+            </span>
+              </div>
+            <% end %>
           </div>
-        <% end %>
+        </div>
+
+        <hr/>
+        <% attributes = %w(user_username user_email status role_type  desc apply_at reject_reason reject_at ) %>
+
+        <table class="table table-bordered table-striped table-condensed flip-content">
+          <thead class="flip-content">
+          <tr class="">
+            <% attributes.each do |attribute| %>
+              <%= content_tag :th, sort_link(@q, attribute) %>
+            <% end %>
+            <th scope="col" styple="min-width:150px !important">操作</th>
+          </tr>
+          </thead>
+          <tbody>
+
+          <% @memberships.each do |resource| %>
+            <tr id="membership_<%= resource.id %>">
+              <% attributes.each do |attr| %>
+                <% if respond_to?("#{attr}_text".to_sym) %>
+                  <td><%= self.send("#{attr}_text".to_sym) %></td>
+                <% elsif resource.respond_to?("#{attr}_text".to_sym) %>
+                  <td><%= resource.send("#{attr}_text".to_sym) %></td>
+                <% elsif resource.respond_to?("#{attr}_title".to_sym) %>
+                  <td><%= resource.send("#{attr}_title".to_sym) %></td>
+                <% elsif resource.respond_to?("#{attr}_name".to_sym) %>
+                  <td><%= resource.send("#{attr}_name".to_sym) %></td>
+                <% elsif resource.send(attr).is_a?(Time) %>
+                  <td><%= resource.send(attr).try(:strftime, '%Y年%m月%d %H时%M分%S秒') %></td>
+                <% else %>
+                  <td><%= resource.send(attr).to_s.truncate(20) %></td>
+                <% end %>
+              <% end %>
+              <td>
+                <%= link_to edit_membership_path(resource, manageable_id: @manageable.id, manageable_type: @manageable.class.name), class: "btn  red", remote: true do %>
+                  <i class="fa fa-edit"></i> 编辑
+                <% end %>
+              </td>
+
+            </tr>
+          <% end %>
+
+          </tbody>
+
+          <%= paginate @memberships %>
+        </table>
       </div>
-
-      <%= paginate @memberships %>
-      <br>
-
     </div>
   </div>
-  <!-- END SAMPLE TABLE PORTLET -->
 </div>
 
