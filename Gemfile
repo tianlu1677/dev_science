@@ -23,8 +23,9 @@ gem 'carrierwave-qiniu', '0.1.8'
 
 #permission
 gem 'devise'
-gem 'cancancan'
+##gem 'cancancan'
 gem 'activerecord-session_store'
+gem "pundit"
 
 #mvc
 gem 'inherited_resources'
@@ -51,7 +52,7 @@ gem 'settingslogic'
 gem 'acts-as-taggable-on', '~> 3.4'
 gem 'paper_trail'
 
-
+# monitor ruby app
 gem 'oneapm_rpm'
 
 #rails-assets
@@ -68,9 +69,6 @@ gem 'grape-entity'
 gem 'grape-swagger'
 gem 'rack-cors', :require => 'rack/cors'
 gem 'grape-kaminari'
-
-## permission
-gem "pundit"
 
 # Translate ActiveRecord model.
 gem 'globalize', '~> 5.0.0'
