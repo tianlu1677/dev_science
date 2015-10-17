@@ -6,7 +6,7 @@
       <div class="portlet-title">
         <div class="caption">
           <i class="icon-speech"></i>
-          <span class="caption-subject bold uppercase">机构</span>
+          <span class="caption-subject bold uppercase">机构列表</span>
           <span class="caption-helper"></span>
         </div>
 
@@ -14,9 +14,9 @@
           <div class="portlet-input input-inline input-medium">
             <%= search_form_for [@q], html: { class: 'form-inline form-horizontal' } do |f| %>
             <div class="input-group">
-              <%= f.text_field :name_cont, placeholder: '机构名称...', class: 'form-control input-circle-left' %>
+              <%= f.text_field :name_cont, placeholder: "机构名称...", class: 'form-control input-circle-left' %>
                 <span class="input-group-btn">
-                <button class="btn btn-circle-right btn-default" type="submit">搜索</button>
+                <button class="btn btn-circle-right btn-default" type="submit"><%= t('action_labels.search') %></button>
                 </span>
             </div>
             <% end %>
@@ -26,7 +26,7 @@
 
         <div class="actions">
           <%= link_to new_organization_path, class: "btn btn-circle btn-default" do %>
-            <i class="fa fa-plus"></i> 申请
+            <i class="fa fa-plus"></i> 创建机构
           <% end %>
         </div>
 
@@ -39,8 +39,6 @@
           </div>
           <% end %>
         </div>
-
-
       </div>
     </div>
     <!-- END Portlet PORTLET-->
@@ -50,7 +48,7 @@
   <div class="col-md-3">
     推荐群组
     <% Group.last(3).each do |group| %>
-      <%#= render 'groups/group', group: group %>
+      <%= render 'groups/group', group: group %>
     <% end %>
   </div>
 </div>

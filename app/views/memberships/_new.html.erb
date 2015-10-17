@@ -3,16 +3,20 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-        <h4 class="modal-title">申请加入<%= manageable.name %></h4>
+        <h4 class="modal-title">加入<%= manageable.name %></h4>
       </div>
       <div class="modal-body">
         <% if params[:join_type] == "invite" %>
-        <%= render "invite_form", manageable: manageable, membership: membership %>
-        <% else %>
-
           <div class="note note-success">
             <p>
-              申请加入该机构，申请完后，机构管理员会尽快审核。
+              邀请加入<%= manageable.name %>，请选择邀请人
+            </p>
+          </div>
+          <%= render "invite_form", manageable: manageable, membership: membership %>
+        <% else %>
+          <div class="note note-success">
+            <p>
+              申请加入<%= manageable.name %>，申请完后，管理员会尽快审核。
             </p>
           </div>
           <%= render "form", manageable: manageable, membership: membership %>

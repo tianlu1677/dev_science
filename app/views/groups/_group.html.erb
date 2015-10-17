@@ -1,4 +1,4 @@
-<div class="portlet light">
+<div class="group portlet light bordered">
   <div class="portlet-title">
     <div class="caption">
       <i class="icon-speech"></i>
@@ -14,14 +14,23 @@
   <div class="portlet-body">
     <div class="">
       <%= link_to group_path(group) do %>
-      <%= image_tag group.logo, width: "200px", height: "200px" %>
-      <div class="caption">
-        <p>
-          <%= group.intro %>
-        </p>
+      <%= image_tag group.logo, width: "250px", height: "200px" %>
+      <blockquote>
+
+        <div class="author">
+
+          <a class="author_avatar" target="_blank" rel="author" href="/users/53e7339a31302d5786920100">
+            <img alt="姚以雄" src="https://ko-avatar.b0.upaiyun.com/web/60e1864c2232cef2f0efb34f24570cf6.jpg!tiny"></a>
+          <a class="author_name" target="_blank" rel="author" href="/users/53e7339a31302d5786920100">姚以雄</a></div>
+      </blockquote>
+      <p>
+        <%= group.intro.try(:truncate, 60) %>
+      </p>
+
+
       </div>
       <% end %>
-    </div>
+
 
   </div>
 </div>

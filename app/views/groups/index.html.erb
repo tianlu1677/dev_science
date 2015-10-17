@@ -34,11 +34,13 @@
       <div class="portlet-body">
 
         <div class="row">
+          <% 10.times do  %>
           <% @groups.each do |group| %>
             <div class="col-md-4">
               <%= render 'groups/group', group: group %>
             </div>
           <% end %>
+            <% end %>
         </div>
       </div>
     </div>

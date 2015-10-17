@@ -6,10 +6,10 @@ span id="manageable_#{manageable.id}_membership"
               class: "btn btn-circle btn-success", remote: true do
       i.fa.fa-plus
       |  加入
-  - elsif membership_status == 'online'
+  - elsif membership_status == 'check'
     = link_to "审核中...", "#", class: " btn btn-default"
 
-  - elsif membership_status == 'check'
+  - elsif membership_status == 'online'
     = link_to "已加入", membership_path(membership), class: "leave_organization btn btn-default",
               remote: true, method: :delete, data: {confirm: t("action_labels.are_you_sure_leave")}
   - elsif membership_status == 'offline'
