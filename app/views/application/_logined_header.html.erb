@@ -119,12 +119,25 @@
                 <%= link_to  users_center_index_path do %>
                   <i class="icon-user"></i> 个人中心
                 <% end %>
-
               </li>
 
-              <li><%= link_to destroy_user_session_path , method: :delete do %>
+              <li>
+                <%= link_to  joined_organizations_users_center_index_path do %>
+                  <i class="icon-key"></i> 我的机构
+                <% end %>
+              </li>
+
+              <li>
+                <%= link_to joined_groups_users_center_index_path do %>
+                  <i class="icon-key"></i> 我的讨论组
+                <% end %>
+              </li>
+
+              <li>
+                <%= link_to destroy_user_session_path , method: :delete do %>
                   <i class="icon-key"></i> 退出
-                  <% end %>
+                <% end %>
+              </li>
 
             </ul>
           </li>
